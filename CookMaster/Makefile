@@ -19,6 +19,9 @@ init: ## initialise the development environment
 	make clear && \
 	make dev
 
+dev: ## start dev server
+	$(SAIL) npm run dev --quiet
+
 composer-install: ## run composer install when there is no vendor folder
 	docker run --rm \
     -u "$$(id -u):$$(id -g)" \
