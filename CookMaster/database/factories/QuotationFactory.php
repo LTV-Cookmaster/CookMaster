@@ -23,6 +23,7 @@ class QuotationFactory extends Factory
             'contractor_id' => $this->faker->uuid,
             'description' => $this->faker->text,
             'price' => $this->faker->numberBetween(100, 1000),
+            'is_accepted' => $this->faker->boolean,
         ];
     }
 }
