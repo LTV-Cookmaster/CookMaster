@@ -9,21 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    //Offices = Locaux
+
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('description');
             $table->string('address');
             $table->string('postal_code');
             $table->string('city');
             $table->string('country');
-            $table->string('phone');
-            $table->string('password');
-            $table->string('referral_code')->nullable();
-            $table->rememberToken();
+            $table->integer('number_of_rooms');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('offices');
     }
 };

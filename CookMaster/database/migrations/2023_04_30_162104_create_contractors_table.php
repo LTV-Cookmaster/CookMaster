@@ -9,21 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    //Contractors = Prestataires
+
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('contractors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email');
+            $table->string('phone_number');
             $table->string('address');
             $table->string('postal_code');
             $table->string('city');
             $table->string('country');
-            $table->string('phone');
             $table->string('password');
-            $table->string('referral_code')->nullable();
-            $table->rememberToken();
+            $table->string('line_of_business');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('contractors');
     }
 };
