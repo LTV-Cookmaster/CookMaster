@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignUuid('contractor_id')->constrained('contractors');
             $table->string('description');
             $table->string('price');
+            $table->boolean('is_accepted')->default(false);
             $table->timestamps();
         });
 
