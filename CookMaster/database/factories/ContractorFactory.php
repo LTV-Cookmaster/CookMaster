@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class UserFactory extends Factory
+class ContractorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,23 +21,13 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => $this->faker->dateTime(),
+            'phone_number' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'postal_code' => $this->faker->postcode(),
             'city' => $this->faker->city(),
             'country' => $this->faker->country(),
-            'phone' => $this->faker->phoneNumber(),
-            'password' => Str::random(10), // password
-            'remember_token' => Str::random(10),
+            'line_of_business' => $this->faker->jobTitle(),
+            'company_name' => $this->faker->company(),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
     }
 }

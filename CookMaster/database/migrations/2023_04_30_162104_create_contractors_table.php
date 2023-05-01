@@ -18,12 +18,14 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number');
             $table->string('address');
             $table->string('postal_code');
             $table->string('city');
             $table->string('country');
-            $table->string('password');
+         //   $table->string('password'); // A voir si on mets un front spécialisé pour les prestataires
+            $table->string('company_name');
             $table->string('line_of_business');
             $table->timestamps();
         });
