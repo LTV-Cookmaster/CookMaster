@@ -17,4 +17,9 @@ class CookingEquipment extends Model
         'available_quantity',
         'price',
     ];
+
+    public function cookingEquipment()
+    {
+        return $this->belongsTo(CookingEquipment::class);
+    }
 }

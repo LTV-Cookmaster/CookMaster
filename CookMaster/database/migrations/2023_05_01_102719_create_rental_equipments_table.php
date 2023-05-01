@@ -14,7 +14,7 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('rental_equipments', function (Blueprint $table) {
+        Schema::create('rental_equipment', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('office_id')->references('id')->on('offices');
             $table->string('name');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rental_equipments');
+        Schema::dropIfExists('rental_equipment');
     }
 };
