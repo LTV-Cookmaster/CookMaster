@@ -14,7 +14,7 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('cooking_equipments', function (Blueprint $table) {
+        Schema::create('cooking_equipment', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('category');
             $table->string('name');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('available_quantity');
             $table->integer('price');
             $table->string('image');
-
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cooking_equipments');
+        Schema::dropIfExists('cooking_equipment');
     }
 };

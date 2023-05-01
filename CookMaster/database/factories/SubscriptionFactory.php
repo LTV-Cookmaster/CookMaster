@@ -19,10 +19,10 @@ class SubscriptionFactory extends Factory
         return [
             'id' => $this->faker->uuid,
             'user_id' => $this->faker->uuid,
-            'subscription_type_id' => $this->faker->numberBetween(1, 3),
+            'subscription_type' => $this->faker->numberBetween(1, 3),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),
-            'price' => $this->faker->numberBetween(100, 1000),
+            'subscription_price' => $this->faker->numberBetween(100, 1000),
         ];
     }
 }

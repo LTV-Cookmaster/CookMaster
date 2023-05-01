@@ -26,6 +26,7 @@ class RecipeFactory extends Factory
             'number_of_persons' => $this->faker->numberBetween(1, 10),
             'type' => $this->faker->randomElement(['starter', 'main course', 'dessert, snack, drink']),
             'gastronomy' => $this->faker->randomElement(['french', 'italian', 'japanese']),
+            'difficulty' => $this->faker->randomElement(['easy', 'medium', 'hard']),
             'is_bookmarked' => $this->faker->boolean,
         ];
     }

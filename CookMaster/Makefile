@@ -16,11 +16,7 @@ init: ## initialise the development environment
     $(SAIL) artisan key:generate && \
 	$(SAIL) artisan migrate:fresh --force --seed && \
 	$(SAIL) npm install && \
-	make clear && \
-	make dev
-
-dev: ## start dev server
-	$(SAIL) npm run dev --quiet
+	make clear
 
 composer-install: ## run composer install when there is no vendor folder
 	docker run --rm \
@@ -32,8 +28,7 @@ composer-install: ## run composer install when there is no vendor folder
 
 ## —— Docker ———————————————————————————————————————————————————————————————————
 up: ## start containers in the background
-	$(SAIL) up -d && \
-	make dev
+	$(SAIL) up -d
 
 down: ## stop containers
 	$(SAIL) down
@@ -57,6 +52,3 @@ tinker: ## exec a laravel shell
 
 lint: ## Lint php files to the laravel default style
 	$(SAIL) php ./vendor/bin/pint --dirty
-
-generate-migrations-history: ## For archeology
-    $(SAIL) artisan generate:migrations --path=database/history
