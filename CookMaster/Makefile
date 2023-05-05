@@ -15,7 +15,7 @@ init: ## initialise the development environment
 	$(SAIL) composer install && \
     $(SAIL) artisan key:generate && \
 	$(SAIL) artisan migrate:fresh --force --seed && \
-	$(SAIL) npm install && \
+	$(SAIL) npm install && npm run dev \
 	make clear
 
 composer-install: ## run composer install when there is no vendor folder
