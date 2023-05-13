@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('room', \App\Http\Controllers\Admin\RoomController::class)->except(['show']);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
