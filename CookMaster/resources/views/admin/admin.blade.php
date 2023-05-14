@@ -11,6 +11,22 @@
 </head>
 <body>
 <div class="container mt-5">
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-success">
+                {{ session('error') }}
+            </div>
+        @endif
     @yield('content')
 </div>
 </body>

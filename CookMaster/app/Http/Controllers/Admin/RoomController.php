@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\RoomFormRequest;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -15,20 +16,24 @@ class RoomController extends Controller
        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
+        $room = new Room();
+        $room->fill([
+            'max_capacity' => 10,
+            'price' => 100,
+            'is_booked' => false
+        ]);
         return view('admin.rooms.form' , [
-            'room' => new Room()
+            'room' => $room
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoomFormRequest $request)
     {
         //
     }
