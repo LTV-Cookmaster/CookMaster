@@ -25,4 +25,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Auth::routes();
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('user', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
