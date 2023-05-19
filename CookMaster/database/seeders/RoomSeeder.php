@@ -18,6 +18,5 @@ class RoomSeeder extends Seeder
                 'office_id' => Office::factory()->create(),
             ]);
     }
-
-
+  
 }
