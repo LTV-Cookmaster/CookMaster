@@ -22,8 +22,8 @@ class RoomFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','min:4'],
-            'description' => ['required','min:8'],
+            'name' => ['required','string','min:4'],
+            'description' => ['required','string','min:8'],
             'max_capacity' => ['required','integer','max:10'],
             'price' => ['required','integer','min:100'],
             'is_booked' => ['required','boolean'],
