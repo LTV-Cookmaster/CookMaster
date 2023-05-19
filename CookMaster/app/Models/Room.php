@@ -9,6 +9,8 @@ class Room extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'office_id',
         'name',

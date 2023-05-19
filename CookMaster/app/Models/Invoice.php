@@ -9,6 +9,8 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'workshop_id',

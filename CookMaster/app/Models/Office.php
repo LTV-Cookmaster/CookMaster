@@ -9,6 +9,8 @@ class Office extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'name',
         'description',

@@ -17,8 +17,8 @@ class SubscriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->uuid,
-            'user_id' => $this->faker->uuid,
+            'id' => $this->faker->uuid(),
+            'user_id' => $this->faker->uuid(),
             'subscription_type' => $this->faker->numberBetween(1, 3),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),

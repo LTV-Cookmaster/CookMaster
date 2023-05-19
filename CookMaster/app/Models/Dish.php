@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dish extends Model
 {
     use HasFactory;
-
+    public $incrementing = false;
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient::class);

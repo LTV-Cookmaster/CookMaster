@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Office;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,16 +16,18 @@ class RoomFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Room::class;
+
     public function definition(): array
     {
         return [
             'id' => $this->faker->uuid(),
-            'office_id' => $this->faker->uuid,
-            'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
-            'max_capacity' => $this->faker->numberBetween(1, 10),
-            'price' => $this->faker->numberBetween(100, 500),
-            'is_booked' => $this->faker->boolean(),
+            'office_id' => Office::factory()->create(),
+            'name' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
+            'max_capacity' => $this->faker->numberBetween(1,10),
+            'price' => $this->faker->numberBetween(100,400),
+            'is_booked' => $this->faker->boolean,
         ];
     }
 }
