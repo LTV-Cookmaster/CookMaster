@@ -9,6 +9,8 @@ class Ingredient extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     public function recipes()
     {
         return $this->belongsToMany(Recipe::class);
