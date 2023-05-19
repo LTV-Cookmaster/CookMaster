@@ -9,6 +9,8 @@ class RentalEquipment extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     public function quotations()
     {
         return $this->hasMany(Quotation::class);
