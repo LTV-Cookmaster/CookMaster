@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'referral_code' => Str::random(10),
+            'referral_code' => trim(Str::substr($data['name'], 0, 2).Str::random(10)),
         ]);
     }
 }
