@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'password' => Hash::make('admin'),
             'is_admin' => true,
+            'is_ban' => false,
         ]);
         User::factory(10)->create();
     }

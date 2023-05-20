@@ -3,6 +3,15 @@
 @section('title', $user->exists ? "Modifier un utilisateur" : "Créer un utilisateur")
 
 @section('content')
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <h1>@yield('title')</h1>
 
@@ -24,8 +33,13 @@
                 @include('components.input.input' , ['label' => 'Pays' , 'name' => 'country', 'value' => $user->country])
             </div>
             @include('components.input.input' , ['label' => 'Téléphone' , 'name' => 'phone', 'value' => $user->phone])
+            @if($user->exists)
+                @include('components.input.input' , ['label' => 'Code d\'affiliation' , 'name' => 'referral_code', 'value' => $user->referral_code])
+            @else
+                @include('components.input.input' , ['label' => 'Password' , 'name' => 'password', 'value' => $user->password, 'class' => 'display-none'])
+            @endif
 
-{{--            @include('components.input.checkbox' , ['label' => 'Banni' , 'name' => 'ban', 'value' => $user->isBan])--}}
+            @include('components.input.checkbox' , ['label' => 'Admin' , 'name' => 'is_admin', 'value' => $user->is_admin])
 
         </div>
 

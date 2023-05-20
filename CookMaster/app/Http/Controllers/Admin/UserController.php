@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.users.index', [
-           'users' => User::orderBy('created_at' , 'desc')->paginate(5)
+           'users' => User::orderBy('created_at' , 'desc')->paginate(8)
         ]);
     }
 
@@ -62,10 +62,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserFormRequest $request, User $user)
     {
-        //
+        $user->update($request->validated());
+        return to_route('admin.user.index')->with('success', 'L\'utilisateur a bien été modifié');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -73,5 +75,21 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function unban(User $user)
+    {
+        $user->is_ban = false;
+        $user->save();
+
+        return to_route('admin.user.index')->with('success', 'Utilisateur débanni avec succès');
+    }
+
+    public function ban(User $user)
+    {
+        $user->is_ban = true;
+        $user->save();
+
+        return redirect()->route('admin.user.index')->with('success', 'Utilisateur banni avec succès');
     }
 }
