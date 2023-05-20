@@ -12,11 +12,6 @@
     <footer class="d-flex flex-wrap justify-content-between align-items-center">
         <p class="col-md-4 mb-0 text-muted">Cookmaster ©</p>
 
-        <a href="#"
-           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <img src="{{asset('logo.png')}}" alt="cookmaster" height="32" width="32">
-        </a>
-
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About us</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy policy</a></li>
