@@ -28,7 +28,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Auth::routes();
 
-<<<<<<< Updated upstream
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
 });
@@ -38,8 +37,10 @@ Route::match(['get', 'post'], '/admin/users/{user}/unban', [\App\Http\Controller
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [\App\Http\Controllers\Admin\UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
-Route::post('/subscription/{plan}/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscription.subscribe');
->>>>>>> Stashed changes
+
+Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
+Route::get('subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
+

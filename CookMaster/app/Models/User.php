@@ -53,6 +53,7 @@ class User extends Authenticatable
         $user->phone = $data['phone'];
         $user->password = Hash::make($data['password']);
         $user->referral_code = Str::random(10);
+        $user->referee_code = Str::random(10);
 
         $user->save();
 

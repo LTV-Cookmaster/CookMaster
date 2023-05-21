@@ -32,8 +32,7 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.subscribe', ['plan' => 'free']) }}"
-                       class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'freePlan']) }}" class="btn btn-success btn-block">Souscrire</a>
                 </div>
             </div>
         </div>
@@ -58,8 +57,7 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.subscribe', ['plan' => 'starter']) }}"
-                       class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'starterPlan']) }}" class="btn btn-success btn-block">Souscrire</a>
                 </div>
             </div>
         </div>
@@ -84,8 +82,7 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.subscribe', ['plan' => 'master']) }}"
-                       class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'masterPlan']) }}" class="btn btn-success btn-block">Souscrire</a>
                 </div>
             </div>
         </div>

@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
             'referral_code' => trim(Str::substr($data['name'], 0, 2).Str::random(10)),
+            'referee_code' => $data['referee_code'],
         ]);
     }
 }

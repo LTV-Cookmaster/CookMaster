@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 
 class SubscriptionController extends Controller
 {
@@ -27,6 +29,7 @@ class SubscriptionController extends Controller
     public function freePlan()
     {
         return [
+            'subscription_type' => 'freePlan',
             'price_per_month' => 0.0,
             'annual_price' => 0,
             'advertising' => true,
@@ -34,7 +37,7 @@ class SubscriptionController extends Controller
             'lessons' => 1,
             'chat' => false,
             'discount' => false,
-            'free_delivery' => false,
+            'free_delivery' => 'none',
             'kitchen_space' => false,
             'exclusive_events' => false,
             'referral_reward' => false,
@@ -48,6 +51,7 @@ class SubscriptionController extends Controller
     public function starterPlan()
     {
         return [
+            'subscription_type' => 'starterPlan',
             'price_per_month' => 9.9,
             'annual_price' => 113,
             'advertising' => false,
@@ -69,6 +73,7 @@ class SubscriptionController extends Controller
     public function masterPlan()
     {
         return [
+            'subscription_type' => 'masterPlan',
             'price_per_month' => 19,
             'annual_price' => 220,
             'advertising' => false,
@@ -76,7 +81,7 @@ class SubscriptionController extends Controller
             'lessons' => 10000,
             'chat' => true,
             'discount' => true,
-            'free_delivery' => true,
+            'free_delivery' => 'everywhere',
             'kitchen_space' => true,
             'exclusive_events' => true,
             'referral_reward' => true,
@@ -90,7 +95,7 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'subscription_type' => ['required', 'integer'],
+            'subscription_type' => ['required', 'string'],
             'start_date' => ['required', 'date'],
             'end_date' => ['required', 'date'],
             'subscription_price' => ['required', 'string'],
@@ -98,20 +103,64 @@ class SubscriptionController extends Controller
 
         $user = Auth::user();
 
-        try {
-            $subscription = $user->newSubscription('default', $request->subscription_type)
-                ->startDate($request->start_date)
-                ->endDate($request->end_date)
-                ->create($request->subscription_price);
+        $subscription = new Subscription([
+            'user_id' => $user->id,
+            'subscription_type' => $request->subscription_type,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'subscription_price' => $request->subscription_price,
+        ]);
 
-            // You can add any additional logic here, such as updating the user's profile or sending email notifications.
+        $user->subscriptions()->save($subscription);
 
-            return redirect()->route('subscriptions.index')->with('success', 'Subscription created successfully.');
-        } catch (IncompletePayment $exception) {
-            // Handle incomplete payments (e.g., redirect the user to the payment page)
-            return $exception->redirectToCheckout();
+        return redirect()->route('subscriptions.index')->with('success', 'Subscription created successfully.');
+    }
+
+    private function getSubscriptionDetails($plan)
+    {
+        // Logique pour récupérer les détails de la souscription en fonction du plan
+        // Par exemple, vous pouvez utiliser une requête à la base de données ou des conditions
+        // pour déterminer les détails en fonction du plan sélectionné
+
+        $subscriptionDetails = [];
+
+        if ($plan === 'freePlan') {
+            $subscriptionDetails = $this->freePlan();
+        } elseif ($plan === 'starterPlan') {
+            $subscriptionDetails = $this->starterPlan();
+        } elseif ($plan === 'masterPlan') {
+            $subscriptionDetails = $this->masterPlan();
+        }
+
+        return $subscriptionDetails;
+    }
+
+    public function checkout($plan)
+    {
+        $user = Auth::user();
+        $subscriptionDetails = $this->getSubscriptionDetails($plan);
+
+        if($subscriptionDetails == 'freePlan'){
+            return redirect()->route('home')->with('success', __('Free plan subscription created'));
+        }else {
+
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            $intent = PaymentIntent::create([
+                'amount' => $subscriptionDetails['price_per_month'] * 100,
+                'currency' => env('CASHIER_CURRENCY'),
+            ]);
+
+            return view('checkout', [
+                'clientSecret' => $intent->client_secret,
+                'plan' => $plan,
+            ]);
         }
     }
 
+    public function success()
+    {
+        return redirect()->route('home')->with('success', __('Subscription successful'));
+    }
 
 }
