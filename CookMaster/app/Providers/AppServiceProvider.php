@@ -2,12 +2,18 @@
 
 namespace App\Providers;
 
+<<<<<<< Updated upstream
 
 
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
+=======
+use App\Models\Subscription;
+use App\Models\User;
+>>>>>>> Stashed changes
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Cashier::ignoreMigrations();
     }
 
     /**
@@ -24,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+<<<<<<< Updated upstream
         Paginator::useBootstrapFive();
+=======
+        Cashier::useCustomerModel(User::class);
+        Cashier::useSubscriptionModel(Subscription::class);
+>>>>>>> Stashed changes
     }
 }

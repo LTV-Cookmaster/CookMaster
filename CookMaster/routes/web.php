@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +23,12 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('room', \App\Http\Controllers\Admin\RoomController::class)->except(['show']);
+    Route::resource('room', RoomController::class)->except(['show']);
 });
 
 Auth::routes();
 
+<<<<<<< Updated upstream
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
 });
@@ -34,3 +38,8 @@ Route::match(['get', 'post'], '/admin/users/{user}/unban', [\App\Http\Controller
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [\App\Http\Controllers\Admin\UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+Route::post('/subscription/{plan}/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscription.subscribe');
+>>>>>>> Stashed changes

@@ -20,7 +20,18 @@ return new class extends Migration
             $table->integer('subscription_type');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('subscription_price');
+            $table->float('price_per_month');
+            $table->string('annual_price');
+            $table->boolean('advertising');
+            $table->boolean('commenting');
+            $table->integer('lessons');
+            $table->boolean('chat');
+            $table->boolean('discount');
+            $table->string('free_delivery');
+            $table->boolean('kitchen_space');
+            $table->boolean('exclusive_events');
+            $table->boolean('referral_reward');
+            $table->boolean('renewal_bonus');
             $table->timestamps();
         });
 
