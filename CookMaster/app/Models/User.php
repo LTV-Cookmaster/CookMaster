@@ -26,6 +26,8 @@ class User extends Authenticatable
         'country',
         'phone',
         'referral_code',
+        'created_at',
+        'updated_at',
     ];
 
     protected $hidden = [

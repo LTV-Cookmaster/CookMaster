@@ -29,7 +29,8 @@ class UserFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'password' => Str::random(10), // password
             'remember_token' => Str::random(10),
-        ];
+            'is_ban' => fn () => random_int(0, 1),
+            'referral_code' => Str::random(8),];
     }
 
     /**
