@@ -33,8 +33,9 @@ class Room extends Model
 
     public static function create(array $data)
     {
-        $room = new static;
+        $room = new Room();
         $room->id = Str::uuid();
+        $room->office_id = Office::first()->id;
         $room->name = $data['name'];
         $room->description = $data['description'];
         $room->max_capacity = $data['max_capacity'];
