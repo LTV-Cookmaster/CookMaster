@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignUuid('office_id')->constrained('offices');
             $table->string('name');
             $table->string('description');
-            $table->string('max_capacity');
-            $table->string('price');
+            $table->integer('max_capacity');
+            $table->integer('price');
             $table->boolean('is_booked')->default(false);
             $table->timestamps();
         });

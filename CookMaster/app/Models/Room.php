@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class Room extends Model
 {
@@ -27,6 +29,21 @@ class Room extends Model
     public function office()
     {
         return $this->belongsTo(Office::class);
+    }
+
+    public static function create(array $data)
+    {
+        $room = new static;
+        $room->id = Str::uuid();
+        $room->name = $data['name'];
+        $room->description = $data['description'];
+        $room->max_capacity = $data['max_capacity'];
+        $room->price = $data['price'];
+        $room->is_booked = $data['is_booked'];
+
+        $room->save();
+
+        return $room;
     }
 
     public function invoices()
