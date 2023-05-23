@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     public $incrementing = false;
 
@@ -52,11 +53,13 @@ class User extends Authenticatable
         $user->phone = $data['phone'];
         $user->password = Hash::make($data['password']);
         $user->referral_code = Str::random(10);
+        $user->referee_code = Str::random(10);
 
         $user->save();
 
         return $user;
     }
+
 
     public function invoice()
     {
@@ -76,6 +79,11 @@ class User extends Authenticatable
     public function room()
     {
         return $this->hasMany(Room::class);
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
     }
 
 

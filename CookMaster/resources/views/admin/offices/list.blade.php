@@ -1,12 +1,12 @@
 @extends('admin.admin')
 
-@section('title' , 'Les Rooms')
+@section('title' , $officeName)
 
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.room.create') }}" class="btn btn-primary">Créer une Room</a>
+        <a href="{{ route('admin.office.index') }}" class="btn btn-primary">Afficher les autres locaux</a>
     </div>
     <table class="table table-striped">
         <thead>
@@ -15,7 +15,6 @@
             <th>Capacité max</th>
             <th>Prix</th>
             <th>Réservé</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -30,11 +29,10 @@
                     <td><span style="color: darkgreen">Libre</span></td>
                 @endif
                 <td>
-                    <a class="btn btn-primary">Afficher</a></td>
             </tr>
         @endforeach
         </tbody>
     </table>
 
-    {{ $rooms->links() }}
+{{--    {{ $rooms->links() }}--}}
 @endsection
