@@ -19,10 +19,21 @@ class SubscriptionFactory extends Factory
         return [
             'id' => $this->faker->uuid(),
             'user_id' => $this->faker->uuid(),
-            'subscription_type' => $this->faker->numberBetween(1, 3),
+            'subscription_type' => $this->faker->randomElement(['freePlan', 'starterPlan', 'masterPlan']),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),
-            'subscription_price' => $this->faker->numberBetween(100, 1000),
+            'price_per_month' => $this->faker->numberBetween(5,20),
+            'annual_price' => $this->faker->numberBetween(100,400),
+            'advertising' => $this->faker->boolean(),
+            'commenting' => $this->faker->boolean(),
+            'lessons' => $this->faker->randomElement([1,5,10000]),
+            'chat' => $this->faker->boolean(),
+            'discount' => $this->faker->boolean(),
+            'free_delivery' => $this->faker->randomElement(['none','relay','everywhere']),
+            'kitchen_space' => $this->faker->boolean(),
+            'exclusive_events' => $this->faker->boolean(),
+            'referral_reward' => $this->faker->boolean(),
+            'renewal_bonus' => $this->faker->boolean(),
         ];
     }
 }

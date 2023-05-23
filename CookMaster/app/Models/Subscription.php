@@ -11,20 +11,41 @@ class Subscription extends Model
 
     public $incrementing = false;
 
-protected $fillable = [
-        'id',
-        'name',
-        'description',
-        'price',
+    protected $fillable = [
+        'user_id',
+        'subscription_type',
+        'start_date',
+        'end_date',
+        'subscription_price',
+        'price_per_month',
+        'annual_price',
+        'advertising',
+        'commenting',
+        'lessons',
+        'chat',
+        'discount',
+        'free_delivery',
+        'kitchen_space',
+        'exclusive_events',
+        'referral_reward',
+        'renewal_bonus',
     ];
 
-    public function invoice()
+    /**
+     * Obtient l'utilisateur associé à l'abonnement.
+     */
+    public function user()
     {
-        return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function users()
+    /**
+     * Détermine si l'abonnement est actif.
+     *
+     */
+    public function isActive()
     {
-        return $this->belongsToMany(User::class);
+        return $this->end_date >= now();
     }
+
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('password');
             $table->string('referral_code')->nullable();
+            $table->string('referee_code')->unique();
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_ban')->default(false);
             $table->rememberToken();
