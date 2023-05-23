@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('quotations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users');
-            $table->foreignUuid('room_id')->constrained('rooms');
             $table->foreignUuid('contractor_id')->constrained('contractors');
             $table->string('description');
             $table->string('price');

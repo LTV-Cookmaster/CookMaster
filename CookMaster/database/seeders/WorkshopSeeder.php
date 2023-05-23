@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Contractor;
 use App\Models\Room;
+use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,6 @@ class WorkshopSeeder extends Seeder
      */
     public function run(): void
     {
-        Workshop::factory(10)->create([
-            'room_id' => Room::factory()->create(),
-            'contractor_id' => Contractor::factory()->create()
-        ]);
+        //Workshop::factory()->create();
     }
 }

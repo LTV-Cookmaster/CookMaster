@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Office;
 use App\Models\Recipe;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,18 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            UserSeeder::class,
             ContractorSeeder::class,
             CookingEquipmentSeeder::class,
             DishSeeder::class,
             IngredientSeeder::class,
-            InvoiceSeeder::class,
             OfficeSeeder::class,
-            QuotationSeeder::class,
             RecipeSeeder::class,
             RentalEquipmentSeeder::class,
-            RoomSeeder::class,
             SubscriptionSeeder::class,
-            UserSeeder::class,
+            QuotationSeeder::class,
+            InvoiceSeeder::class,
             WorkshopSeeder::class,
         ]);
     }

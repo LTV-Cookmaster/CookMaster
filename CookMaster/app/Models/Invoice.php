@@ -12,9 +12,6 @@ class Invoice extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'id',
-        'workshop_id',
-        'subscription_id',
         'contractor_id',
         'user_id',
         'description',
@@ -22,22 +19,13 @@ class Invoice extends Model
         'is_paid',
     ];
 
-    public function workshop()
-    {
-        return $this->belongsTo(Workshop::class);
-    }
 
-    public function subscriptions()
-    {
-        return $this->belongsTo(Subscription::class);
-    }
-
-    public function contractors()
+    public function contractor()
     {
         return $this->belongsTo(Contractor::class);
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

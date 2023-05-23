@@ -11,23 +11,23 @@ class Workshop extends Model
 
     public $incrementing = false;
 
-    public function quotations()
+    public function quotation()
     {
         return $this->hasMany(Quotation::class);
     }
 
-    public function invoices()
+    public function invoice()
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function rentalEquipments()
+    public function rentalEquipment()
     {
         return $this->hasMany(RentalEquipment::class);
     }
 
-    public function rooms()
+    public function contractor()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(Workshop::class);
     }
 }

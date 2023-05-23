@@ -58,22 +58,22 @@ class User extends Authenticatable
         return $user;
     }
 
-    public function invoices()
+    public function invoice()
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function quotations()
+    public function quotation()
     {
         return $this->hasMany(Quotation::class);
     }
 
-    public function workshops()
+    public function workshop()
     {
         return $this->hasMany(Workshop::class);
     }
 
-    public function rooms()
+    public function room()
     {
         return $this->hasMany(Room::class);
     }

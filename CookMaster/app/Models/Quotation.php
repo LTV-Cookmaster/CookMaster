@@ -13,25 +13,19 @@ class Quotation extends Model
 
     protected $fillable = [
         'id',
-        'workshop_id',
-        'contractor_id',
         'user_id',
+        'contractor_id',
         'description',
         'price',
         'is_accepted',
     ];
 
-    public function workshop()
-    {
-        return $this->belongsTo(Workshop::class);
-    }
-
-    public function contractors()
+    public function contractor()
     {
         return $this->belongsTo(Contractor::class);
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

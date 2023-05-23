@@ -22,7 +22,6 @@ class RoomFactory extends Factory
     {
         return [
             'id' => $this->faker->uuid(),
-            'office_id' => Office::factory()->create(),
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(),
             'max_capacity' => $this->faker->numberBetween(1,10),
