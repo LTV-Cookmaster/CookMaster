@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
 </head>
 <div class="container-fluid mt-3">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center fixed-bottom">
         <p class="col-md-4 mb-0 text-muted">Cookmaster ©</p>
 
         <ul class="nav col-md-4 justify-content-end">

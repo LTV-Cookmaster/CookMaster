@@ -17,10 +17,21 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->integer('subscription_type');
+            $table->string('subscription_type');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('subscription_price');
+            $table->float('price_per_month');
+            $table->integer('annual_price');
+            $table->boolean('advertising');
+            $table->boolean('commenting');
+            $table->integer('lessons');
+            $table->boolean('chat');
+            $table->boolean('discount');
+            $table->string('free_delivery');
+            $table->boolean('kitchen_space');
+            $table->boolean('exclusive_events');
+            $table->boolean('referral_reward');
+            $table->boolean('renewal_bonus');
             $table->timestamps();
         });
 

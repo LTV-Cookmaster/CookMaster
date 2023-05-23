@@ -70,7 +70,7 @@
             <div class="text-image h-100 w-100 d-flex ms-auto align-items-center">
                 <div class="text-overlay d-flex flex-column align-items-center">
                     <span class="text-center w-100 display-2 opacity-100" style="color:#48D793;">{{__('Cookmaster')}}</span>
-                    <a href="#"><button type="button" class="btn bg-light text-center m-4 mt-3 px-5 fs-6" style="color: black">{{ __('Subscribe') }}</button></a>
+                    <a href="{{route('subscriptions.index')}}"><button type="button" class="btn bg-light text-center m-4 mt-3 px-5 fs-6" style="color: black">{{ __('Subscribe') }}</button></a>
                 </div>
             </div>
         </div>
