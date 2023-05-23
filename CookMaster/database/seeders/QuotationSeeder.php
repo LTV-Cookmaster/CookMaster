@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Contractor;
+use App\Models\Office;
 use App\Models\Quotation;
 use App\Models\Room;
 use App\Models\User;
@@ -16,10 +17,9 @@ class QuotationSeeder extends Seeder
      */
     public function run(): void
     {
-        Quotation::factory(10)->create([
-            'user_id' => User::factory()->create(),
-            'room_id' => Room::factory()->create(),
-            'contractor_id' => Contractor::factory()->create()
-        ]);
+        Quotation::factory()
+            ->for(User::factory())
+            ->for(Contractor::factory())
+            ->create();
     }
 }

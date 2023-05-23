@@ -19,7 +19,6 @@ class InvoiceFactory extends Factory
         return [
             'id' => $this->faker->uuid,
             'user_id' => $this->faker->uuid,
-            'room_id' => $this->faker->uuid,
             'contractor_id' => $this->faker->uuid,
             'description' => $this->faker->text,
             'price' => $this->faker->numberBetween(100, 1000),

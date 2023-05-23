@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Room extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     public $incrementing = false;
 
@@ -31,37 +32,22 @@ class Room extends Model
         return $this->belongsTo(Office::class);
     }
 
-    public static function create(array $data)
-    {
-        $room = new static;
-        $room->id = Str::uuid();
-        $room->name = $data['name'];
-        $room->description = $data['description'];
-        $room->max_capacity = $data['max_capacity'];
-        $room->price = $data['price'];
-        $room->is_booked = $data['is_booked'];
-
-        $room->save();
-
-        return $room;
-    }
-
-    public function invoices()
+    public function invoice()
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function quotations()
+    public function quotation()
     {
         return $this->hasMany(Quotation::class);
     }
 
-    public function users()
+    public function user()
     {
         return $this->hasMany(User::class);
     }
 
-    public function workshops()
+    public function workshop()
     {
         return $this->hasMany(Workshop::class);
     }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Contractor;
+use App\Models\Workshop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,7 @@ class ContractorSeeder extends Seeder
      */
     public function run(): void
     {
-        Contractor::factory(10)->create();
+        Contractor::factory()->has(Workshop::factory()->count(5))->create();
+      //  Contractor::factory(10)->create();
     }
 }
