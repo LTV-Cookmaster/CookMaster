@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoomFormRequest;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RoomController extends Controller
 {
@@ -35,7 +36,8 @@ class RoomController extends Controller
      */
     public function store(RoomFormRequest $request)
     {
-        //
+        $room = Room::create($request->validated());
+        return redirect()->route('admin.room.index')->with('success', __('La salle à été crée'));
     }
     public function edit(string $id)
     {
