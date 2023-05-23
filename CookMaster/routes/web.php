@@ -29,8 +29,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
 });
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('office', \App\Http\Controllers\Admin\OfficeController::class)->except(['show']);
+});
+
+Route::get('admin/office/list/{office}', [\App\Http\Controllers\Admin\OfficeController::class, 'list'])->name('admin.office.list');
 
 Route::match(['get', 'post'], '/admin/users/{user}/unban', [\App\Http\Controllers\Admin\UserController::class, 'unban'])->name('admin.user.unban');
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [\App\Http\Controllers\Admin\UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
