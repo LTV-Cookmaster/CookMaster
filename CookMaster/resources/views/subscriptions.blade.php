@@ -19,16 +19,16 @@
                 <div class="card-body">
                     <ul class="list-group">
                         <h5>{{__('Prix : Gratuit')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu : Oui')}}</li>
-                        <li>{{__('Commenter, publier des avis : Oui')}}</li>
-                        <li>{{__('Accès aux leçons : 1 par jour')}}</li>
-                        <li>{{__('Accès au service de tchat avec un chef : Non')}}</li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique : Non')}}</li>
-                        <li>{{__('Livraison offerte sur la boutique : Non')}}</li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine : Non')}}</li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) : Non')}}</li>
-                        <li>{{__('Récompense cooptation nouvel inscrit : Non')}}</li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement : Non')}}</li>
+                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:red">{{__('Oui')}}</span></li>
+                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('1 par jour')}}</span></li>
+                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:red">{{__('Non')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
@@ -43,17 +43,17 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <h5>{{__('Prix : 9,90/mois ou 113 euros par an')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu : Non')}}</li>
-                        <li>{{__('Commenter, publier des avis : Oui')}}</li>
-                        <li>{{__('Accès aux leçons : 5 par jour')}}</li>
-                        <li>{{__('Accès au service de tchat avec un chef : Oui')}}</li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique : Non')}}</li>
-                        <li>{{__('Livraison offerte sur la boutique : Oui, en point relais uniquement')}}</li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine : Non')}}</li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) : Oui')}}</li>
-                        <li>{{__('Récompense cooptation nouvel inscrit : Oui, un chèque cadeau de 5 euros tous les 3 nouveaux inscrits (hors formule gratuite)')}}</li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement : Non')}}</li>
+                        <h5>{{__('Prix : 9,90€/mois ou 113€/an')}}</h5>
+                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:green">{{__('Non')}}</span></li>
+                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('5 par jour')}}</span></li>
+                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:green">{{__('Oui, en point relais uniquement')}}</span></li>
+                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:green">{{__('Oui, un chèque cadeau de 5 euros tous les 3 nouveaux inscrits (hors formule gratuite)')}}</span></li>
+                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:red">{{__('Non')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
@@ -68,17 +68,17 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <h5>{{__('Prix : 19/mois ou 220 euros par an')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu : Non')}}</li>
-                        <li>{{__('Commenter, publier des avis : Oui')}}</li>
-                        <li>{{__('Accès aux leçons : illimité')}}</li>
-                        <li>{{__('Accès au service de tchat avec un chef : Oui')}}</li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique : Oui')}}</li>
-                        <li>{{__('Livraison offerte sur la boutique : Oui')}}</li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine : Oui')}}</li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) : Oui')}}</li>
-                        <li>{{__('Récompense cooptation nouvel inscrit : Oui, un chèque cadeau de 5 euros pour chaque nouvel inscrit (hors formule gratuite) + bonus de 3% du montant total de la première commande du nouvel inscrit')}}</li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement : Oui, réduction de 10% du montant de l\'abonnement en cas de renouvellement (valable uniquement sur le tarif annuel)')}}</li>
+                        <h5>{{__('Prix : 19€/mois ou 220€/an')}}</h5>
+                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:green">{{__('Non')}}</span></li>
+                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('illimité')}}</span></li>
+                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:green">{{__('Oui')}}</span></li>
+                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:green">{{__('Oui, un chèque cadeau de 5 euros pour chaque nouvel inscrit (hors formule gratuite) + bonus de 3% du montant total de la première commande du nouvel inscrit')}}</span></li>
+                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:green">{{__('Oui, réduction de 10% du montant de l\'abonnement en cas de renouvellement (valable uniquement sur le tarif annuel)')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
