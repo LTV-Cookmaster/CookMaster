@@ -21,13 +21,13 @@
 
 <div class="container-fluid">
     <div class="container">
-        <h2 class="text-center">Your next workshops</h2>
+        <h2 class="text-center mt-2">Your next workshops</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="card mt-4">
-                    <div class="card-body">
+                    <div class="card-header">
                         <a href="#">
-                        <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
+                        <img class="align-center" src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
                         </a>
                     </div>
                     <div class="card-body">
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="text-center">Your next events</h2>
+        <h2 class="text-center mt-2">Your next events</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="card mt-4">
