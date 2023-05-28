@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg border-0 shadow-none bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{{asset('logo.png')}}" alt="cookmaster" width="64" height="64">
+                <img src="{{asset('clear-logo.png')}}" alt="cookmaster" width="64" height="64">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

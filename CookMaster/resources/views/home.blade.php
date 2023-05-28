@@ -14,6 +14,35 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélectionne tous les boutons de favori avec la classe "toggle-favorite"
+            const favoriteButtons = document.querySelectorAll('.toggle-favorite');
+
+            // Ajoute un écouteur d'événement de clic à chaque bouton de favori
+            favoriteButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    // Récupère l'icône vide et l'icône pleine à partir du bouton
+                    const emptyIcon = button.querySelector('.fa-regular.fa-heart');
+                    const filledIcon = button.querySelector('.fa-solid.fa-heart');
+
+                    // Bascule la visibilité des icônes
+                    if (emptyIcon.classList.contains('visually-hidden')) {
+                        // Affiche l'icône vide et cache l'icône pleine
+                        emptyIcon.classList.remove('visually-hidden');
+                        filledIcon.classList.add('visually-hidden');
+                    } else {
+                        // Affiche l'icône pleine et cache l'icône vide
+                        emptyIcon.classList.add('visually-hidden');
+                        filledIcon.classList.remove('visually-hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -23,78 +52,102 @@
     <div class="container">
         <h2 class="text-center mt-2">Your next workshops</h2>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                        <img class="align-center" src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <span>hello</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                            <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <span>hello2</span>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                            <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('professional.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <span>hello3</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('delivery.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <h2 class="text-center mt-2">Your next events</h2>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                            <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <span>hello</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                            <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <span>hello2</span>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('workshops.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <a href="#">
-                            <img src="{{ asset('logo.png') }}" alt="hello" height="200" width="200">
-                        </a>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <span>hello3</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                    <img src="{{ asset('delivery.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="d-flex">
+                                <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+                                <a href="#" class="btn rounded-pill shadow-none toggle-favorite">
+                                    <i class="fa-solid fa-heart fs-4 filled visually-hidden" style="color:#72E0AC;"></i>
+                                    <i class="fa-regular fa-heart fs-4 empty" style="color: #72E0AC;"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
