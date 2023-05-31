@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,9 @@ Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::clas
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+
 Route::get('/courses', function (){
     return view('courses');
 });
@@ -45,5 +49,7 @@ Route::get('/courses', function (){
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
 Route::get('subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
+
+Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
 
 
