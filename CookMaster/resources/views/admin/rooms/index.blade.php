@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('title' , 'Les Rooms')
-
+@include('layouts.navbar')
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">

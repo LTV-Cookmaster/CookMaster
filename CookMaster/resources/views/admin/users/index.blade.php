@@ -4,6 +4,7 @@
 @php
     use Carbon\Carbon;
 @endphp
+@include('layouts.navbar')
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">

@@ -13,7 +13,7 @@
 </head>
 
 <style>
-    .nav-span:hover{ color: #1C6513 !important; }
+   /* .nav-span:hover{ color: #1C6513 !important; }*/
 </style>
 
 <div class="container-fluid shadow-sm p-3 rounded" style="">
@@ -98,6 +98,43 @@
                             </ul>
                         </li>
                     @endguest
+                        @auth
+                            @if(auth()->user()->is_admin)
+                                <style>
+                                    .dropdown {
+                                        position: relative;
+                                        display: inline-block;
+                                    }
+
+                                    .dropdown-content {
+                                        display: none;
+                                        position: absolute;
+                                        background-color: #f9f9f9;
+                                        min-width: 160px;
+                                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                        z-index: 1;
+                                    }
+
+                                    .dropdown:hover .dropdown-content {
+                                        display: block;
+                                    }
+
+                                    .dropdown-content a {
+                                        display: block;
+                                        padding: 8px 16px;
+                                        text-decoration: none;
+                                    }
+                                </style>
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary">Administration</a>
+                                    <div class="dropdown-content">
+                                        <a href="{{ route('admin.office.index') }}">Les locaux</a>
+                                        <a href="{{ route('admin.user.index') }}">Les utilisateurs</a>
+                                        <a href="{{ route('admin.room.index')  }}">Les rooms</a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endauth
                 </ul>
             </div>
         </div>
