@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title', $room->exists ? "Editer un bien" : "Créer un bien")
+@section('title', $room->exists ? "Editer une room" : "Créer une room")
 
 @section('content')
     @if($errors->any())

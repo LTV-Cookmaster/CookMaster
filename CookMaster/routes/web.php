@@ -30,10 +30,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('room', RoomController::class)->except(['show']);
     Route::resource('user', UserController::class)->except(['show']);
     Route::resource('office', OfficeController::class)->except(['show']);
-    Route::prefix('office')->name('office.')->group(function (){
+/*    Route::prefix('office')->name('office.')->group(function (){
         Route::get('office/list/{office}', [OfficeController::class, 'list'])->name('admin.office.list');
-    });
+    });*/
 });
+Route::get('admin/office/list/{office}', [\App\Http\Controllers\Admin\OfficeController::class, 'list'])->name('admin.office.list');
 
 Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::class, 'unban'])->name('admin.user.unban');
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
