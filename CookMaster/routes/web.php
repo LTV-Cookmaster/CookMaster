@@ -39,7 +39,12 @@ Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::clas
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+
+Route::get('/courses', function (){
+    return view('courses');
+});
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
