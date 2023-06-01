@@ -24,8 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $workshops = Workshop::all();
+        $workshops = Workshop::where('type', 'workshop')->orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('home', compact('workshops'));
+        //get the workshops where type = professionnal formations
+        $formations = Workshop::where('type', 'professional formation')->orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('home', compact(['workshops', 'formations']));
     }
 }
