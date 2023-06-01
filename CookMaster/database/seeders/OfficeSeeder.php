@@ -14,6 +14,6 @@ class OfficeSeeder extends Seeder
      */
     public function run(): void
     {
-        Office::factory()->has(Room::factory()->count(5))->create();
+        Office::factory()->count(5)->has(Room::factory()->count(5))->create();
     }
 }
