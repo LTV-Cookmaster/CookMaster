@@ -7,6 +7,18 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 @include('layouts.navbar')
+<div class="container" style="text-align: center">
+    @if($plan == "starterPlan")
+        <br>
+        <h1>Formule Starter</h1>
+        <h2>Prix: <span style="color: #48D793">9,90€/mois</span></h2>
+    @elseif($plan == "masterPlan")
+                <br>
+                <h1>Formule Master</h1>
+                <h2>Prix: <span style="color: #48D793">19€/mois</span></h2>
+    @endif
+
+</div>
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-lg-6">
