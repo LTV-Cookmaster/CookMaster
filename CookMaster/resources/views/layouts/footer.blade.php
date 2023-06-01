@@ -8,7 +8,7 @@
 
     <title>@yield('title')</title>
 </head>
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-5" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: white; padding: 10px; text-align: center; margin-top: -60px;">
     <footer class="d-flex flex-wrap justify-content-between align-items-center">
         <p class="col-md-4 mb-0 text-muted">Cookmaster ©</p>
 
