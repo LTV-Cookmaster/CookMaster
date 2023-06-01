@@ -53,7 +53,6 @@
         <h2 class="text-center mt-2">Your next workshops</h2>
         <div class="row">
             @foreach($workshops as $workshop)
-
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
@@ -61,103 +60,45 @@
                             <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
-                                        <p class="card-text text-break">{{ $workshop->name }}</p>
-                                        <p class="card-text text-break">{{ $workshop->description }}</p>
+                                        <div class="card-text">
+                                        <span class="text-truncate">{{ $workshop->name }}</span>
+                                        <br>
+                                        <span class="text-truncate" style="color: #1C6513">{{ $workshop->type }}</span>
+                                        <br>
+                                        <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $workshop->description }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-
             @endforeach
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
         <h2 class="text-center mt-2">Your next events</h2>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
+            @foreach($formations as $formation)
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="#" class="shadow-none text-dark">
+                        <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                            <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                            <div class="card-body d-flex">
+                                <div class="row">
+                                    <div class="d-flex">
+                                        <div class="card-text">
+                                            <span class="text-truncate">{{ $formation->name }}</span>
+                                            <br>
+                                            <span class="text-truncate" style="color: #1C6513">{{ $formation->type }}</span>
+                                            <br>
+                                            <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formation->description }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="#" class="shadow-none text-dark">
-                    <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                        <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                        <div class="card-body d-flex">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <p class="card-text text-break">{{ __('Workshops at cookmaster') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

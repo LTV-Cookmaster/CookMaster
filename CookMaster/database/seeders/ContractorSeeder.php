@@ -14,7 +14,7 @@ class ContractorSeeder extends Seeder
      */
     public function run(): void
     {
-        Contractor::factory()->has(Workshop::factory()->count(5))->create();
+        Contractor::factory()->has(Workshop::factory()->count(10))->create();
       //  Contractor::factory(10)->create();
     }
 }
