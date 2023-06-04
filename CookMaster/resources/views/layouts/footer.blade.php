@@ -10,7 +10,7 @@
 </head>
 <div class="container-fluid mt-5" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: white; padding: 10px; text-align: center; margin-top: -60px;">
     <footer class="d-flex flex-wrap justify-content-between align-items-center">
-        <p class="col-md-4 mb-0 text-muted">Cookmaster ©</p>
+        <p class="col-md-4 mb-0 text-muted text-start">Cookmaster ©</p>
 
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About us</a></li>
