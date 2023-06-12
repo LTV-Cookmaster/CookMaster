@@ -19,7 +19,7 @@ class WorkshopFactory extends Factory
         return [
             'id' => $this->faker->uuid,
             'contractor_id' => $this->faker->uuid,
-            'type' => $this->faker->randomElement(['workshop', 'professional formation']),
+            'type' => $this->faker->randomElement(['workshop', 'professional formation', 'online workshop']),
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'price' => $this->faker->numberBetween(1, 100),

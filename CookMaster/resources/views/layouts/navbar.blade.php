@@ -29,12 +29,12 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="/">
+                        <a class="nav-link mx-3" href="{{ route('home') }}">
                             <span class="nav-span">{{'Home'}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="/">
+                        <a class="nav-link mx-3" href="{{ route('workshops') }}">
                             <span class="nav-span">{{'Workshops'}}</span>
                         </a>
                     </li>

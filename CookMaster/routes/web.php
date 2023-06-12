@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilController;
@@ -39,6 +40,7 @@ Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::clas
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 
