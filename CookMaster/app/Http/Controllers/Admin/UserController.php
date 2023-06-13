@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserFormRequest;
+use App\Http\Resources\InvoiceCollection;
+use App\Http\Resources\QuotationCollection;
+use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Builder\Property;

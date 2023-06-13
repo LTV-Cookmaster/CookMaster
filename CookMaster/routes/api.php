@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Resources\ContractorCollection;
+use App\Http\Resources\InvoiceCollection;
+use App\Http\Resources\QuotationCollection;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\WorkshopCollection;
+use App\Models\Invoice;
+use App\Models\User;
+use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +26,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::get('/users', [UserController::class , 'apiIndex']);
+Route::get('/users', function () {
+    return new UserCollection(User::all());
+});
+
+Route::get('/contractors', function () {
+    return new ContractorCollection(User::all());
+});
+
+Route::get('/workshops', function () {
+    return new WorkshopCollection(Workshop::all());
+});
+
+Route::get('/invoices', function () {
+    return new InvoiceCollection(Invoice::all());
+});
+
+Route::get('/quotations', function () {
+    return new QuotationCollection(Invoice::all());
+});
+
