@@ -16,8 +16,6 @@ class UserCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection,
-            'invoices' => InvoiceCollection::collection($this->collection),
-            'quotations' => QuotationCollection::collection($this->collection),
         ];
     }
 }

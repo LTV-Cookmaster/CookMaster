@@ -12,6 +12,13 @@ class Workshop extends Model
 
     public $incrementing = false;
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+    ];
+
     public function quotation()
     {
         return $this->hasMany(Quotation::class);
