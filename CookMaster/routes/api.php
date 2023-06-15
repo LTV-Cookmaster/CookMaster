@@ -7,6 +7,7 @@ use App\Http\Resources\QuotationCollection;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\WorkshopCollection;
 use App\Models\Invoice;
+use App\Models\Quotation;
 use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -45,6 +46,6 @@ Route::get('/invoices', function () {
 });
 
 Route::get('/quotations', function () {
-    return new QuotationCollection(Invoice::all());
+    return new QuotationCollection(Quotation::all());
 });
 
