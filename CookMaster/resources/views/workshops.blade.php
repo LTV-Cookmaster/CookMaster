@@ -35,7 +35,9 @@
                                     $randomIndex = array_rand($elements);
                                     $randomElement = $elements[$randomIndex];
                                 @endphp
-                                    <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                                <a href="{{ route('online', ['workshop' => $online->id]) }}">
+                                <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                                </a>
                                 <div class="card-body d-flex">
                                     <div class="row">
                                         <div class="d-flex">
@@ -99,6 +101,7 @@
                                                 <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formattedStart }} - {{ $formattedEnd }}</span>
                                                 <br>
                                                 <span class="text-truncate" style="max-width: 150px;">{{ $workshop->address }}</span>
+
                                             </div>
                                         </div>
                                     </div>
