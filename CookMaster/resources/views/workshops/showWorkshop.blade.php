@@ -67,10 +67,16 @@
             <div class="eventDetail">
                 <h1 id="eventTitle">{{ $workshop->name }}</h1>
                 <p id="eventTime"><strong>{{__('Heure:')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
-                <p id="eventSeats"><strong>{{__('Places restantes:')}} </strong> X</p>
+                @if($reservationCount == $workshop->max_number_of_participants)
+                    <p id="eventSeats" style="color: red"><strong>{{__('Complet')}} </strong>{{ $workshop->seats }}</p>
+                @else
+                    <p id="eventSeats"><strong>{{__('Places restantes: ') .  ($workshop->max_number_of_participants - $reservationCount) . "/" . $workshop->max_number_of_participants }} </strong>{{ $workshop->seats }}</p>
+                @endif
                 <p id="eventOrganizer"><strong>{{__('Prix:')}} </strong>{{ $workshop->price }}€</p>
                 @if($reserve == false)
                 <a href="{{ route('checkout' , ['bill' => $workshop]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
+                @elseif($reservationCount == $workshop->max_number_of_participants)
+                    <p class="btn btn-danger">{{__('Complet')}}</p>
                 @else
                     <p class="btn btn-secondary">{{__('Vous êtes déja inscrit')}}</p>
                 @endif

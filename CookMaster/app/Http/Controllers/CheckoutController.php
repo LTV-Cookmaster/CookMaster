@@ -18,6 +18,10 @@ class CheckoutController extends Controller
 
         $billId = $request->route('bill');
         $bill = Workshop::findOrFail($billId);
+        $userId = Auth::user()->id;
+        if (Reservation::where('workshop_id', $billId)->where('user_id', $userId)->exists()) {
+            return redirect()->route('home')->with('error', 'Vous avez déja une réservation pour cette évènement');
+        }
 
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
