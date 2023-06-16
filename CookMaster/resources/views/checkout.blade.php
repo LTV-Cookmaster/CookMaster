@@ -8,16 +8,9 @@
 </head>
 @include('layouts.navbar')
 <div class="container" style="text-align: center">
-    @if($plan == "starterPlan")
-        <br>
-        <h1>Formule Starter</h1>
-        <h2>Prix: <span style="color: #48D793">9,90€/mois</span></h2>
-    @elseif($plan == "masterPlan")
-                <br>
-                <h1>Formule Master</h1>
-                <h2>Prix: <span style="color: #48D793">19€/mois</span></h2>
-    @endif
-
+    <br>
+        <h1>{{ $bill->name }}</h1>
+        <h2>Prix: <span style="color: #48D793">{{ $bill->price }}€</span></h2>
 </div>
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -54,7 +47,7 @@
             } else {
                 // Paiement réussi, effectuer les actions nécessaires
                 // comme enregistrer la souscription dans la base de données
-                window.location.href = "{{ route('subscription.success') }}";
+                window.location.href = "{{ route('checkout.success', ['bill' => $bill->id]) }}";
             }
         }).catch(function (error) {
             console.error(error);
