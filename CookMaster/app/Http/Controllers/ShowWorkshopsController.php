@@ -7,7 +7,7 @@ use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OnlineWorkshopsController extends Controller
+class ShowWorkshopsController extends Controller
 {
     public function __construct()
     {
@@ -17,8 +17,6 @@ class OnlineWorkshopsController extends Controller
     public function index(Request $request)
 
     {
-            /*$workshop = Workshop::where('id' , $workshops->id)->get();*/
-
             $workshopId = $request->route('workshop');
             $workshop = Workshop::findOrFail($workshopId);
             $userId = Auth::user()->id;
@@ -28,9 +26,14 @@ class OnlineWorkshopsController extends Controller
             } else {
                 $reserve = false;
             }
-            return view('workshops.online' , [
+
+            $reservationCount = Reservation::where('workshop_id', $workshopId)->count();
+
+
+            return view('workshops.showWorkshop' , [
                 'workshop' => $workshop,
-                'reserve' => $reserve
+                'reserve' => $reserve,
+                'reservationCount' => $reservationCount,
             ]);
 
     }
