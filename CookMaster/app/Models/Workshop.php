@@ -12,6 +12,8 @@ class Workshop extends Model
 
     public $incrementing = false;
 
+
+
     public function quotation()
     {
         return $this->hasMany(Quotation::class);

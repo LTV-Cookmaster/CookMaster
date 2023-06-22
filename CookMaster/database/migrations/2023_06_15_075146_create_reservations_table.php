@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->uuid();
-            $table->foreignUuid('user_id')->constrained('users');
+            $table->uuid('id')->primary();
             $table->foreignUuid('workshop_id')->constrained('workshops');
+            $table->foreignUuid('user_id')->constrained('users');
             $table->timestamps();
         });
     }

@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OnlineWorkshopsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
 
     {
             /*$workshop = Workshop::where('id' , $workshops->id)->get();*/
 
-            $workshopId = $request->route('workshop'); // Supposons que le paramètre de l'URL soit nommé "workshop"
+            $workshopId = $request->route('workshop');
             $workshop = Workshop::findOrFail($workshopId);
+            $userId = Auth::user()->id;
+
+            if (Reservation::where('workshop_id', $workshopId)->where('user_id', $userId)->exists()) {
+                $reserve = true;
+            } else {
+                $reserve = false;
+            }
             return view('workshops.online' , [
-                'workshop' => $workshop
+                'workshop' => $workshop,
+                'reserve' => $reserve
             ]);
 
     }

@@ -48,6 +48,18 @@
 
 <body>
 @include('layouts.navbar')
+
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="container-fluid">
     <div class="container">
         <h2 class="text-center mt-2">Your next workshops</h2>

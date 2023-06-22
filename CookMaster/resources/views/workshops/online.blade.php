@@ -69,7 +69,11 @@
                 <p id="eventTime"><strong>{{__('Heure:')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
                 <p id="eventSeats"><strong>{{__('Places restantes:')}} </strong> X</p>
                 <p id="eventOrganizer"><strong>{{__('Prix:')}} </strong>{{ $workshop->price }}€</p>
-                <button type="button" class="btn btn-success btn-md">{{__('Réserver')}}</button>
+                @if($reserve == false)
+                <a href="{{ route('checkout' , ['bill' => $workshop]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
+                @else
+                    <p class="btn btn-secondary">{{__('Vous êtes déja inscrit')}}</p>
+                @endif
             </div>
             <div id="eventDescription">{{ $workshop->description }}</div>
         </div>

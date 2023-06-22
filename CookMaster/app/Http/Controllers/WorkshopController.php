@@ -14,6 +14,7 @@ class WorkshopController extends Controller
 
     public function index()
     {
+
         $workshops = Workshop::where('type', 'workshop')->orderBy('created_at', 'desc')->take(3)->get();
 
         $formations = Workshop::where('type', 'professional formation')->orderBy('created_at', 'desc')->take(3)->get();
