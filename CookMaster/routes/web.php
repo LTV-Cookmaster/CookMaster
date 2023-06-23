@@ -6,6 +6,7 @@ use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowWorkshopsController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\UserReservationsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SubscriptionController;
@@ -46,6 +47,7 @@ Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops'
 Route::get('/workshop/{workshop}', [ShowWorkshopsController::class, 'index'])->name('online');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 
 Route::get('/courses', function (){
     return view('courses');

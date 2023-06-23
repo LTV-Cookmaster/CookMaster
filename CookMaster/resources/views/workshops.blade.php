@@ -125,7 +125,7 @@
                                     $randomIndex = array_rand($elements);
                                     $randomElement = $elements[$randomIndex];
                             @endphp
-                            <a href="{{ route('online', ['workshop' => $formations->id]) }}">
+                            <a href="{{ route('online', ['workshop' => $formation->id]) }}">
                                 <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>                            <div class="card-body d-flex">
                                 <div class="row">
