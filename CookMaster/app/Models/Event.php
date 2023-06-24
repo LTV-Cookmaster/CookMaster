@@ -13,7 +13,10 @@ class Event extends Model
     public $incrementing = false;
 
 
-
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public function quotation()
     {
         return $this->hasMany(Quotation::class);
@@ -31,7 +34,7 @@ class Event extends Model
 
     public function contractor()
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Contractor::class);
     }
 
     public function reservations()

@@ -47,24 +47,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($workshopsList as $workshopList)
+                @foreach ($reservations as $reservation)
                     <tr>
-                        <td>{{ $workshopList->name }}</td>
+                        <td>{{ $reservation->name }}</td>
                         @php
                         die();
-                            $startDate = Carbon::createFromFormat('d-m-Y H:i', $workshopList->start_date.' '.$workshopList->start_time);
-                            $endDate = Carbon::createFromFormat('d-m-Y H:i', $workshopList->end_date.' '.$workshopList->end_time);
+                            $startDate = Carbon::createFromFormat('d-m-Y H:i', $reservation->start_date.' '.$reservation->start_time);
+                            $endDate = Carbon::createFromFormat('d-m-Y H:i', $reservation->end_date.' '.$reservation->end_time);
                             $currentDate = Carbon::now();
-                            $date = Carbon::createFromFormat('d-m-Y', $workshopList->start_date);
+                            $date = Carbon::createFromFormat('d-m-Y', $reservation->start_date);
                             $formattedDate = $date->format('l jS Y');
-                            $start = Carbon::createFromFormat('H:i', $workshopList->start_time);
+                            $start = Carbon::createFromFormat('H:i', $reservation->start_time);
                             $formattedStart = $start->format('H\h');
-                            $end = Carbon::createFromFormat('H:i', $workshopList->end_time);
+                            $end = Carbon::createFromFormat('H:i', $reservation->end_time);
                             $formattedEnd = $end->format('H\h');
                         @endphp
                         <td>{{ $formattedDate }}</td>
                         <td>{{ $formattedStart }} - {{ $formattedEnd }}</td>
-                        <td>{{ $workshopList->price }}€</td>
+                        <td>{{ $reservation->price }}€</td>
                         <td>
                             @if ($endDate->isPast())
                                 <span style="color: darkgoldenrod">{{ __("Workshop terminé") }}</span>

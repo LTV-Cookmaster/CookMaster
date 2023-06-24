@@ -25,9 +25,10 @@ class DatabaseSeeder extends Seeder
             RecipeSeeder::class,
             RentalEquipmentSeeder::class,
             SubscriptionSeeder::class,
+            EventSeeder::class,
             QuotationSeeder::class,
             InvoiceSeeder::class,
-            EventSeeder::class,
+            ReservationSeeder::class,
         ]);
     }
 }

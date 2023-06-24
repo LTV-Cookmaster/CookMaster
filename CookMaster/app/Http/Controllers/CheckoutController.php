@@ -46,7 +46,7 @@ class CheckoutController extends Controller
     {
         $paid = $request->input('paid');
 
-        if($paid == false){
+        if(!$paid){
             return redirect()->route('home')->with('error', 'Le paiement a échoué');
         }
 

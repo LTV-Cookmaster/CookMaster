@@ -16,7 +16,7 @@ class Reservation extends Model
         'type',
     ];
 
-    public function workshop()
+    public function event()
     {
         return $this->belongsTo(Event::class);
     }

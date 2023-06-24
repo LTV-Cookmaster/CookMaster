@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\EventsController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UserReservationsController;
 use App\Http\Controllers\HomeController;
@@ -45,7 +45,7 @@ Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class,
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
-Route::get('/events', [EventsController::class, 'index'])->name('events');
+Route::get('/events', [EventController::class, 'index'])->name('events');
 Route::get('/event/{event}', [ShowEventController::class, 'index'])->name('event');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
