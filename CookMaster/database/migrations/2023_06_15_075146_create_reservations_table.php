@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('workshop_id')->constrained('workshops');
+            $table->foreignUuid('event_id')->constrained('events');
             $table->foreignUuid('user_id')->constrained('users');
+            $table->string('type');
             $table->timestamps();
         });
     }

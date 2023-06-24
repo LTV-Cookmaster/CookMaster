@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Event;
 use App\Models\Office;
 use App\Models\Recipe;
 use App\Models\Room;
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
             SubscriptionSeeder::class,
             QuotationSeeder::class,
             InvoiceSeeder::class,
-            WorkshopSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }
