@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             SubscriptionSeeder::class,
             QuotationSeeder::class,
             InvoiceSeeder::class,
-            WorkshopSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }
