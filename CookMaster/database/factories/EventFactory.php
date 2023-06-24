@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class WorkshopFactory extends Factory
+class EventFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,15 +19,16 @@ class WorkshopFactory extends Factory
         return [
             'id' => $this->faker->uuid,
             'contractor_id' => $this->faker->uuid,
-            'type' => $this->faker->randomElement(['workshop', 'professional formation', 'online workshop']),
+            'type' => $this->faker->randomElement(['tastingEvent', 'professionalFormation', 'onlineWorkshop', 'meetingEvent', 'homeWorkshop']),
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'price' => $this->faker->numberBetween(1, 100),
-            'max_number_of_participants' => $this->faker->numberBetween(1, 100),
+            'number_of_participants' => $this->faker->numberBetween(1, 100),
             'start_date' => $this->faker->date('d-m-Y'),
             'end_date' => $this->faker->date('d-m-Y'),
-            'start_time' => $this->faker->time(),
-            'end_time' => $this->faker->time(),
+            'start_time' => $this->faker->time('H:i'),
+            'end_time' => $this->faker->time('H:i'),
+            'img_url' => 'https://picsum.photos/200/300',
         ];
     }
 }

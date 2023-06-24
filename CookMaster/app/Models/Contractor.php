@@ -24,22 +24,22 @@ protected $fillable = [
         'company_name',
     ];
 
-    public function quotation()
+    public function quotations()
     {
         return $this->hasMany(Quotation::class);
     }
 
-    public function invoice()
+    public function invoices()
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function workshop()
+    public function events()
     {
-        return $this->hasMany(Workshop::class);
+        return $this->hasMany(Event::class);
     }
 
-    public function room()
+    public function rooms()
     {
         return $this->hasMany(Room::class);
     }
