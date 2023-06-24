@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    @section('title' , $workshop->name)
+    @section('title' , $event->name)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
@@ -48,12 +48,12 @@
 <body>
 @php
         use Carbon\Carbon;
-        $date = Carbon::createFromFormat('d-m-Y', $workshop->start_date);
+        $date = Carbon::createFromFormat('d-m-Y', $event->start_date);
         $formattedDate = $date->format('l jS Y');
-        $start = Carbon::createFromFormat('H:i:s', $workshop->start_time);
-        $formattedStart = $start->format('H\hi');
-        $end = Carbon::createFromFormat('H:i:s', $workshop->end_time);
-        $formattedEnd = $end->format('H\hi');
+        $start = Carbon::createFromFormat('H:i', $event->start_time);
+        $formattedStart = $start->format('H\h');
+        $end = Carbon::createFromFormat('H:i', $event->end_time);
+        $formattedEnd = $end->format('H\h');
 @endphp
 <div class="container mt-5">
     <div class="row">
@@ -62,23 +62,46 @@
         </div>
         <div class="col-lg-6">
             <div class="eventDetail">
-                <h1 id="eventTitle">{{ $workshop->name }}</h1>
-                <p id="eventTime"><strong>{{__('Heure:')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
-                @if($reservationCount == $workshop->max_number_of_participants)
-                    <p id="eventSeats" style="color: red"><strong>{{__('Complet')}} </strong>{{ $workshop->seats }}</p>
+                <h1 id="eventTitle">{{ $event->name }}</h1>
+                <p id="eventDate"><i class="fa-solid fa-calendar-days"></i> <strong>{{__('Date:')}} </strong>{{ $formattedDate }}</p>
+                <p id="eventTime"><i class="fa-solid fa-clock"></i> <strong>{{__('Heure:')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
+                <p id="eventType"><i class="fa-solid fa-circle-info"></i> <strong>{{ __('Type:') }}</strong>
+                    @switch($event->type)
+                        @case('tastingEvent')
+                            {{ __('Dégustation') }}
+                            @break
+                        @case('professionalFormation')
+                            {{ __('Formation professionnelle') }}
+                            @break
+                        @case('onlineWorkshop')
+                            {{ __('Atelier en ligne') }}
+                            @break
+                        @case('meetingEvent')
+                            {{ __('Réunion') }}
+                            @break
+                        @case('homeWorkshop')
+                            {{ __('Atelier à domicile') }}
+                            @break
+                        @default
+                            {{ __('Type inconnu') }}
+                    @endswitch
+                </p>
+
+            @if($reservationCount == $event->number_of_participants)
+                    <p id="eventSeats" style="color: red"><i class="fa-solid fa-person"></i> <strong>{{__('Complet')}} </strong>{{ $event->seats }}</p>
                 @else
-                    <p id="eventSeats"><strong>{{__('Places restantes: ') .  ($workshop->max_number_of_participants - $reservationCount) . "/" . $workshop->max_number_of_participants }} </strong>{{ $workshop->seats }}</p>
+                    <p id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{__('Places restantes: ') .  ($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</p>
                 @endif
-                <p id="eventOrganizer"><strong>{{__('Prix:')}} </strong>{{ $workshop->price }}€</p>
-                @if($reserve == false)
-                <a href="{{ route('checkout' , ['bill' => $workshop]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
-                @elseif($reservationCount == $workshop->max_number_of_participants)
+                <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('Prix:')}} </strong>{{ $event->price }}€</p>
+                @if($reserve == false && $reservationCount < $event->number_of_participants)
+                <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
+                @elseif($reservationCount == $event->number_of_participants)
                     <p class="btn btn-danger">{{__('Complet')}}</p>
                 @else
                     <p class="btn btn-secondary">{{__('Vous êtes déja inscrit')}}</p>
                 @endif
             </div>
-            <div id="eventDescription">{{ $workshop->description }}</div>
+            <div id="eventDescription">{{ $event->description }}</div>
         </div>
     </div>
 </div>

@@ -71,11 +71,6 @@ class User extends Authenticatable
         return $this->hasMany(Quotation::class);
     }
 
-    public function workshops()
-    {
-        return $this->hasMany(Workshop::class);
-    }
-
     public function rooms()
     {
         return $this->hasMany(Room::class);
@@ -90,6 +85,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
+
 
 
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('event_id')->constrained('events');
             $table->foreignUuid('user_id')->constrained('users');
+            $table->string('type');
             $table->timestamps();
         });
     }

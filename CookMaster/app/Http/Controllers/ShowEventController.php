@@ -8,7 +8,7 @@ use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ShowWorkshopsController extends Controller
+class ShowEventController extends Controller
 {
     public function __construct()
     {
@@ -19,7 +19,7 @@ class ShowWorkshopsController extends Controller
 
     {
             $eventID = $request->route('event');
-            $workshop = Event::findOrFail($eventID);
+            $event = Event::findOrFail($eventID);
             $userId = Auth::user()->id;
 
             if (Reservation::where('event_id', $eventID)->where('user_id', $userId)->exists()) {
@@ -32,7 +32,7 @@ class ShowWorkshopsController extends Controller
 
 
             return view('workshops.showWorkshop' , [
-                'workshop' => $workshop,
+                'event' => $event,
                 'reserve' => $reserve,
                 'reservationCount' => $reservationCount,
             ]);

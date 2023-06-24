@@ -35,7 +35,7 @@
                                     $randomIndex = array_rand($elements);
                                     $randomElement = $elements[$randomIndex];
                                 @endphp
-                                <a href="{{ route('online', ['workshop' => $online->id]) }}">
+                                <a href="{{ route('event', ['event' => $online->id]) }}">
                                 <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                                 </a>
                                 <div class="card-body d-flex">
@@ -48,15 +48,15 @@
                                                     $date = Carbon::createFromFormat('d-m-Y', $online->start_date);
                                                     $formattedDate = $date->format('l jS Y');
                                                 @endphp
-                                            <span class="text-truncate" style="color: #1C6513">{{ $formattedDate }}</span>
+                                            <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
                                             <br>
                                                 @php
-                                                    $start = Carbon::createFromFormat('H:i:s', $online->start_time);
-                                                    $formattedStart = $start->format('H\hi');
-                                                    $end = Carbon::createFromFormat('H:i:s', $online->end_time);
-                                                    $formattedEnd = $end->format('H\hi');
+                                                    $start = Carbon::createFromFormat('H:i', $online->start_time);
+                                                    $formattedStart = $start->format('H\h');
+                                                    $end = Carbon::createFromFormat('H:i', $online->end_time);
+                                                    $formattedEnd = $end->format('H\h');
                                                 @endphp
-                                            <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formattedStart }} - {{ $formattedEnd }}</span>
+                                            <span class="d-inline-block text-truncate" style="max-width: 150px;"><i class="fa-regular fa-clock"></i> {{ $formattedStart }} - {{ $formattedEnd }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                     $randomIndex = array_rand($elements);
                                     $randomElement = $elements[$randomIndex];
                                 @endphp
-                                <a href="{{ route('online', ['workshop' => $workshop->id]) }}">
+                                <a href="{{ route('event', ['event' => $workshop->id]) }}">
                                     <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                                 </a>
                                     <div class="card-body d-flex">
@@ -92,15 +92,15 @@
                                                         $date = Carbon::createFromFormat('d-m-Y', $workshop->start_date);
                                                         $formattedDate = $date->format('l jS Y');
                                                 @endphp
-                                                <span class="text-truncate" style="color: #1C6513">{{ $formattedDate }}</span>
+                                                <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
                                                 <br>
                                                 @php
-                                                    $start = Carbon::createFromFormat('H:i:s', $workshop->start_time);
-                                                    $formattedStart = $start->format('H\hi');
-                                                    $end = Carbon::createFromFormat('H:i:s', $workshop->end_time);
-                                                    $formattedEnd = $end->format('H\hi');
+                                                    $start = Carbon::createFromFormat('H:i', $workshop->start_time);
+                                                    $formattedStart = $start->format('H\h');
+                                                    $end = Carbon::createFromFormat('H:i', $workshop->end_time);
+                                                    $formattedEnd = $end->format('H\h');
                                                 @endphp
-                                                <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formattedStart }} - {{ $formattedEnd }}</span>
+                                                <span class="d-inline-block text-truncate" style="max-width: 150px;"><i class="fa-regular fa-clock"></i> {{ $formattedStart }} - {{ $formattedEnd }}</span>
                                                 <br>
                                                 <span class="text-truncate" style="max-width: 150px;">{{ $workshop->address }}</span>
 
@@ -125,7 +125,7 @@
                                     $randomIndex = array_rand($elements);
                                     $randomElement = $elements[$randomIndex];
                             @endphp
-                            <a href="{{ route('online', ['workshop' => $formation->id]) }}">
+                            <a href="{{ route('event', ['event' => $formation->id]) }}">
                                 <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>                            <div class="card-body d-flex">
                                 <div class="row">
@@ -136,15 +136,16 @@
                                             @php
                                                 $date = Carbon::createFromFormat('d-m-Y', $formation->start_date);
                                                 $formattedDate = $date->format('l jS Y');
-                                                $start = Carbon::createFromFormat('H:i:s', $formation->start_time);
-                                                $formattedStart = $start->format('H\hi');
-                                                $end = Carbon::createFromFormat('H:i:s', $formation->end_time);
-                                                $formattedEnd = $end->format('H\hi');
                                             @endphp
-                                            <span class="text-truncate" style="color: #1C6513">{{ $formattedDate }} {{ $formattedStart }} - {{ $formattedEnd }}</span>
+                                            <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }} <i class="fa-regular fa-clock"></i></span>
                                             <br>
-                                            <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formation->description }}</span>
-                                            <br>
+                                            @php
+                                                $start = Carbon::createFromFormat('H:i', $online->start_time);
+                                                $formattedStart = $start->format('H\h');
+                                                $end = Carbon::createFromFormat('H:i', $online->end_time);
+                                                $formattedEnd = $end->format('H\h');
+                                            @endphp
+                                            <span class="d-inline-block text-truncate" style="max-width: 150px;"><i class="fa-regular fa-clock"></i> {{ $formattedStart }} - {{ $formattedEnd }}</span>
                                             <br>
                                         </div>
                                     </div>

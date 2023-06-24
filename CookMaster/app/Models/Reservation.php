@@ -11,13 +11,14 @@ class Reservation extends Model
 
     protected $fillable = [
         'id',
-        'workshop_id',
+        'event_id',
         'user_id',
+        'type',
     ];
 
     public function workshop()
     {
-        return $this->belongsTo(Workshop::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function user()

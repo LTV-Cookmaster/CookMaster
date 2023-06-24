@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Reservation;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -12,14 +13,18 @@ use Stripe\Stripe;
 
 class CheckoutController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function checkout(Request $request)
     {
         $user = Auth::user();
 
         $billId = $request->route('bill');
-        $bill = Workshop::findOrFail($billId);
+        $bill = Event::findOrFail($billId);
         $userId = Auth::user()->id;
-        if (Reservation::where('workshop_id', $billId)->where('user_id', $userId)->exists()) {
+        if (Reservation::where('event_id', $billId)->where('user_id', $userId)->exists()) {
             return redirect()->route('home')->with('error', 'Vous avez déja une réservation pour cette évènement');
         }
 
@@ -39,18 +44,25 @@ class CheckoutController extends Controller
 
     public function success(Request $request)
     {
+        $paid = $request->input('paid');
+
+        if($paid == false){
+            return redirect()->route('home')->with('error', 'Le paiement a échoué');
+        }
+
         $billId = $request->route('bill');
-        $bill = Workshop::findOrFail($billId);
+        $bill = Event::findOrFail($billId);
         $userId = Auth::user()->id;
 
-        if (Reservation::where('workshop_id', $billId)->where('user_id', $userId)->exists()) {
+        if (Reservation::where('event_id', $billId)->where('user_id', $userId)->exists()) {
             return redirect()->route('home')->with('error', 'Vous avez déja une réservation pour cette évènement');
         }
 
         $reservation = new Reservation;
         $reservation->id = Str::uuid();
-        $reservation->workshop_id = $billId;
+        $reservation->event_id = $billId;
         $reservation->user_id = Auth::user()->id;
+        $reservation->type = $bill->type;
         $reservation->save();
 
         return redirect()->route('home')->with('success', ('Le paiement pour '.$bill->name.' a été effectuée'));

@@ -47,23 +47,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($reservations as $reservation)
+                @foreach ($workshopsList as $workshopList)
                     <tr>
-                        <td>{{ $reservation->workshop->name }}</td>
+                        <td>{{ $workshopList->name }}</td>
                         @php
-                            $startDate = Carbon::createFromFormat('d-m-Y H:i:s', $reservation->workshop->start_date.' '.$reservation->workshop->start_time);
-                            $endDate = Carbon::createFromFormat('d-m-Y H:i:s', $reservation->workshop->end_date.' '.$reservation->workshop->end_time);
+                        die();
+                            $startDate = Carbon::createFromFormat('d-m-Y H:i', $workshopList->start_date.' '.$workshopList->start_time);
+                            $endDate = Carbon::createFromFormat('d-m-Y H:i', $workshopList->end_date.' '.$workshopList->end_time);
                             $currentDate = Carbon::now();
-                            $date = Carbon::createFromFormat('d-m-Y', $reservation->workshop->start_date);
+                            $date = Carbon::createFromFormat('d-m-Y', $workshopList->start_date);
                             $formattedDate = $date->format('l jS Y');
-                            $start = Carbon::createFromFormat('H:i:s', $reservation->workshop->start_time);
-                            $formattedStart = $start->format('H\hi');
-                            $end = Carbon::createFromFormat('H:i:s', $reservation->workshop->end_time);
-                            $formattedEnd = $end->format('H\hi');
+                            $start = Carbon::createFromFormat('H:i', $workshopList->start_time);
+                            $formattedStart = $start->format('H\h');
+                            $end = Carbon::createFromFormat('H:i', $workshopList->end_time);
+                            $formattedEnd = $end->format('H\h');
                         @endphp
                         <td>{{ $formattedDate }}</td>
                         <td>{{ $formattedStart }} - {{ $formattedEnd }}</td>
-                        <td>{{ $reservation->workshop->price }}€</td>
+                        <td>{{ $workshopList->price }}€</td>
                         <td>
                             @if ($endDate->isPast())
                                 <span style="color: darkgoldenrod">{{ __("Workshop terminé") }}</span>
@@ -79,7 +80,7 @@
         </table>
     </section>
 
-{{--    <section>
+  {{--  <section>
         <h2>Events</h2>
         <table class="table">
             <thead>
@@ -90,25 +91,37 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Event 1</td>
-                <td>Description of Event 1</td>
-                <td>June 28, 2023</td>
-            </tr>
-            <tr>
-                <td>Event 2</td>
-                <td>Description of Event 2</td>
-                <td>July 5, 2023</td>
-            </tr>
-            <tr>
-                <td>Event 3</td>
-                <td>Description of Event 3</td>
-                <td>July 12, 2023</td>
-            </tr>
+            @foreach ($events as $event)
+                <tr>
+                    <td>{{ $event->event->name }}</td>
+                    @php
+                        $startDate = Carbon::createFromFormat('d-m-Y H:i', $event->event->start_date.' '.$event->event->start_time);
+                        $endDate = Carbon::createFromFormat('d-m-Y H:i', $event->event->end_date.' '.$event->event->end_time);
+                        $currentDate = Carbon::now();
+                        $date = Carbon::createFromFormat('d-m-Y', $event->event->start_date);
+                        $formattedDate = $date->format('l jS Y');
+                        $start = Carbon::createFromFormat('H:i', $event->event->start_time);
+                        $formattedStart = $start->format('H\h');
+                        $end = Carbon::createFromFormat('H:i', $event->event->end_time);
+                        $formattedEnd = $end->format('H\h');
+                    @endphp
+                    <td>{{ $formattedDate }}</td>
+                    <td>{{ $formattedStart }} - {{ $formattedEnd }}</td>
+                    <td>{{ $event->event->price }}€</td>
+                    <td>
+                        @if ($endDate->isPast())
+                            <span style="color: darkgoldenrod">{{ __("Evènement terminé") }}</span>
+                        @elseif ($startDate->isFuture())
+                            <span style="color: green">{{ __("Evènement à venir") }}</span>
+                        @else
+                            <span style="color: blue">{{ __("Evènement en cours") }}</span>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-    </section>
-          --}}
+    </section>--}}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
