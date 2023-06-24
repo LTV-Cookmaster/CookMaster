@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workshops', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('contractor_id')->constrained('contractors');
-            $table->string('type'); // workshop, professional formation
+            $table->string('type'); // online workshops, professional formation, event, etc.
             $table->string('name');
             $table->string('description');
-            $table->string('price');
-            $table->string('max_number_of_participants');
+            $table->integer('price');
+            $table->integer('number_of_participants');
             $table->string('start_date');
             $table->string('end_date');
             $table->string('start_time');
             $table->string('end_time');
+            $table->string('img_url')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workshops');
+        Schema::dropIfExists('events');
     }
 };
