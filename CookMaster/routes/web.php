@@ -45,7 +45,7 @@ Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class,
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
-Route::get('/events', [EventController::class, 'index'])->name('events');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::get('/event/{event}', [ShowEventController::class, 'index'])->name('event');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');

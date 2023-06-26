@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="{{ route('events') }}">
+                        <a class="nav-link mx-3" href="{{ route('events.index') }}">
                             <span class="nav-span">{{'Events'}}</span>
                         </a>
                     </li>
