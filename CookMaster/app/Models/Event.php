@@ -12,6 +12,19 @@ class Event extends Model
 
     public $incrementing = false;
 
+    protected $fillable = [
+        'name',
+        'type',
+        'description',
+        'price',
+        'numberOfParticipants',
+        'startDate',
+        'endDate',
+        'startTime',
+        'endTime',
+        'contractor_id',
+    ];
+
 
     public function users()
     {

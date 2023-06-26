@@ -72,7 +72,6 @@
 @endif
 
 <script>
-    // Fermer la popup en cliquant sur le bouton "Close"
     if (document.getElementById('close-success')) {
         document.getElementById('close-success').addEventListener('click', function() {
             document.getElementById('success-alert').remove();

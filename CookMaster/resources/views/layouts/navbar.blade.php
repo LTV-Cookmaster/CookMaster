@@ -114,12 +114,17 @@
                                     .dropdown-content {
                                         display: none;
                                         position: absolute;
-                                        background-color: #f9f9f9;
+                                        background-color: #ffffff;
+                                        color: black!important;
                                         min-width: 160px;
                                         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                                         z-index: 1;
                                     }
 
+                                    .active {
+                                        background-color: #c2c2c2;
+                                        color: black;
+                                    }
                                     .dropdown:hover .dropdown-content {
                                         display: block;
                                     }
@@ -133,9 +138,10 @@
                                 <div class="dropdown">
                                     <a class="btn btn-secondary">Administration</a>
                                     <div class="dropdown-content">
-                                        <a href="{{ route('admin.office.index') }}">Les locaux</a>
-                                        <a href="{{ route('admin.user.index') }}">Les utilisateurs</a>
-                                        <a href="{{ route('admin.room.index')  }}">Les rooms</a>
+                                        <a href="{{ route('admin.office.index') }}" class="{{ Request::is('admin/office*') ? 'active' : '' }}">Les locaux</a>
+                                        <a href="{{ route('admin.user.index') }}" class="{{ Request::is('admin/user*') ? 'active' : '' }}">Les utilisateurs</a>
+                                        <a href="{{ route('admin.room.index') }}" class="{{ Request::is('admin/room*') ? 'active' : '' }}">Les rooms</a>
+                                        <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">Les évènements</a>
                                     </div>
                                 </div>
                             @endif
