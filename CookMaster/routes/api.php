@@ -11,6 +11,7 @@ use App\Models\Quotation;
 use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,4 +49,28 @@ Route::get('/invoices', function () {
 Route::get('/quotations', function () {
     return new QuotationCollection(Quotation::all());
 });
+
+Route::get('/rooms/{office_id}', function ($office_id) {
+    $rooms = DB::table('rooms')
+        ->where('office_id', '=', $office_id)
+        ->get();
+    return $rooms;
+});
+
+Route::get('/rooms/{office_id}/{start_date}/{end_date}/{start_time}/{end_time}', function ($office_id, $start_date, $end_date, $start_time, $end_time) {
+    $rooms = DB::table('rooms')
+        ->where('office_id', '=', $office_id)
+        ->whereNotIn('id', function ($query) use ($start_date, $end_date, $start_time, $end_time) {
+            $query->select('room_id')
+                ->from('reservations')
+                ->where('start_date', '<=', $end_date)
+                ->where('end_date', '>=', $start_date)
+                ->where('start_time', '<=', $end_time)
+                ->where('end_time', '>=', $start_time);
+        })
+        ->get();
+    return $rooms;
+});
+
+
 

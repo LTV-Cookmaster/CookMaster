@@ -60,6 +60,10 @@ class User extends Authenticatable
         return $user;
     }
 
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
 
     public function invoices()
     {

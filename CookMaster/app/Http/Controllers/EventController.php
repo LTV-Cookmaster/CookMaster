@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Office;
 use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -32,6 +34,10 @@ class EventController extends Controller
 
     public function create()
     {
+        $userIsAdmin = Auth::user()->isAdmin();
+        if (!$userIsAdmin) {
+            return redirect()->route('events.index');
+        }
         $event = new Event();
         $event->fill([
             'price' => 50,
@@ -41,19 +47,32 @@ class EventController extends Controller
             'start_time' => '12:00:00',
             'end_time' => '14:00:00',
         ]);
+        $offices = Office::all();
+        /*$rooms = Room::all();
+        $reservations = Reservation::all();*/
         return view('events.form' , [
-            'event' => $event
+            'event' => $event,
+            'offices' => $offices,
         ]);
     }
 
     public function list()
     {
-        $events = Event::all();
-        return view('events.list', compact('events'));
+        $userIsAdmin = Auth::user()->isAdmin();
+        if($userIsAdmin){
+            $events = Event::all();
+            return view('events.list', compact('events'));
+        } else {
+            return redirect()->route('events.index');
+        }
     }
 
     public function store(Request $request)
     {
+        $userIsAdmin = Auth::user()->isAdmin();
+        if (!$userIsAdmin) {
+            return redirect()->route('events.index');
+        }
 /*        $validatedData = $request->validate([
             'contractor' => 'required|exists:contractors,id',
             'type' => 'required|string',
@@ -92,6 +111,10 @@ class EventController extends Controller
 
     public function edit($id)
     {
+        $userIsAdmin = Auth::user()->isAdmin();
+        if (!$userIsAdmin) {
+            return redirect()->route('events.index');
+        }
         $event = Event::findOrFail($id);
         return view('events.form', [
             'event' => $event
@@ -100,6 +123,10 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
+        $userIsAdmin = Auth::user()->isAdmin();
+        if (!$userIsAdmin) {
+            return redirect()->route('events.index');
+        }
         $event = Event::findOrFail($id);
         $event->contractor_id = "6399156f-7da7-38d0-9a8e-9d3f3b5f94b0" /*$request->contractor*/;
         $event->type = $request->type;
