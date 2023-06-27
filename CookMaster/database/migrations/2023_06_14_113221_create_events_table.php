@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('end_date');
             $table->string('start_time');
             $table->string('end_time');
+            $table->foreignUuid('office_id')->nullable()->constrained('offices');
+            $table->foreignUuid('room_id')->nullable()->constrained('rooms');
             $table->string('img_url')->nullable();
             $table->timestamps();
         });

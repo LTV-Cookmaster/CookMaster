@@ -50,12 +50,20 @@ class EventController extends Controller
         ]);
         $offices = Office::all();
         $contractors = Contractor::all();
+        $eventsTypes = [
+            ['name' => 'tastingEvent', 'label' => 'Tasting Event'],
+            ['name' => 'meetingEvent', 'label' => 'Meeting Event'],
+            ['name' => 'professionalFormation', 'label' => 'Professional Formation'],
+            ['name' => 'onlineWorkshop', 'label' => 'Online Workshop'],
+            ['name' => 'homeWorkshop', 'label' => 'Home Workshop'],
+        ];
         /*$rooms = Room::all();
         $reservations = Reservation::all();*/
         return view('events.form' , [
             'event' => $event,
             'offices' => $offices,
             'contractors' => $contractors,
+            'eventsTypes' => $eventsTypes,
         ]);
     }
 
@@ -125,8 +133,20 @@ class EventController extends Controller
             return redirect()->route('events.index');
         }
         $event = Event::findOrFail($id);
+        $offices = Office::all();
+        $contractors = Contractor::all();
+        $eventsTypes = [
+            ['name' => 'tastingEvent', 'label' => 'Tasting Event'],
+            ['name' => 'meetingEvent', 'label' => 'Meeting Event'],
+            ['name' => 'professionalFormation', 'label' => 'Professional Formation'],
+            ['name' => 'onlineWorkshop', 'label' => 'Online Workshop'],
+            ['name' => 'homeWorkshop', 'label' => 'Home Workshop'],
+        ];
         return view('events.form', [
-            'event' => $event
+            'event' => $event,
+            'offices' => $offices,
+            'contractors' => $contractors,
+            'eventsTypes' => $eventsTypes,
         ]);
     }
 
@@ -137,7 +157,7 @@ class EventController extends Controller
             return redirect()->route('events.index');
         }
         $event = Event::findOrFail($id);
-        $event->contractor_id = "6399156f-7da7-38d0-9a8e-9d3f3b5f94b0" /*$request->contractor*/;
+        $event->contractor_id = $request->contractor_id;
         $event->type = $request->type;
         $event->name = $request->name;
         $event->description = $request->description;
