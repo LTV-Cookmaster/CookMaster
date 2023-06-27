@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Contractor;
 use App\Models\Event;
+use App\Models\Office;
 use App\Models\Reservation;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,8 +25,11 @@ class ReservationSeeder extends Seeder
             Reservation::factory([
                 'event_id' => Event::factory([
                     'contractor_id' => Contractor::factory(),
-                ]),
-                'user_id' => User::factory(),
+                ])->create(),
+                'user_id' => User::factory()->create(),
+                'room_id' => Room::factory([
+                    'office_id' => Office::factory(),
+                ])->create(),
                 'type' => Arr::random($type),
             ])->create();
         }
