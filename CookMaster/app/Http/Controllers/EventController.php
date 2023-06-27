@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contractor;
 use App\Models\Event;
 use App\Models\Office;
 use App\Models\Reservation;
@@ -48,11 +49,13 @@ class EventController extends Controller
             'end_time' => '14:00:00',
         ]);
         $offices = Office::all();
+        $contractors = Contractor::all();
         /*$rooms = Room::all();
         $reservations = Reservation::all();*/
         return view('events.form' , [
             'event' => $event,
             'offices' => $offices,
+            'contractors' => $contractors,
         ]);
     }
 
@@ -73,11 +76,11 @@ class EventController extends Controller
         if (!$userIsAdmin) {
             return redirect()->route('events.index');
         }
-/*        $validatedData = $request->validate([
-            'contractor' => 'required|exists:contractors,id',
+        $validatedData = $request->validate([
+            'contractor_id' => 'required|string',
             'type' => 'required|string',
-            'name' => 'required|string',
-            'description' => 'required|string',
+            'name' => 'required|string|min:3|max:255',
+            'description' => 'required|string|min:3|max:500',
             'price' => 'required|integer',
             'number_of_participants' => 'required|integer',
             'start_date' => 'required|string',
@@ -85,17 +88,23 @@ class EventController extends Controller
             'start_time' => 'required|string',
             'end_time' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);*/
+        ]);
 
         $event = new Event();
-        $event->contractor_id = "6399156f-7da7-38d0-9a8e-9d3f3b5f94b0" /*$request->contractor*/;
+        $event->contractor_id = $request->contractor_id;
         $event->type = $request->type;
         $event->name = $request->name;
         $event->description = $request->description;
         $event->price = $request->price;
         $event->number_of_participants = $request->number_of_participants;
-        $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
+        //
+        $date_start = Carbon::createFromFormat('Y-m-d', $request->start_date);
+        $formattedStartDate = $date_start->format('d-m-Y');
+        $date_end = Carbon::createFromFormat('Y-m-d', $request->end_date);
+        $formattedEndDate = $date_end->format('d-m-Y');
+        //
+        $event->start_date = $formattedStartDate;
+        $event->end_date = $formattedEndDate;
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
 

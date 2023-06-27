@@ -23,6 +23,10 @@ class ReservationFactory extends Factory
             'user_id' => $this->faker->uuid,
             'room_id' => $this->faker->uuid,
             'type' => $this->faker->randomElement(['tastingEvent', 'professionalFormation', 'onlineWorkshop', 'meetingEvent', 'homeWorkshop']),
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'start_time' => $this->faker->time(),
+            'end_time' => $this->faker->time(),
         ];
     }
 }

@@ -13,7 +13,7 @@
     }
 @endphp
 @section('title', $event->exists ? "Éditer un évènement" : "Créer un évènement")
-
+@include('layouts.navbar')
 @section('content')
     @if($errors->any())
         <div class="alert alert-danger">
@@ -27,7 +27,7 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" method="post" enctype="multipart/form-data">
+    <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method($event->exists ? 'put' : 'post')
 
@@ -38,6 +38,7 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="type">Type</label>
                     <select class="form-select" name="type">
                         <option value="tastingEvent" {{ $event->type === 'tastingEvent' ? 'selected' : '' }}>Tasting Event</option>
                         <option value="professionalFormation" {{ $event->type === 'professionalFormation' ? 'selected' : '' }}>Professional Formation</option>
@@ -49,6 +50,15 @@
 
                 <div class="mb-3">
                     @include('components.input', ['label' => 'Description', 'name' => 'description', 'type' => 'textarea', 'value' => $event->description])
+                </div>
+
+                <div class="mb-3">
+                    <label for="contractor_id">Contractor</label>
+                    <select class="form-select" name="contractor_id">
+                        @foreach($contractors as $contractor))
+                        <option value="{{ $contractor->id}}">{{$contractor->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-3">
@@ -72,25 +82,27 @@
                     @include('components.input', ['label' => 'Start Date', 'name' => 'start_date', 'type' => 'date', 'value' => $formattedStartDate])
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" id="end-date-container" style="display: none;">
                     @include('components.input', ['label' => 'End Date', 'name' => 'end_date', 'type' => 'date', 'value' => $formattedEndDate])
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" id="start-time-container" style="display: none;">
                     @include('components.input', ['label' => 'Start Time', 'name' => 'start_time', 'type' => 'time', 'value' => $event->start_time])
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" id="end-time-container" style="display: none;">
                     @include('components.input', ['label' => 'End Time', 'name' => 'end_time', 'type' => 'time', 'value' => $event->end_time])
                 </div>
 
-                <div class="mb-3">
-                    <select class="form-select" name="type">
+                <div class="mb-3" id="office-container" style="display: none;">
+                    <select class="form-select" name="type" id="office-select">
+                        <option value="default">Select an office</option>
                         @foreach($offices as $office)
                             <option value="{{ $office->id }}" {{ $event->office_id === $office->id ? 'selected' : '' }}>{{ $office->name }} | {{ $office->postal_code }} | {{ $office->address }}</option>
                         @endforeach
                     </select>
                 </div>
+                <p id="loading" style="display: none">Loading...</p>
 
                 <div class="mb-3" id="room-select-wrapper" style="display: none;">
                     <select class="form-select" name="room" id="room-select">
@@ -102,26 +114,104 @@
                     var officeSelect = document.getElementById('office-select');
                     var roomSelectWrapper = document.getElementById('room-select-wrapper');
                     var roomSelect = document.getElementById('room-select');
+                    var startDateInput = document.getElementById('start_date');
+                    var endDateInput = document.getElementById('end_date');
+                    var startTimeInput = document.getElementById('start_time');
+                    var endTimeInput = document.getElementById('end_time');
+                    var loading = document.getElementById('loading');
+
+                    function formatDate(originalDate) {
+                        let parts = originalDate.split("-");
+                        return `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    }
 
                     officeSelect.addEventListener('change', function() {
                         var selectedOfficeId = officeSelect.value;
 
-                        fetch('/rooms/{office_id}}/{start_date}/{end_date}/{start_time}/{end_time}')
-                            .then(response => response.json())
-                            .then(data => {
-                                roomSelect.innerHTML = '';
-                                data.forEach(function(room) {
-                                    var option = document.createElement('option');
-                                    option.value = room.id;
-                                    option.textContent = room.name;
-                                    roomSelect.appendChild(option);
-                                });
+                        if (selectedOfficeId === 'default') {
+                            startDateInput.disabled = false;
+                            endDateInput.disabled = false;
+                            startTimeInput.disabled = false;
+                            endTimeInput.disabled = false;
+                            roomSelect.innerHTML = '';
+                            roomSelectWrapper.style.display = 'none';
+                        } else {
+                            startDateInput.disabled = true;
+                            endDateInput.disabled = true;
+                            startTimeInput.disabled = true;
+                            endTimeInput.disabled = true;
+                            loading.style.display = 'block';
+                            console.log(`/api/rooms/${selectedOfficeId}/${formatDate(startDateInput.value)}/${formatDate(endDateInput.value)}/${startTimeInput.value}/${endTimeInput.value}`);
+                            fetch(`/api/rooms/${selectedOfficeId}/${formatDate(startDateInput.value)}/${formatDate(endDateInput.value)}/${startTimeInput.value}/${endTimeInput.value}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    roomSelect.innerHTML = '';
+                                    data.forEach(function (room) {
+                                        var option = document.createElement('option');
+                                        option.value = room.id;
+                                        option.textContent = room.name + " | Capacité maximal: " + room.max_capacity + " | Disponible";
+                                        roomSelect.appendChild(option);
+                                    });
 
-                                roomSelectWrapper.style.display = 'block';
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
+                                    roomSelectWrapper.style.display = 'block';
+                                    loading.style.display = 'none';
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    loading.style.display = 'none';
+                                });
+                        }
+                    });
+                    document.getElementById('start_date').addEventListener('change', function() {
+                        const endDateContainer = document.getElementById('end-date-container');
+                        if (this.value !== '') {
+                            endDateContainer.style.display = 'block';
+                        } else {
+                            endDateContainer.style.display = 'none';
+                            document.getElementById('end_date').value = '';
+                            document.getElementById('start-time-container').style.display = 'none';
+                            document.getElementById('end-time-container').style.display = 'none';
+                            document.getElementById('office-container').style.display = 'none';
+                        }
+                    });
+
+                    document.getElementById('end_date').addEventListener('change', function() {
+                        const startTimeContainer = document.getElementById('start-time-container');
+                        if (this.value !== '') {
+                            startTimeContainer.style.display = 'block';
+                        } else {
+                            startTimeContainer.style.display = 'none';
+                            document.getElementById('start_time').value = '';
+                            document.getElementById('end-time-container').style.display = 'none';
+                            document.getElementById('office-container').style.display = 'none';
+                        }
+                    });
+
+                    document.getElementById('start_time').addEventListener('change', function() {
+                        const endTimeContainer = document.getElementById('end-time-container');
+                        if (this.value !== '') {
+                            endTimeContainer.style.display = 'block';
+                        } else {
+                            endTimeContainer.style.display = 'none';
+                            document.getElementById('end_time').value = '';
+                            document.getElementById('office-container').style.display = 'none';
+                        }
+                    });
+
+                    document.getElementById('end_time').addEventListener('change', function() {
+                        const officeContainer = document.getElementById('office-container');
+                        if (this.value !== '') {
+                            officeContainer.style.display = 'block';
+                        } else {
+                            officeContainer.style.display = 'none';
+                        }
+                    });
+                    document.getElementById('form').addEventListener('submit', function(event) {
+                        // Réactiver les champs de date et d'heure avant la soumission du formulaire
+                        startDateInput.disabled = false;
+                        endDateInput.disabled = false;
+                        startTimeInput.disabled = false;
+                        endTimeInput.disabled = false;
                     });
                 </script>
 
