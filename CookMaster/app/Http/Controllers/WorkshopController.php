@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,11 @@ class WorkshopController extends Controller
     public function index()
     {
 
-        $workshops = Workshop::where('type', 'workshop')->orderBy('created_at', 'desc')->take(3)->get();
+        $workshops = Event::where('type', 'homeWorkshop')->orderBy('created_at', 'desc')->take(3)->get();
 
-        $formations = Workshop::where('type', 'professional formation')->orderBy('created_at', 'desc')->take(3)->get();
+        $formations = Event::where('type', 'professionalFormation')->orderBy('created_at', 'desc')->take(3)->get();
 
-        $onlines = Workshop::where('type', 'online workshop')->orderBy('created_at', 'desc')->take(3)->get();
+        $onlines = Event::where('type', 'onlineWorkshop')->orderBy('created_at', 'desc')->take(3)->get();
 
         return view('workshops', compact(['workshops', 'formations', 'onlines']));
     }

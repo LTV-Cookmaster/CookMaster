@@ -12,8 +12,24 @@ class Event extends Model
 
     public $incrementing = false;
 
+    protected $fillable = [
+        'name',
+        'type',
+        'description',
+        'price',
+        'numberOfParticipants',
+        'startDate',
+        'endDate',
+        'startTime',
+        'endTime',
+        'contractor_id',
+    ];
 
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public function quotation()
     {
         return $this->hasMany(Quotation::class);
@@ -31,6 +47,11 @@ class Event extends Model
 
     public function contractor()
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Contractor::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }

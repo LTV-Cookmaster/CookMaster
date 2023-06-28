@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@php
+    use Carbon\Carbon;
+@endphp
+@section('title' , 'Home')
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,16 +54,37 @@
 @include('layouts.navbar')
 
 @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-        {{ session('success') }}
+    <div id="success-alert" class="alert alert-success alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+        <span style="flex-grow: 1; text-align: center;">{{ session('success') }}</span>
+        <p id="close-success" type="button" class="m-0">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
     </div>
 @endif
 
 @if(session('error'))
-    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-        {{ session('error') }}
+    <div id="error-alert" class="alert alert-danger alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+        <span style="flex-grow: 1; text-align: center;">{{ session('error') }}</span>
+        <p id="close-error" type="button" class="m-0">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
     </div>
 @endif
+
+<script>
+    if (document.getElementById('close-success')) {
+        document.getElementById('close-success').addEventListener('click', function() {
+            document.getElementById('success-alert').remove();
+        });
+    }
+
+    if (document.getElementById('close-error')) {
+        document.getElementById('close-error').addEventListener('click', function() {
+            document.getElementById('error-alert').remove();
+        });
+    }
+</script>
+
 <div class="container-fluid">
     <div class="container">
         <h2 class="text-center mt-2">Your next workshops</h2>
@@ -68,16 +93,28 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                            <a href="{{ route('event', ['event' => $workshop->id]) }}">
                             <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                            </a>
                             <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
                                         <div class="card-text">
                                         <span class="text-truncate">{{ $workshop->name }}</span>
                                         <br>
-                                        <span class="text-truncate" style="color: #1C6513">{{ $workshop->type }}</span>
-                                        <br>
-                                        <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $workshop->description }}</span>
+                                            @php
+                                                $date = Carbon::createFromFormat('d-m-Y', $workshop->start_date);
+                                                $formattedDate = $date->format('l jS Y');
+                                            @endphp
+                                            <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
+                                            <br>
+                                            @php
+                                                $start = Carbon::createFromFormat('H:i', $workshop->start_time);
+                                                $formattedStart = $start->format('H\h');
+                                                $end = Carbon::createFromFormat('H:i', $workshop->end_time);
+                                                $formattedEnd = $end->format('H\h');
+                                            @endphp
+                                            <span class="d-inline-block text-truncate" style="max-width: 150px;"><i class="fa-regular fa-clock"></i> {{ $formattedStart }} - {{ $formattedEnd }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,16 +130,28 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
+                            <a href="{{ route('event', ['event' => $formation->id]) }}">
                             <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                            </a>
                             <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
                                         <div class="card-text">
                                             <span class="text-truncate">{{ $formation->name }}</span>
                                             <br>
-                                            <span class="text-truncate" style="color: #1C6513">{{ $formation->type }}</span>
+                                            @php
+                                                $date = Carbon::createFromFormat('d-m-Y', $formation->start_date);
+                                                $formattedDate = $date->format('l jS Y');
+                                            @endphp
+                                            <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
                                             <br>
-                                            <span class="d-inline-block text-truncate" style="max-width: 150px;">{{ $formation->description }}</span>
+                                            @php
+                                                $start = Carbon::createFromFormat('H:i', $formation->start_time);
+                                                $formattedStart = $start->format('H\h');
+                                                $end = Carbon::createFromFormat('H:i', $formation->end_time);
+                                                $formattedEnd = $end->format('H\h');
+                                            @endphp
+                                            <span class="d-inline-block text-truncate" style="max-width: 150px;"><i class="fa-regular fa-clock"></i> {{ $formattedStart }} - {{ $formattedEnd }}</span>
                                         </div>
                                     </div>
                                 </div>

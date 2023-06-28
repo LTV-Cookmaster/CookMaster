@@ -47,7 +47,7 @@
             } else {
                 // Paiement réussi, effectuer les actions nécessaires
                 // comme enregistrer la souscription dans la base de données
-                window.location.href = "{{ route('checkout.success', ['bill' => $bill->id]) }}";
+                window.location.href = "{{ route('checkout.success', ['bill' => $bill->id , 'paid' => true]) }}";
             }
         }).catch(function (error) {
             console.error(error);

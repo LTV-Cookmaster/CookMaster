@@ -3,8 +3,9 @@
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\WorkshopController;
-use App\Http\Controllers\ShowWorkshopsController;
+use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UserReservationsController;
 use App\Http\Controllers\HomeController;
@@ -44,7 +45,13 @@ Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class,
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
-Route::get('/workshop/{workshop}', [ShowWorkshopsController::class, 'index'])->name('online');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/event/{event}', [ShowEventController::class, 'index'])->name('event');
+Route::get('/events/list', [EventController::class, 'list'])->name('events.list');
+Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
+Route::get('/events/edit/{event}', [EventController::class, 'edit'])->name('events.edit');
+Route::put('/events/update/{event}', [EventController::class, 'update'])->name('events.update');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');

@@ -28,7 +28,7 @@ class EventFactory extends Factory
             'end_date' => $this->faker->date('d-m-Y'),
             'start_time' => $this->faker->time('H:i'),
             'end_time' => $this->faker->time('H:i'),
-            'img_url' => 'https://picsum.photos/200/300',
+            'img_url' => $this->faker->randomElement(['events/1.jpg', 'events/2.jpg', 'events/3.jpg', 'events/4.jpg', 'events/5.jpg', 'events/6.jpg']),
         ];
     }
 }

@@ -39,7 +39,18 @@
                 @include('components.input.input' , ['label' => 'Password' , 'name' => 'password', 'value' => $user->password, 'class' => 'display-none'])
             @endif
 
+{{--
             @include('components.input.checkbox' , ['label' => 'Admin' , 'name' => 'is_admin', 'value' => $user->is_admin])
+--}}
+                 <select name="is_admin" id="is_admin">
+                     @if($user->is_admin == 0)
+                         <option value="0">Non</option>
+                         <option value="1">Oui</option>
+                     @else
+                         <option value="1">Oui</option>
+                         <option value="0">Non</option>
+                     @endif
+                 </select>
 
         </div>
 

@@ -60,6 +60,10 @@ class User extends Authenticatable
         return $user;
     }
 
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
 
     public function invoices()
     {
@@ -69,11 +73,6 @@ class User extends Authenticatable
     public function quotations()
     {
         return $this->hasMany(Quotation::class);
-    }
-
-    public function workshops()
-    {
-        return $this->hasMany(Workshop::class);
     }
 
     public function rooms()
@@ -86,10 +85,16 @@ class User extends Authenticatable
         return $this->hasOne(Subscription::class);
     }
 
-    public function reservations()
+    public function reservation()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasOne(Reservation::class);
     }
+
+    public function event()
+    {
+        return $this->hasOne(Event::class);
+    }
+
 
 
 }

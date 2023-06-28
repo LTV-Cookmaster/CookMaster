@@ -31,7 +31,7 @@ up: ## start containers in the background
 	$(SAIL) up -d
 
 down: ## stop containers
-	$(SAIL) down
+	$(SAIL) down -v --remove-orphans
 
 ## —— Artisan ——————————————————————————————————————————————————————————————————
 clear: ## cache invalidation (route, cache, config, view)
