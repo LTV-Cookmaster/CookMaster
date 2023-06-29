@@ -63,6 +63,8 @@ class CheckoutController extends Controller
         $reservation->event_id = $billId;
         $reservation->user_id = Auth::user()->id;
         $reservation->type = $bill->type;
+        $reservation->room_id = $bill->room_id;
+        $reservation->office_id = $bill->office_id;
         $reservation->save();
 
         return redirect()->route('home')->with('success', ('Le paiement pour '.$bill->name.' a été effectuée'));

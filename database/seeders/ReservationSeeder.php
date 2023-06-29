@@ -30,6 +30,7 @@ class ReservationSeeder extends Seeder
                 'room_id' => Room::factory([
                     'office_id' => Office::factory(),
                 ])->create(),
+                'office_id' => Office::factory()->create(),
                 'type' => Arr::random($type),
             ])->create();
         }

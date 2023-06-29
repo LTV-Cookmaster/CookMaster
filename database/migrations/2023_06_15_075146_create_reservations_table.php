@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignUuid('event_id')->constrained('events');
             $table->foreignUuid('user_id')->constrained('users');
             $table->foreignUuid('room_id')->constrained('rooms');
+            $table->foreignUuid('office_id')->constrained('offices');
             $table->string('start_date');
             $table->string('end_date');
             $table->string('start_time');

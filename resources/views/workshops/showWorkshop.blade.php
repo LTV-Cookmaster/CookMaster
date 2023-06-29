@@ -86,13 +86,20 @@
                             {{ __('Type inconnu') }}
                     @endswitch
                 </p>
+                @if($event->type == 'onlineWorkshop')
+                    <p id="eventAddress" style="color: green"><i class="fa-solid fa-location-dot"></i> <strong>{{__('En ligne')}}</strong></p>
+                @else
+                    <p id="eventAddress"><i class="fa-solid fa-location-dot"></i> <strong>{{__('Adresse:')}} </strong>{{ $eventAddress->address }}</p>
 
-            @if($reservationCount == $event->number_of_participants)
+                @endif
+                @if($reservationCount == $event->number_of_participants)
                     <p id="eventSeats" style="color: red"><i class="fa-solid fa-person"></i> <strong>{{__('Complet')}} </strong>{{ $event->seats }}</p>
                 @else
                     <p id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{__('Places restantes: ') .  ($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</p>
                 @endif
-                <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('Prix:')}} </strong>{{ $event->price }}€</p>
+                <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('Prix:')}} </strong>{{ $event->price }}€
+                    <br>
+                    <br>
                 @if($reserve == false && $reservationCount < $event->number_of_participants)
                 <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
                 @elseif($reservationCount == $event->number_of_participants)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Office;
 use App\Models\Reservation;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -29,12 +30,13 @@ class ShowEventController extends Controller
             }
 
             $reservationCount = Reservation::where('event_id', $eventID)->count();
-
+            $eventAddress = Office::where('id', $event->office_id)->first()->address;
 
             return view('workshops.showWorkshop' , [
                 'event' => $event,
                 'reserve' => $reserve,
                 'reservationCount' => $reservationCount,
+                'eventAddress' => $eventAddress
             ]);
 
     }
