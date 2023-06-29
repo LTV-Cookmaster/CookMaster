@@ -78,9 +78,9 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                               role="button" data-mdb-toggle="dropdown" aria-expanded="true">
                                 <img src="https://www.pngall.com/wp-content/uploads/2016/05/Man-Download-PNG.png" class="rounded-circle"
                                      height="22" alt="Portrait of a Woman" loading="lazy" />
                             </a>
