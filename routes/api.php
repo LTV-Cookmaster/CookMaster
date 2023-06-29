@@ -75,5 +75,20 @@ Route::get('/rooms/{office_id}/', function ($office_id) {
         ->get();
 });
 
+Route::get('/reservations', function () {
+    return DB::table('reservations')
+        ->get();
+});
+
+Route::get('/reservations/{user_id}', function ($user_id) {
+    return DB::table('reservations')
+        ->where('user_id', '=', $user_id)
+        ->get();
+});
+
+Route::get('/recipes', function () {
+    return new RecipeCollection(Recipe::all());
+});
+
 
 
