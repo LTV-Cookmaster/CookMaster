@@ -21,6 +21,7 @@ class ReservationFactory extends Factory
             'id' => $this->faker->uuid,
             'event_id' => $this->faker->uuid,
             'user_id' => $this->faker->uuid,
+            'office_id' => $this->faker->uuid,
             'room_id' => $this->faker->uuid,
             'type' => $this->faker->randomElement(['tastingEvent', 'professionalFormation', 'onlineWorkshop', 'meetingEvent', 'homeWorkshop']),
             'start_date' => $this->faker->date(),
