@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowEventController;
+use App\Http\Controllers\Admin\RentalEquipementController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\UserController;
@@ -34,6 +35,7 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('room', RoomController::class)->except(['show']);
     Route::resource('user', UserController::class)->except(['show']);
+    Route::resource('equipement', RentalEquipementController::class)->except(['show']);
     Route::resource('office', OfficeController::class)->except(['show']);
     Route::prefix('office')->name('office.')->group(function (){
         Route::get('office/list/{office}', [OfficeController::class, 'list'])->name('list');
@@ -59,6 +61,8 @@ Route::get('/reservations', [UserReservationsController::class, 'index'])->name(
 Route::get('/courses', function (){
     return view('courses');
 });
+
+
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
