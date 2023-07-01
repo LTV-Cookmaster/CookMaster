@@ -14,6 +14,8 @@ class Reservation extends Model
         'event_id',
         'user_id',
         'type',
+        'office_id',
+        'room_id',
     ];
 
     public function event()

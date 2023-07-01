@@ -35,8 +35,11 @@ class UserReservationsController extends Controller
         $user = Auth::user();
         if ($user) {
             $reservations = Reservation::where('user_id', $user->id)->get();
+            $events = $reservations->map(function ($reservation) {
+                return $reservation->event;
+            });
             if ($reservations) {
-                return view('user.reservations', compact('user', 'reservations'));
+                return view('user.reservations', compact('user', 'reservations' , 'events'));
             } else {
                 return redirect()->route('home')->with('error', 'No reservation found');
             }

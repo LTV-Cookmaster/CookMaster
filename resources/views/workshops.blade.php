@@ -30,13 +30,8 @@
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <a href="#" class="shadow-none text-dark">
                             <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                                @php
-                                    $elements = ['food.jpg', 'professional.jpg', 'workshops.jpg'];
-                                    $randomIndex = array_rand($elements);
-                                    $randomElement = $elements[$randomIndex];
-                                @endphp
                                 <a href="{{ route('event', ['event' => $online->id]) }}">
-                                <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                                <img src="{{ asset('storage/'.$online->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                                 </a>
                                 <div class="card-body d-flex">
                                     <div class="row">
@@ -74,13 +69,8 @@
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <a href="#" class="shadow-none text-dark">
                             <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                                @php
-                                    $elements = ['food.jpg', 'professional.jpg', 'workshops.jpg'];
-                                    $randomIndex = array_rand($elements);
-                                    $randomElement = $elements[$randomIndex];
-                                @endphp
                                 <a href="{{ route('event', ['event' => $workshop->id]) }}">
-                                    <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                                    <img src="{{ asset('storage/'.$workshop->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                                 </a>
                                     <div class="card-body d-flex">
                                         <div class="row">
@@ -120,13 +110,8 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                            @php
-                                    $elements = ['food.jpg', 'professional.jpg', 'workshops.jpg'];
-                                    $randomIndex = array_rand($elements);
-                                    $randomElement = $elements[$randomIndex];
-                            @endphp
                             <a href="{{ route('event', ['event' => $formation->id]) }}">
-                                <img src="{{ asset($randomElement) }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                                <img src="{{ asset('storage/'.$formation->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>                            <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
