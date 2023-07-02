@@ -6,6 +6,7 @@ use App\Models\Contractor;
 use App\Models\Event;
 use App\Models\Office;
 use App\Models\Reservation;
+use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,9 +58,7 @@ class EventController extends Controller
             ['name' => 'onlineWorkshop', 'label' => 'Online Workshop'],
             ['name' => 'homeWorkshop', 'label' => 'Home Workshop'],
         ];
-        /*$rooms = Room::all();
-        $reservations = Reservation::all();*/
-        return view('events.form' , [
+        return view('events.create' , [
             'event' => $event,
             'offices' => $offices,
             'contractors' => $contractors,
@@ -71,7 +70,7 @@ class EventController extends Controller
     {
         $userIsAdmin = Auth::user()->isAdmin();
         if($userIsAdmin){
-            $events = Event::all();
+            $events = Event::OrderBy('created_at', 'desc')->paginate(20);
             return view('events.list', compact('events'));
         } else {
             return redirect()->route('events.index');
@@ -96,6 +95,8 @@ class EventController extends Controller
             'start_time' => 'required|string',
             'end_time' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'office_id' => 'required|string',
+            'room_id' => 'required|string',
         ]);
 
         $event = new Event();
@@ -115,10 +116,15 @@ class EventController extends Controller
         $event->end_date = $formattedEndDate;
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
+        $event->office_id = $request->office_id;
+        $event->room_id = $request->room_id;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $event->img_url = $imagePath;
+        } else {
+            $index = rand(1, 6);
+            $event->img_url = "events/".$index.".jpg";
         }
 
         $event->save();
@@ -132,8 +138,10 @@ class EventController extends Controller
         if (!$userIsAdmin) {
             return redirect()->route('events.index');
         }
+
         $event = Event::findOrFail($id);
         $offices = Office::all();
+        $room = Room::findOrFail($event->room_id);
         $contractors = Contractor::all();
         $eventsTypes = [
             ['name' => 'tastingEvent', 'label' => 'Tasting Event'],
@@ -142,11 +150,12 @@ class EventController extends Controller
             ['name' => 'onlineWorkshop', 'label' => 'Online Workshop'],
             ['name' => 'homeWorkshop', 'label' => 'Home Workshop'],
         ];
-        return view('events.form', [
+        return view('events.edit', [
             'event' => $event,
             'offices' => $offices,
             'contractors' => $contractors,
             'eventsTypes' => $eventsTypes,
+            'room' => $room,
         ]);
     }
 
@@ -156,6 +165,22 @@ class EventController extends Controller
         if (!$userIsAdmin) {
             return redirect()->route('events.index');
         }
+        $validatedData = $request->validate([
+            'contractor_id' => 'required|string',
+            'type' => 'required|string',
+            'name' => 'required|string|min:3|max:255',
+            'description' => 'required|string|min:3|max:500',
+            'price' => 'required|integer',
+            'number_of_participants' => 'required|integer',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string',
+            'start_time' => 'required|string',
+            'end_time' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'office_id' => 'required|string',
+            'room_id' => 'required|string',
+        ]);
+
         $event = Event::findOrFail($id);
         $event->contractor_id = $request->contractor_id;
         $event->type = $request->type;
@@ -173,6 +198,8 @@ class EventController extends Controller
         $event->end_date = $formattedEndDate;
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
+        $event->office_id = $request->office_id;
+        $event->room_id = $request->room_id;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');

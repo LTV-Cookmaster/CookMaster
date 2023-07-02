@@ -89,6 +89,3 @@ Route::get('/reservations/{user_id}', function ($user_id) {
 Route::get('/recipes', function () {
     return new RecipeCollection(Recipe::all());
 });
-
-
-

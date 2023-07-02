@@ -81,19 +81,19 @@
                     @include('components.input', ['label' => 'Start Date', 'name' => 'start_date', 'type' => 'date', 'value' => $formattedStartDate])
                 </div>
 
-                <div class="mb-3" id="end-date-container" style="{{ ($_SERVER['REQUEST_METHOD'] == 'put') ? 'display:block' : 'display:none' }}">
+                <div class="mb-3" id="end-date-container" style="'display:block'">
                 @include('components.input', ['label' => 'End Date', 'name' => 'end_date', 'type' => 'date', 'value' => $formattedEndDate])
                 </div>
 
-                <div class="mb-3" id="start-time-container" style="{{ ($_SERVER['REQUEST_METHOD'] == 'put') ? 'display:block' : 'display:none' }}">
+                <div class="mb-3" id="start-time-container" style="'display:block'">
                     @include('components.input', ['label' => 'Start Time', 'name' => 'start_time', 'type' => 'time', 'value' => $event->start_time])
                 </div>
 
-                <div class="mb-3" id="end-time-container" style="{{ ($_SERVER['REQUEST_METHOD'] == 'put') ? 'display:block' : 'display:none' }}">
+                <div class="mb-3" id="end-time-container" style="'display:block'">
                     @include('components.input', ['label' => 'End Time', 'name' => 'end_time', 'type' => 'time', 'value' => $event->end_time])
                 </div>
 
-                <div class="mb-3" id="office-container" style="{{ ($_SERVER['REQUEST_METHOD'] == 'put') ? 'display:block' : 'display:none' }}">
+                <div class="mb-3" id="office-container" style="'display:block'">
                     <select class="form-select" name="office_id" id="office-select">
                         <option value="default">Select an office</option>
                         @foreach($offices as $office)
@@ -103,9 +103,9 @@
                 </div>
                 <p id="loading" style="display: none">Loading...</p>
 
-                <div class="mb-3" id="room-select-wrapper" style="display: none;">
-                    <select class="form-select" name="room" id="room-select">
-
+                <div class="mb-3" id="room-select-wrapper" style="display: block;">
+                    <select class="form-select" name="room_id" id="room-select">
+                        <option value="{{ $room->id }}">{{ $room->name }} | Capacité maximal: {{ $room->max_capacity }} | Disponible</option>
                     </select>
                 </div>
 
@@ -140,6 +140,7 @@
                             startTimeInput.disabled = true;
                             endTimeInput.disabled = true;
                             loading.style.display = 'block';
+                            roomSelectWrapper.style.display = 'none';
                             console.log(`/api/rooms/${selectedOfficeId}/${formatDate(startDateInput.value)}/${formatDate(endDateInput.value)}/${startTimeInput.value}/${endTimeInput.value}`);
                             fetch(`/api/rooms/${selectedOfficeId}/${formatDate(startDateInput.value)}/${formatDate(endDateInput.value)}/${startTimeInput.value}/${endTimeInput.value}`)
                                 .then(response => response.json())
