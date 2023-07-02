@@ -33,6 +33,7 @@ class UserFactory extends Factory
             'is_ban' => $this->faker->boolean(),
             'referral_code' => Str::random(10),
             'referee_code' => Str::random(10),
+            'created_at' => $this->faker->dateTimeBetween('01-01-2023', 'now'),
         ];
     }
 

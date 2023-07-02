@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Resources\ContractorCollection;
 use App\Http\Resources\InvoiceCollection;
 use App\Http\Resources\QuotationCollection;
+use App\Http\Resources\RecipeCollection;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\WorkshopCollection;
 use App\Models\Invoice;
 use App\Models\Quotation;
+use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -86,6 +88,7 @@ Route::get('/reservations/{user_id}', function ($user_id) {
         ->get();
 });
 
-Route::get('/recipes', function () {
-    return new RecipeCollection(Recipe::all());
+Route::get('/subscriptions', function () {
+    return DB::table('subscriptions')
+        ->get();
 });
