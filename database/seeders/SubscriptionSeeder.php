@@ -14,8 +14,8 @@ class SubscriptionSeeder extends Seeder
      */
     public function run(): void
     {
-        Subscription::factory(10)->create([
-            'user_id' => User::factory()->create(),
+        Subscription::factory(50)->create([
+            'user_id' => User::factory(),
         ]);
     }
 }
