@@ -68,7 +68,7 @@ class CheckoutController extends Controller
         $reservation->end_date = $bill->end_date;
         $reservation->start_time = $bill->start_time;
         $reservation->end_time = $bill->end_time;
-        /*$reservation->office_id = $bill->office_id;*/
+        $reservation->office_id = $bill->office_id;
         $reservation->save();
 
         return redirect()->route('home')->with('success', ('Le paiement pour '.$bill->name.' a été effectuée'));
