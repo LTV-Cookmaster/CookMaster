@@ -144,6 +144,7 @@
                                         <a href="{{ route('admin.user.index') }}" class="{{ Request::is('admin/user*') ? 'active' : '' }}">Les utilisateurs</a>
                                         <a href="{{ route('admin.room.index') }}" class="{{ Request::is('admin/room*') ? 'active' : '' }}">Les rooms</a>
                                         <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">Les évènements</a>
+                                        <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">Les Equipements louable</a>
                                     </div>
                                 </div>
                             @endif
