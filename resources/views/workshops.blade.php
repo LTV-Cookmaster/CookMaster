@@ -61,8 +61,6 @@
                 </div>
             @endforeach
         </div>
-
-
             <h2 class="text-center mt-2">On site workshops</h2>
             <div class="row">
                 @foreach($workshops as $workshop)
@@ -112,7 +110,8 @@
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
                             <a href="{{ route('event', ['event' => $formation->id]) }}">
                                 <img src="{{ asset('storage/'.$formation->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                            </a>                            <div class="card-body d-flex">
+                            </a>                            
+                            <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
                                         <div class="card-text">

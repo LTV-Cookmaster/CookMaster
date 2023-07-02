@@ -27,6 +27,7 @@ class ReservationSeeder extends Seeder
                     'contractor_id' => Contractor::factory(),
                 ])->create(),
                 'user_id' => User::factory()->create(),
+                'office_id' => Office::factory(),
                 'room_id' => Room::factory([
                     'office_id' => Office::factory(),
                 ])->create(),
