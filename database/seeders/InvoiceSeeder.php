@@ -17,9 +17,13 @@ class InvoiceSeeder extends Seeder
      */
     public function run(): void
     {
-        Invoice::factory()
-            ->for(User::factory())
-            ->for(Contractor::factory())
-            ->create();
+        for( $i = 0; $i < 10; $i++)
+        {
+            Invoice::factory()
+                ->for(User::factory())
+                ->for(Contractor::factory())
+                ->create();
+        }
     }
+
 }
