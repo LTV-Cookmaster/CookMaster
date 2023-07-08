@@ -59,9 +59,9 @@ Route::get('/reservations', function () {
     return ReservationResource::collection(Reservation::all());
 });
 
-// Route::get('/reservations/{user_id}', function ($user_id) {
-//     return ReservationResource::collection(Reservation::where('user_id', '=', $user_id)->get());
-// });
+/* Route::get('/reservations/{user_id}', function ($user_id) {
+    return ReservationResource::collection(Reservation::where('user_id', '=', $user_id)->get());
+ });*/
 
 Route::get('/subscriptions', function () {
     return SubscriptionResource::collection(Subscription::all());
