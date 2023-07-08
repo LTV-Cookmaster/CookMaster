@@ -50,7 +50,9 @@ Route::get('/contractors', function () {
 });
 
 Route::get('/events', function () {
-    return EventResource::collection(Event::all());
+    $events = Event::all();
+
+    return response()->json(['events' => $events]);
 });
 
 Route::get('/reservations', function () {
