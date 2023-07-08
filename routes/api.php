@@ -57,9 +57,9 @@ Route::get('/reservations', function () {
     return ReservationResource::collection(Reservation::all());
 });
 
-Route::get('/reservations/{user_id}', function ($user_id) {
-    return ReservationResource::collection(Reservation::where('user_id', '=', $user_id)->get());
-});
+// Route::get('/reservations/{user_id}', function ($user_id) {
+//     return ReservationResource::collection(Reservation::where('user_id', '=', $user_id)->get());
+// });
 
 Route::get('/subscriptions', function () {
     return SubscriptionResource::collection(Subscription::all());
@@ -97,3 +97,28 @@ Route::get('/rooms/{office_id}/', function ($office_id) {
         })
         ->get();
 });
+
+Route::get('/reservations/{user_id}', function ($user_id) {
+    return DB::table('reservations')
+        ->where('user_id', '=', $user_id)
+        ->get();
+});
+
+Route::get('/reservation/{user_id}', function ($user_id) {
+    $reservations = DB::table('reservations')
+        ->where('user_id', '=', $user_id)
+        ->get();
+
+    $events = [];
+    $i = 0;
+    foreach ($reservations as $reservation) {
+        $reservationEvents = DB::table('events')
+            ->where('id', $reservation->event_id)
+            ->get();
+        $events[$i] = $reservationEvents;
+        $i++;
+    }
+    $nombre = count($events);
+    return response()->json(['nombre' => $nombre , 'events' => $events, ]);
+});
+

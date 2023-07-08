@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\Admin\RentalEquipementController;
@@ -62,7 +63,8 @@ Route::get('/courses', function (){
     return view('courses');
 });
 
-
+Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('calendar');
+Route::get('/calendar', [CalendarController::class, 'user'])->name('calendar');
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
