@@ -81,19 +81,19 @@
                     @include('components.input', ['label' => 'Start Date', 'name' => 'start_date', 'type' => 'date', 'value' => $formattedStartDate])
                 </div>
 
-                <div class="mb-3" id="end-date-container" style="'display:none'">
+                <div class="mb-3" id="end-date-container" style="display:none">
                 @include('components.input', ['label' => 'End Date', 'name' => 'end_date', 'type' => 'date', 'value' => $formattedEndDate])
                 </div>
 
-                <div class="mb-3" id="start-time-container" style="'display:none'">
+                <div class="mb-3" id="start-time-container" style="display:none">
                     @include('components.input', ['label' => 'Start Time', 'name' => 'start_time', 'type' => 'time', 'value' => $event->start_time])
                 </div>
 
-                <div class="mb-3" id="end-time-container" style="'display:none'">
+                <div class="mb-3" id="end-time-container" style="display:none">
                     @include('components.input', ['label' => 'End Time', 'name' => 'end_time', 'type' => 'time', 'value' => $event->end_time])
                 </div>
 
-                <div class="mb-3" id="office-container" style="'display:none'">
+                <div class="mb-3" id="office-container" style="display:none">
                     <select class="form-select" name="office_id" id="office-select">
                         <option value="default">Select an office</option>
                         @foreach($offices as $office)
