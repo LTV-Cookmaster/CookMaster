@@ -49,7 +49,7 @@
 @php
         use Carbon\Carbon;
         $date = Carbon::createFromFormat('d-m-Y', $event->start_date);
-        $formattedDate = $date->format('l jS Y');
+        $formattedDate = $date->format('F jS Y');
         $start = Carbon::createFromFormat('H:i', $event->start_time);
         $formattedStart = $start->format('H\h');
         $end = Carbon::createFromFormat('H:i', $event->end_time);
