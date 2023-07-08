@@ -2,14 +2,23 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Resources\ContractorCollection;
+use App\Http\Resources\ContractorResource;
+use App\Http\Resources\EventResource;
 use App\Http\Resources\InvoiceCollection;
 use App\Http\Resources\QuotationCollection;
 use App\Http\Resources\RecipeCollection;
+use App\Http\Resources\ReservationResource;
+use App\Http\Resources\SubscriptionResource;
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Http\Resources\WorkshopCollection;
+use App\Models\Contractor;
+use App\Models\Event;
 use App\Models\Invoice;
 use App\Models\Quotation;
 use App\Models\Recipe;
+use App\Models\Reservation;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -33,23 +42,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Route::get('/users', [UserController::class , 'apiIndex']);
 Route::get('/users', function () {
-    return new UserCollection(User::all());
+    return UserResource::collection(User::all());
 });
 
 Route::get('/contractors', function () {
-    return new ContractorCollection(User::all());
+    return ContractorResource::collection(Contractor::all());
 });
 
-Route::get('/workshops', function () {
-    return new WorkshopCollection(Workshop::all());
+Route::get('/events', function () {
+    return EventResource::collection(Event::all());
 });
 
-Route::get('/invoices', function () {
-    return new InvoiceCollection(Invoice::all());
+Route::get('/reservations', function () {
+    return ReservationResource::collection(Reservation::all());
 });
 
-Route::get('/quotations', function () {
-    return new QuotationCollection(Quotation::all());
+Route::get('/reservations/{user_id}', function ($user_id) {
+    return ReservationResource::collection(Reservation::where('user_id', '=', $user_id)->get());
+});
+
+Route::get('/subscriptions', function () {
+    return SubscriptionResource::collection(Subscription::all());
+});
+
+Route::get('/subscriptions/{plan}', function ($plan) {
+    return SubscriptionResource::collection(Subscription::where('subscription_type', '=', $plan)->get());
+});
+
+Route::get('/subscriptions/{user_id}', function ($user_id) {
+    return SubscriptionResource::collection(Subscription::where('user_id', '=', $user_id)->get());
 });
 
 Route::get('/rooms/{office_id}/{start_date}/{end_date}/{start_time}/{end_time}', function ($office_id, $start_date, $end_date, $start_time, $end_time) {
@@ -74,21 +95,5 @@ Route::get('/rooms/{office_id}/', function ($office_id) {
             $query->select('room_id')
                 ->from('reservations');
         })
-        ->get();
-});
-
-Route::get('/reservations', function () {
-    return DB::table('reservations')
-        ->get();
-});
-
-Route::get('/reservations/{user_id}', function ($user_id) {
-    return DB::table('reservations')
-        ->where('user_id', '=', $user_id)
-        ->get();
-});
-
-Route::get('/subscriptions', function () {
-    return DB::table('subscriptions')
         ->get();
 });
