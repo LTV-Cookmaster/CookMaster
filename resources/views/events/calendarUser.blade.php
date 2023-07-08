@@ -46,7 +46,25 @@
                             eventModal.find('.modal-title').text(calEvent.title);
                             eventModal.find('#eventDescription').text(calEvent.description);
                             eventModal.find('#eventPrice').text(calEvent.price);
-                            eventModal.find('#eventType').text(calEvent.type);
+                            switch(calEvent.type) {
+                                case 'tastingEvent':
+                                    eventModal.find('#eventType').text('Dégustation');
+                                    break;
+                                case 'professionalFormation':
+                                    eventModal.find('#eventType').text('Formation professionnelle');
+                                    break;
+                                case 'onlineWorkshop':
+                                    eventModal.find('#eventType').text('Atelier en ligne');
+                                    break;
+                                case 'meetingEvent':
+                                    eventModal.find('#eventType').text('Réunion');
+                                    break;
+                                case 'homeWorkshop':
+                                    eventModal.find('#eventType').text('Atelier à domicile');
+                                    break;
+                                default:
+                                    eventModal.find('#eventType').text('Type inconnu');
+                            }
                             eventModal.find('#eventHeures').text(calEvent.horaire);
                             eventModal.find('a').attr('href', '/event/' + calEvent.id);
                             eventModal.modal('show');
@@ -64,8 +82,9 @@
         }
 
         .loading-image {
-            height: 50vh;
-            width: 50vw;
+            margin-top: 20vh;
+            height: 25vh;
+            width: 15vw;
             text-align: center;
         }
 
@@ -75,7 +94,7 @@
 <body>
 @include('layouts.navbar')
 <div style="text-align: center">
-    <img id="loading" src="{{ asset('Loading_icon.gif') }}" alt="Loading..." class="loading-image" />
+    <img id="loading" src="{{ asset('reload.gif') }}" alt="Loading..." class="loading-image" />
 </div>
 <div id="calendar"></div>
 
