@@ -26,6 +26,9 @@
                             description: event.description,
                             price: event.price,
                             number_of_participants: event.number_of_participants,
+                            horaire: event.start_time + ' - ' + event.end_time,
+                            id: event.id,
+                            type: event.type,
                         };
                     });
 
@@ -45,7 +48,9 @@
                             eventModal.find('.modal-title').text(calEvent.title);
                             eventModal.find('#eventDescription').text(calEvent.description);
                             eventModal.find('#eventPrice').text(calEvent.price);
-                            eventModal.find('#eventParticipants').text(calEvent.number_of_participants);
+                            eventModal.find('#eventType').text(calEvent.type);
+                            eventModal.find('#eventHeures').text(calEvent.horaire);
+                            eventModal.find('a').attr('href', '/event/' + calEvent.id);
                             eventModal.modal('show');
                         },
 
@@ -72,9 +77,12 @@
 </head>
 <body>
 @include('layouts.navbar')
+<br>
 <div style="text-align: center">
     <img id="loading" src="{{ asset('Loading_icon.gif') }}" alt="Loading..." class="loading-image" />
 </div>
+<br>
+<br>
 <div id="calendar"></div>
 
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
@@ -86,8 +94,10 @@
             </div>
             <div class="modal-body">
                 <p id="eventDescription"></p>
-                <p>Prix : <span id="eventPrice"></span></p>
-                <p>Nombre de participants : <span id="eventParticipants"></span></p>
+                <p><i class="fa-solid fa-tag"></i> <strong>{{__("Prix :")}}</strong> <span id="eventPrice"></span>€</p>
+                <p><i class="fa-solid fa-circle-info"></i> <strong>{{__("Type :")}}</strong> <span id="eventType"></span></p>
+                <p><i class="fa-solid fa-clock"></i> <strong>{{__("Horaires :")}}</strong> <span id="eventHeures"></span></p>
+                <a href="" class="btn btn-primary">{{__("Voir l'évènement")}}</a>
             </div>
         </div>
     </div>
