@@ -1,6 +1,6 @@
 @extends('admin.users')
 
-@section('title', $user->exists ? "Modifier un utilisateur" : "Créer un utilisateur")
+@section('title', $user->exists ? __('users.update_user') : __('users.create'))
 
 @section('content')
     @if($errors->any())
@@ -20,23 +20,23 @@
         @method($user->exists ? 'put' : 'post')
 
         <div class="row">
-            @include('components.input.input' , ['class' => 'col','label' => 'Nom' , 'name' => 'name', 'value' => $user->name])
+            @include('components.input.input' , ['class' => 'col','label' => __('users.name') , 'name' => 'name', 'value' => $user->name])
         </div>
-        @include('components.input.input' , ['class' => 'col','label' => 'email' , 'name' => 'email', 'value' => $user->email])
+        @include('components.input.input' , ['class' => 'col','label' => __('users.email') , 'name' => 'email', 'value' => $user->email])
         <div class="row">
             <div class="col row">
-                @include('components.input.input' , ['class' => 'col','label' => 'Adresse' , 'name' => 'address', 'value' => $user->address])
-                @include('components.input.input' , ['label' => 'Ville' , 'name' => 'city', 'value' => $user->city])
+                @include('components.input.input' , ['class' => 'col','label' => __('users.address') , 'name' => 'address', 'value' => $user->address])
+                @include('components.input.input' , ['label' => __('users.city') , 'name' => 'city', 'value' => $user->city])
             </div>
             <div class="col row">
-                @include('components.input.input' , ['class' => 'col','label' => 'Code postal' , 'name' => 'postal_code', 'value' => $user->postal_code])
-                @include('components.input.input' , ['label' => 'Pays' , 'name' => 'country', 'value' => $user->country])
+                @include('components.input.input' , ['class' => 'col','label' => __('users.postal_code') , 'name' => 'postal_code', 'value' => $user->postal_code])
+                @include('components.input.input' , ['label' => __('users.country') , 'name' => 'country', 'value' => $user->country])
             </div>
-            @include('components.input.input' , ['label' => 'Téléphone' , 'name' => 'phone', 'value' => $user->phone])
+            @include('components.input.input' , ['label' => __('users.phone') , 'name' => 'phone', 'value' => $user->phone])
             @if($user->exists)
-                @include('components.input.input' , ['label' => 'Code d\'affiliation' , 'name' => 'referral_code', 'value' => $user->referral_code])
+                @include('components.input.input' , ['label' => __('users.referral_code') , 'name' => 'referral_code', 'value' => $user->referral_code])
             @else
-                @include('components.input.input' , ['label' => 'Password' , 'name' => 'password', 'value' => $user->password, 'class' => 'display-none'])
+                @include('components.input.input' , ['label' => __('users.password') , 'name' => 'password', 'value' => $user->password, 'class' => 'display-none'])
             @endif
 
 {{--
@@ -44,11 +44,11 @@
 --}}
                  <select name="is_admin" id="is_admin">
                      @if($user->is_admin == 0)
-                         <option value="0">Non</option>
-                         <option value="1">Oui</option>
+                         <option value="0">{{__('users.no')}}</option>
+                         <option value="1">{{__('users.yes')}}</option>
                      @else
-                         <option value="1">Oui</option>
-                         <option value="0">Non</option>
+                         <option value="0">{{__('users.no')}}</option>
+                         <option value="1">{{__('users.yes')}}</option>
                      @endif
                  </select>
 
