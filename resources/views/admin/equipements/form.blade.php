@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title', $equipement->exists ? "Editer un equipement" : "Créer un equipement")
+@section('title', $equipement->exists ? __('equipments.form.update') : __('equipments.create'))
 @include('layouts.navbar')
 @section('content')
     @if($errors->any())
@@ -21,19 +21,19 @@
         @method($equipement->exists ? 'put' : 'post')
 
         <div class="row">
-            @include('components.input' , ['class' => 'col','label' => 'Nom' , 'name' => 'name', 'value' => $equipement->name])
+            @include('components.input' , ['class' => 'col','label' => __('equipments.name') , 'name' => 'name', 'value' => $equipement->name])
         </div>
-        @include('components.input' , ['label' => 'Description' , 'name' => 'description' ,'value' => $equipement->description])
+        @include('components.input' , ['label' => __('equipments.description') , 'name' => 'description' ,'value' => $equipement->description])
         <div class="row">
             <div class="col row">
-                @include('components.input' , ['label' => 'Prix' , 'name' => 'price', 'value' => $equipement->price])
+                @include('components.input' , ['label' => __('equipments.price') , 'name' => 'price', 'value' => $equipement->price])
                 <br>
                 <br>
                 <br>
                 <div class="mb-3" id="office-container" style="">
                     <select class="form-select" name="office_id" id="office_id">
-                        <label for="office_id">{{__('admin.equipments.form.office')}}</label>
-                        <option value="default">{{__('admin.equipments.form.office')}}</option>
+                        <label for="office_id">{{__('equipments.form.office')}}</label>
+                        <option value="default">{{__('equipments.form.select')}}</option>
                         @foreach($offices as $office)
                             <option value="{{ $office->id }}" {{ $equipement->office_id == $office->id ? 'selected' : '' }}>{{ $office->name }} | {{ $office->postal_code }} | {{ $office->address }}</option>
                         @endforeach
@@ -46,9 +46,9 @@
         <div>
             <button class="btn btn-primary">
                 @if($equipement->exists)
-                    Modifier
+                {{__('equipments.form.update')}}
                 @else
-                    Créer
+                {{__('equipments.form.create')}}
                 @endif
             </button>
         </div>

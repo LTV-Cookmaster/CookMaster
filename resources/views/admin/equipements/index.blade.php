@@ -1,20 +1,20 @@
 @extends('admin.admin')
 
-@section('title' , 'Les Equipements louables')
+@section('title' , __('equipments.form.title'))
 @include('layouts.navbar')
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.equipement.create') }}" class="btn btn-primary">Créer un equipement</a>
+        <a href="{{ route('admin.equipement.create') }}" class="btn btn-primary">{{__('equipments.create')}}</a>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nom</th>
-            <th>Office</th>
-            <th>Prix</th>
-            <th>Actions</th>
+            <th>{{__('equipments.name')}}</th>
+            <th>{{__('equipments.office')}}</th>
+            <th>{{__('equipments.price')}}</th>
+            <th>{{__('equipments.actions')}}</th>
         </tr>
         </thead>
         <tbody>
