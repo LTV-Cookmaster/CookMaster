@@ -32,8 +32,8 @@
                 <br>
                 <div class="mb-3" id="office-container" style="">
                     <select class="form-select" name="office_id" id="office_id">
-                        <label for="office_id">Office</label>
-                        <option value="default">Select an office</option>
+                        <label for="office_id">{{__('admin.equipments.form.office')}}</label>
+                        <option value="default">{{__('admin.equipments.form.office')}}</option>
                         @foreach($offices as $office)
                             <option value="{{ $office->id }}" {{ $equipement->office_id == $office->id ? 'selected' : '' }}>{{ $office->name }} | {{ $office->postal_code }} | {{ $office->address }}</option>
                         @endforeach
