@@ -1,6 +1,6 @@
 @extends('admin.users')
 
-@section('title' , 'Listes des Utilisateurs')
+@section('title' , __('users.list'))
 @php
     use Carbon\Carbon;
 @endphp
@@ -9,20 +9,21 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Créer un user</a>
+        <a href="{{ route('admin.user.create') }}" class="btn btn-primary">{{__('users.create')}}</a>
     </div>
     <table class="table table-striped">
         <thead class="thead-dark" style="background-color: black;color: white">
         <tr>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Ville</th>
-            <th>Code Postal</th>
-            <th>Pays</th>
-            <th>Date Création</th>
-            <th>Rôle</th>
-            <th>Ban</th>
-            <th class="text-center">Actions</th>
+            <th>{{__('users.name')}}</th>
+            <th>{{__('users.email')}}</th>
+            <th>{{__('users.city')}}</th>
+            <th>{{__('users.postal_code')}}</th>
+            <th>{{__('users.country')}}</th>
+            <th>{{__('users.role')}}</th>
+            <th>{{__('users.banned')}}</th>
+            <th>{{__('users.name')}}</th>
+            <th>{{__('users.name')}}</th>
+            <th class="text-center">{{__('users.actions')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -39,26 +40,26 @@
                 @php
                         $dateCreation = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at);
                         $diffEnJours = $dateCreation->diffInDays(Carbon::now());
-                        if ($diffEnJours > 0) $phrase = "il y a " . $diffEnJours . " jours";
-                        else $phrase = "Aujourd'hui";
+                        if ($diffEnJours > 0) $phrase = __('users.phrase') . $diffEnJours . __('users.days');
+                        else $phrase = __('users.today');
                 @endphp
                 <td>{{ $phrase }}</td>
                 @if($user->is_admin)
-                    <td><strong style="color: darkgoldenrod">Admin</strong></td>
+                    <td><strong style="color: darkgoldenrod">{{__('users.admin')}}</strong></td>
                 @else
-                    <td>Membre</td>
+                    <td>{{__('users.member')}}</td>
                 @endif
                 @if($user->is_ban)
-                    <td><strong style="color: red">Banni</strong></td>
+                    <td><strong style="color: red">{{__('users.banned')}}</strong></td>
                     <td>
-                        <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">Modifier</a>
-                        <a href="{{ route('admin.user.unban', $user) }}" class="btn btn-success">Débannir</a>
+                        <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">{{__('users.update')}}</a>
+                        <a href="{{ route('admin.user.unban', $user) }}" class="btn btn-success">{{__('users.unban')}}</a>
                     </td>
                 @else
                     <td></td>
                     <td>
-                        <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">Modifier</a>
-                        <a href="{{ route('admin.user.ban', $user) }}" class="btn btn-danger">Bannir</a>
+                        <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">{{__('users.update')}}</a>
+                        <a href="{{ route('admin.user.ban', $user) }}" class="btn btn-danger">{{__('users.ban')}}</a>
                     </td>
                 @endif
             </tr>
