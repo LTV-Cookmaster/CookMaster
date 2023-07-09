@@ -61,9 +61,9 @@ Route::get('/reservations', [UserReservationsController::class, 'index'])->name(
 
 Route::get('/courses', function (){
     return view('courses');
-});
+})->name('courses');
 
-Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('calendar');
+Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('adminCalendar');
 Route::get('/calendar', [CalendarController::class, 'user'])->name('calendar');
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');

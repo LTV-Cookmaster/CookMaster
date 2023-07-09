@@ -32,27 +32,27 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('home') }}">
-                            <span class="nav-span">{{'Home'}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{{ route('workshops') }}">
-                            <span class="nav-span">{{'Workshops'}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="/">
-                            <span class="nav-span">{{'Courses'}}</span>
+                            <span class="nav-span">{{__('Home')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('events.index') }}">
-                            <span class="nav-span">{{'Events'}}</span>
+                            <span class="nav-span">{{__('Events')}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{{ route('courses') }}">
+                            <span class="nav-span">{{__('Courses')}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{{ route('calendar') }}">
+                            <span class="nav-span">{{__('Calendar')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="/">
-                            <span class="nav-span">{{'Shop'}}</span>
+                            <span class="nav-span">{{__('Shop')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -78,15 +78,29 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown me-3">
+                        <div class="dropdown" style="margin-right: 20px">
+                            <a class="btn btn-outline-secondary">Menu</a>
+                            <div class="dropdown-content">
+                                <a class="dropdown-item" href="{{ route('profil') }}">Profile</a>
+                                <a class="dropdown-item" href="{{route('reservations')}}">{{__("Mes réservations")}}</a>
+                                <a class="dropdown-item dropdown-menu-end" aria-labelledby="navbarDropdown" href="{{route('logout')}}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
+                        {{--<li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
                                role="button" data-mdb-toggle="dropdown" aria-expanded="true">
                                 <img src="https://www.pngall.com/wp-content/uploads/2016/05/Man-Download-PNG.png" class="rounded-circle"
                                      height="22" alt="Portrait of a Woman" loading="lazy" />
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('profil') }}">Profile</a>
+                                <li>--}}
+{{--                                    <a class="dropdown-item" href="{{ route('profil') }}">Profile</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{route('reservations')}}">{{__("Mes réservations")}}</a>
@@ -99,9 +113,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </li>
-                            </ul>
-                        </li>
+                                </li>--}}
+{{--                            </ul>
+                        </li>--}}
                     @endguest
                         @auth
                             @if(auth()->user()->is_admin)
@@ -144,7 +158,8 @@
                                         <a href="{{ route('admin.user.index') }}" class="{{ Request::is('admin/user*') ? 'active' : '' }}">Les utilisateurs</a>
                                         <a href="{{ route('admin.room.index') }}" class="{{ Request::is('admin/room*') ? 'active' : '' }}">Les rooms</a>
                                         <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">Les évènements</a>
-                                        <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">Les Equipements louable</a>
+                                        <a href="{{ route('adminCalendar') }}" class="{{ Request::is('admin/calendar*') ? 'active' : '' }}">Agenda des évènements</a>
+                                        <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">Les equipements louable</a>
                                     </div>
                                 </div>
                             @endif

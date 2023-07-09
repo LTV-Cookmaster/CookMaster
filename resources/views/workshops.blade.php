@@ -41,7 +41,7 @@
                                                 <br>
                                                 @php
                                                     $date = Carbon::createFromFormat('d-m-Y', $online->start_date);
-                                                    $formattedDate = $date->format('l jS Y');
+                                                    $formattedDate = $date->format('F jS Y');
                                                 @endphp
                                             <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
                                             <br>
@@ -78,7 +78,7 @@
                                                     <br>
                                                     @php
                                                         $date = Carbon::createFromFormat('d-m-Y', $workshop->start_date);
-                                                        $formattedDate = $date->format('l jS Y');
+                                                        $formattedDate = $date->format('F jS Y');
                                                 @endphp
                                                 <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }}</span>
                                                 <br>
@@ -110,7 +110,7 @@
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
                             <a href="{{ route('event', ['event' => $formation->id]) }}">
                                 <img src="{{ asset('storage/'.$formation->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
-                            </a>                            
+                            </a>
                             <div class="card-body d-flex">
                                 <div class="row">
                                     <div class="d-flex">
@@ -119,7 +119,7 @@
                                             <br>
                                             @php
                                                 $date = Carbon::createFromFormat('d-m-Y', $formation->start_date);
-                                                $formattedDate = $date->format('l jS Y');
+                                                $formattedDate = $date->format('F jS Y');
                                             @endphp
                                             <span class="text-truncate" style="color: #1C6513"><i class="fa-solid fa-calendar-days"></i> {{ $formattedDate }} <i class="fa-regular fa-clock"></i></span>
                                             <br>
