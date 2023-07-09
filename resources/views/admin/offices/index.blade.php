@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title' , 'Les locaux')
+@section('title' , __('offices.title'))
 @include('layouts.navbar')
 @section('content')
 
@@ -11,11 +11,11 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Ville</th>
-            <th>Nombres de pièces</th>
-            <th>Actions</th>
+            <th>{{__('offices.name')}}</th>
+            <th>{{__('offices.address')}}</th>
+            <th>{{__('offices.city')}}</th>
+            <th>{{__('offices.number_rooms')}}</th>
+            <th>{{__('offices.actions')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                 <td>{{ $office->city }}</td>
                 <td>{{ $office->number_of_rooms }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('admin.office.list', ['office' => $office->id]) }}">Afficher</a>
+                    <a class="btn btn-primary" href="{{ route('admin.office.list', ['office' => $office->id]) }}">{{__('offices.show')}}</a>
                 </td>
             </tr>
         @endforeach

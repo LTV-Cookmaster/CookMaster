@@ -6,15 +6,15 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.office.index') }}" class="btn btn-primary">Afficher les autres locaux</a>
+        <a href="{{ route('admin.office.index') }}" class="btn btn-primary">{{__('offices.show_others')}}</a>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nom</th>
-            <th>Capacité max</th>
-            <th>Prix</th>
-            <th>Réservé</th>
+            <th>{{__('offices.name')}}</th>
+            <th>{{__('offices.max_capacity')}}</th>
+            <th>{{__('offices.price')}}</th>
+            <th>{{__('offices.booked')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -24,9 +24,9 @@
                 <td>{{ $room->max_capacity }}m²</td>
                 <td>{{ $room->price }}€</td>
                 @if($room->is_booked)
-                    <td><span style="color: orange">Réservé</span></td>
+                    <td><span style="color: orange">{{__('offices.booked')}}</span></td>
                 @else
-                    <td><span style="color: darkgreen">Libre</span></td>
+                    <td><span style="color: darkgreen">{{__('offices.free')}}</span></td>
                 @endif
                 <td>
             </tr>
