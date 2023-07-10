@@ -29,10 +29,15 @@
                 @include('components.input' , ['label' => __('rooms.max_capacity') , 'name' => 'max_capacity', 'value' => $room->max_capacity])
                 @include('components.input' , ['label' => __('rooms.price') , 'name' => 'price', 'value' => $room->price])
             </div>
-            @include('components.checkbox' , ['label' => __('rooms.booked') , 'name' => 'is_booked', 'value' => $room->is_booked])
-
         </div>
-
+        <div class="mb-3" id="office-container" style="display:block">
+            <select class="form-select" name="office_id" id="office-select">
+                <option value="default">Select an office</option>
+                @foreach($offices as $office)
+                    <option value="{{ $office->id }}">{{ $office->name }} | {{ $office->postal_code }} | {{ $office->address }}</option>
+                @endforeach
+            </select>
+        </div>
         <div>
             <button class="btn btn-primary">
                 @if($room->exists)

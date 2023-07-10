@@ -14,8 +14,6 @@
             <th>{{__('rooms.name')}}</th>
             <th>{{__('rooms.max_capacity')}}</th>
             <th>{{__('rooms.price')}}</th>
-            <th>{{__('rooms.booked')}}</th>
-            <th>{{__('rooms.actions')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -24,13 +22,6 @@
                 <td>{{ $room->name }}</td>
                 <td>{{ $room->max_capacity }}m²</td>
                 <td>{{ $room->price }}€</td>
-                @if($room->is_booked)
-                    <td><span style="color: orange">{{__('rooms.booked')}}</span></td>
-                @else
-                    <td><span style="color: darkgreen">{{__('rooms.free')}}</span></td>
-                @endif
-                <td>
-                    <a class="btn btn-primary">{{__('rooms.show')}}</a></td>
             </tr>
         @endforeach
         </tbody>
