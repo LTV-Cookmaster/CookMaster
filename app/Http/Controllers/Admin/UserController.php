@@ -13,11 +13,19 @@ use PhpParser\Builder\Property;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         return view('admin.users.index', [
            'users' => User::orderBy('created_at' , 'desc')->paginate(8)
         ]);
@@ -28,6 +36,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $user = new User();
         $user->fill([
             'name' => 'test',
@@ -47,6 +59,10 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $user = User::create($request->validated());
         return to_route('admin.user.index')->with('success', 'L\'utilisateur à été créer');
 
@@ -57,6 +73,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         return view('admin.users.form' , [
             'user' => $user
         ]);
@@ -67,6 +87,10 @@ class UserController extends Controller
      */
     public function update(UserFormRequest $request, User $user)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $user->update($request->validated());
         return to_route('admin.user.index')->with('success', 'L\'utilisateur a bien été modifié');
     }
@@ -82,6 +106,10 @@ class UserController extends Controller
 
     public function unban(User $user)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $user->is_ban = false;
         $user->save();
 
@@ -90,6 +118,10 @@ class UserController extends Controller
 
     public function ban(User $user)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $user->is_ban = true;
         $user->save();
 

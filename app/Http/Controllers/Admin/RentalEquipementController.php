@@ -14,6 +14,10 @@ use Illuminate\Support\Str;
 
 class RentalEquipementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $equipements = RentalEquipment::orderBy('created_at', 'desc')->paginate(25);

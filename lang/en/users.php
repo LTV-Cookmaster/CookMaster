@@ -29,6 +29,7 @@ return [
     'yes' => 'Yes',
     'member' => 'Member',
     'admin' => 'Admin',
+    'date' => 'Date',
 
 
 ];

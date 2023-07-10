@@ -10,6 +10,10 @@ use Illuminate\Support\Str;
 
 class RoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
        return view('admin.rooms.index', [
