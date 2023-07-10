@@ -3,8 +3,9 @@
 @php
     use Carbon\Carbon;
 @endphp
-@section('title' , 'Home')
 @include('layouts.navbar')
+@section('title' , __('home.title'))
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,7 +89,7 @@
 
 <div class="container-fluid">
     <div class="container">
-        <h2 class="text-center mt-2">Your next workshops</h2>
+        <h2 class="text-center mt-2">{{__('home.next_workshops')}}</h2>
         <div class="row">
             @foreach($workshops as $workshop)
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -125,7 +126,7 @@
                 </div>
             @endforeach
         </div>
-        <h2 class="text-center mt-2">Your next events</h2>
+        <h2 class="text-center mt-2">{{__('home.next_events')}}</h2>
         <div class="row">
             @foreach($formations as $formation)
                 <div class="col-lg-4 col-md-4 col-sm-6">
