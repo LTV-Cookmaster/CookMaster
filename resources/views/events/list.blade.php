@@ -54,8 +54,9 @@
                     <td id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</td>
                 @endif
                 <td>
-                    <a class="btn btn-primary" href="{{ route('events.edit', ['event' => $event->id]) }}">{{__('events.edit')}}</a>
-                    <a class="btn btn-primary" href="{{ route('addEquipementToEvent', ['event_id' => $event->id]) }}">{{__('events.add_equipments')}}</a>
+                    <a class="btn btn-secondary" href="{{ route('addEquipementToEvent', ['event_id' => $event->id]) }}">Ajouter des équipements</a>
+                    <a class="btn btn-primary" href="{{ route('events.edit', ['event' => $event->id]) }}">Modifier</a>
+
                 </td>
             </tr>
         @endforeach
