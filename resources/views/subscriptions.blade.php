@@ -14,75 +14,75 @@
         <div class="col-md-4">
             <div class="card mt-4">
                 <div class="card-header">
-                    <h3 class="text-center">Formule gratuite</h3>
+                    <h3 class="text-center">{{__('subscriptions.free_plan')}}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <h5>{{__('Prix : Gratuit')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:red">{{__('Oui')}}</span></li>
-                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('1 par jour')}}</span></li>
-                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <h5>{{__('subscriptions.free_price')}}</h5>
+                        <li>{{__('subscriptions.advertising')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.comment')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.lessons')}} <span style="color:green">{{__('subscriptions.free_lessons_count')}}</span></li>
+                        <li>{{__('subscriptions.chat')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.discount')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.shipping')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.rental_equipments')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.invitations')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.referral_advantage')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.renewal')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.checkout', ['plan' => 'freePlan']) }}" class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'freePlan']) }}" class="btn btn-success btn-block">{{__('subscriptions.subscribe')}}</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mt-4">
                 <div class="card-header">
-                    <h3 class="text-center">Formule starter</h3>
+                    <h3 class="text-center">{{__('subscriptions.starter_plan')}}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <h5>{{__('Prix : 9,90€/mois ou 113€/an')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:green">{{__('Non')}}</span></li>
-                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('5 par jour')}}</span></li>
-                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:green">{{__('Oui, en point relais uniquement')}}</span></li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:red">{{__('Non')}}</span></li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:green">{{__('Oui, un chèque cadeau de 5 euros tous les 3 nouveaux inscrits (hors formule gratuite)')}}</span></li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:red">{{__('Non')}}</span></li>
+                        <h5>{{__('subscriptions.starter_price')}}</h5>
+                        <li>{{__('subscriptions.advertising')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.comment')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.lessons')}} <span style="color:green">{{__('subscriptions.starter_lessons_count')}}</span></li>
+                        <li>{{__('subscriptions.chat')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.discount')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.shipping')}} <span style="color:green">{{__('subscriptions.starter_shipping')}}</span></li>
+                        <li>{{__('subscriptions.rental_equipments')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.invitations')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.referral_advantage')}} <span style="color:green">{{__('subscriptions.starter_referral')}}</span></li>
+                        <li>{{__('subscriptions.renewal')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.checkout', ['plan' => 'starterPlan']) }}" class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'starterPlan']) }}" class="btn btn-success btn-block">{{__('subscriptions.subscribe')}}</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mt-4">
                 <div class="card-header">
-                    <h3 class="text-center">Formule master</h3>
+                    <h3 class="text-center">{{__('subscriptions.master_plan')}}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <h5>{{__('Prix : 19€/mois ou 220€/an')}}</h5>
-                        <li>{{__('Présence de publicité dans le contenu :')}} <span style="color:green">{{__('Non')}}</span></li>
-                        <li>{{__('Commenter, publier des avis :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Accès aux leçons :')}} <span style="color:green">{{__('illimité')}}</span></li>
-                        <li>{{__('Accès au service de tchat avec un chef :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Réduction permanente de 5% dans la boutique :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Livraison offerte sur la boutique :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Accès au service de location d\'espace de cuisine :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Invitation à des évènements exclusifs (dégustation, rencontres, ventes privées...) :')}} <span style="color:green">{{__('Oui')}}</span></li>
-                        <li>{{__('Récompense cooptation nouvel inscrit :')}} <span style="color:green">{{__('Oui, un chèque cadeau de 5 euros pour chaque nouvel inscrit (hors formule gratuite) + bonus de 3% du montant total de la première commande du nouvel inscrit')}}</span></li>
-                        <li>{{__('Bonus de renouvellement de l\'abonnement :')}} <span style="color:green">{{__('Oui, réduction de 10% du montant de l\'abonnement en cas de renouvellement (valable uniquement sur le tarif annuel)')}}</span></li>
+                        <h5>{{__('subscriptions.master_price')}}</h5>
+                        <li>{{__('subscriptions.advertising')}} <span style="color:red">{{__('subscriptions.no')}}</span></li>
+                        <li>{{__('subscriptions.comment')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.lessons')}} <span style="color:green">{{__('subscriptions.starter_lessons_count')}}</span></li>
+                        <li>{{__('subscriptions.chat')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.discount')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.shipping')}} <span style="color:green">{{__('subscriptions.master_shipping')}}</span></li>
+                        <li>{{__('subscriptions.rental_equipments')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.invitations')}} <span style="color:green">{{__('subscriptions.yes')}}</span></li>
+                        <li>{{__('subscriptions.referral_advantage')}} <span style="color:green">{{__('subscriptions.master_referral')}}</span></li>
+                        <li>{{__('subscriptions.renewal')}} <span style="color:green">{{__('subscriptions.master_renewal')}}</span></li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('subscription.checkout', ['plan' => 'masterPlan']) }}" class="btn btn-success btn-block">Souscrire</a>
+                    <a href="{{ route('subscription.checkout', ['plan' => 'masterPlan']) }}" class="btn btn-success btn-block">{{__('subscriptions.subscribe')}}</a>
                 </div>
             </div>
         </div>

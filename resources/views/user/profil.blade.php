@@ -29,48 +29,48 @@
         <div class="col-md-6 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">{{__('Profile Settings')}}</h4>
+                    <h4 class="text-right">{{__('profile.profile_settings')}}</h4>
                 </div>
                 <form action="{{ route('profil.update') }}" method="POST">
                     @csrf
                 <div class="row mt-2 justify-content-center">
                     <div class="col-md-12">
-                        <label class="labels">{{__('Name')}}</label>
+                        <label class="labels">{{__('profile.name')}}</label>
                         <input type="text" name="name" class="form-control form-control-lg" placeholder="{{__('First name')}}" value="{{ $user->name }}">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
-                        <label class="labels">{{__('Mobile Number')}}</label>
+                        <label class="labels">{{__('profile.phone')}}</label>
                         <input type="text" name="phone" class="form-control form-control-lg" placeholder="{{__('Enter phone number')}}" value="{{ $user->phone }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">{{__('Address Line 1')}}</label>
+                        <label class="labels">{{__('profile.address')}}</label>
                         <input type="text" name="address" class="form-control form-control-lg" placeholder="{{__('Enter address line 1')}}" value="{{ $user->address }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">{{__('Postcode')}}</label>
+                        <label class="labels">{{__('profile.postal_code')}}</label>
                         <input type="text" name="postal_code" class="form-control form-control-lg" placeholder="{{__('Enter postcode')}}" value="{{ $user->postal_code }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">{{__('Country')}}</label>
+                        <label class="labels">{{__('profile.country')}}</label>
                         <input type="text" name="country" class="form-control form-control-lg" placeholder="{{__('Enter country')}}" value="{{ $user->country }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">{{__('City')}}</label>
+                        <label class="labels">{{__('profile.city')}}</label>
                         <input type="text" name="city" class="form-control form-control-lg" placeholder="{{__('Enter state/region')}}" value="{{ $user->city }}">
                     </div>
                     <div class="col-md-12">
-                        <label class="labels">{{__('Email ID')}}</label>
+                        <label class="labels">{{__('profile.email')}}</label>
                         <p class="form-control form-control-lg">{{ $user->email }} </p>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels">{{__('Code de parrainage')}}</label>
+                        <label class="labels">{{__('profile.referral_code')}}</label>
                         <p class="form-control form-control-lg">{{ $user->referee_code }}</p>
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="submit">{{__('Save Profile')}}</button>
+                    <button class="btn btn-primary profile-button" type="submit">{{__('profile.save')}}</button>
                 </div>
                 </form>
             </div>

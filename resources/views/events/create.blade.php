@@ -12,7 +12,7 @@
         $formattedEndDate = '';
     }
 @endphp
-@section('title', $event->exists ? "Éditer un évènement" : "Créer un évènement")
+@section('title', $event->exists ? __('events.edit_event') : __('events.create_event'))
 @include('layouts.navbar')
 @section('content')
     @if($errors->any())
@@ -34,11 +34,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
-                    @include('components.input', ['label' => 'Name', 'name' => 'name', 'value' => $event->name])
+                    @include('components.input', ['label' => __('events.name'), 'name' => 'name', 'value' => $event->name])
                 </div>
 
                 <div class="mb-3">
-                    <label for="type">Type</label>
+                    <label for="type">{{__('events.type')}}</label>
                     <select class="form-select" name="type">
                         @foreach($eventsTypes as $eventTypes)
                             <option value="{{ $eventTypes['name'] }}" {{ $event->type == $eventTypes['name'] ? 'selected' : '' }}>
@@ -48,11 +48,11 @@
                 </div>
 
                 <div class="mb-3">
-                    @include('components.input', ['label' => 'Description', 'name' => 'description', 'type' => 'textarea', 'value' => $event->description])
+                    @include('components.input', ['label' => __('events.description'), 'name' => 'description', 'type' => 'textarea', 'value' => $event->description])
                 </div>
 
                 <div class="mb-3">
-                    <label for="contractor_id">Contractor</label>
+                    <label for="contractor_id">{{__('events.contractor')}}</label>
                     <select class="form-select" name="contractor_id">
                         @foreach($contractors as $contractor))
                         <option value="{{ $contractor->id}}" {{ $event->contractor_id == $contractor->id ? 'selected' : '' }}>{{$contractor->name}}</option>
@@ -61,16 +61,16 @@
                 </div>
 
                 <div class="mb-3">
-                    @include('components.input', ['label' => 'Price', 'name' => 'price', 'type' => 'number', 'value' => $event->price])
+                    @include('components.input', ['label' => __('events.price'), 'name' => 'price', 'type' => 'number', 'value' => $event->price])
                 </div>
 
                 <div class="mb-3">
-                    @include('components.input', ['label' => 'Number of Participants', 'name' => 'number_of_participants', 'type' => 'number', 'value' => $event->number_of_participants])
+                    @include('components.input', ['label' => __('events.number_of_participants'), 'name' => 'number_of_participants', 'type' => 'number', 'value' => $event->number_of_participants])
                 </div>
 
                 <div class="mb-3">
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image</label>
+                        <label for="image" class="form-label">{{__('events.image')}}</label>
                         <input type="file" class="form-control" id="image" name="image">
                     </div>
                 </div>
@@ -78,30 +78,30 @@
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
-                    @include('components.input', ['label' => 'Start Date', 'name' => 'start_date', 'type' => 'date', 'value' => $formattedStartDate])
+                    @include('components.input', ['label' =>  __('events.start_date'), 'name' => 'start_date', 'type' => 'date', 'value' => $formattedStartDate])
                 </div>
 
                 <div class="mb-3" id="end-date-container" style="display:none">
-                @include('components.input', ['label' => 'End Date', 'name' => 'end_date', 'type' => 'date', 'value' => $formattedEndDate])
+                @include('components.input', ['label' => __('events.end_date'), 'name' => 'end_date', 'type' => 'date', 'value' => $formattedEndDate])
                 </div>
 
                 <div class="mb-3" id="start-time-container" style="display:none">
-                    @include('components.input', ['label' => 'Start Time', 'name' => 'start_time', 'type' => 'time', 'value' => $event->start_time])
+                    @include('components.input', ['label' => __('events.start_time'), 'name' => 'start_time', 'type' => 'time', 'value' => $event->start_time])
                 </div>
 
                 <div class="mb-3" id="end-time-container" style="display:none">
-                    @include('components.input', ['label' => 'End Time', 'name' => 'end_time', 'type' => 'time', 'value' => $event->end_time])
+                    @include('components.input', ['label' => __('events.end_time'), 'name' => 'end_time', 'type' => 'time', 'value' => $event->end_time])
                 </div>
 
                 <div class="mb-3" id="office-container" style="display:none">
                     <select class="form-select" name="office_id" id="office-select">
-                        <option value="default">Select an office</option>
+                        <option value="default">{{__('events.office_select')}}</option>
                         @foreach($offices as $office)
                             <option value="{{ $office->id }}" {{ $event->office_id == $office->id ? 'selected' : '' }}>{{ $office->name }} | {{ $office->postal_code }} | {{ $office->address }}</option>
                         @endforeach
                     </select>
                 </div>
-                <p id="loading" style="display: none">Loading...</p>
+                <p id="loading" style="display: none">{{__('events.loading')}}</p>
 
                 <div class="mb-3" id="room-select-wrapper" style="display: none;">
                     <select class="form-select" name="room_id" id="room-select">
@@ -149,7 +149,7 @@
                                     data.forEach(function (room) {
                                         var option = document.createElement('option');
                                         option.value = room.id;
-                                        option.textContent = room.name + " | Capacité maximal: " + room.max_capacity + " | Disponible";
+                                        option.textContent = room.name + " | " + {{__('events.max_capacity')}} + room.max_capacity + " | Disponible";
                                         roomSelect.appendChild(option);
                                     });
 
@@ -228,9 +228,9 @@
                 <div>
                     <button class="btn btn-primary">
                         @if($event->exists)
-                            Modifier
+                        {{__('events.edit')}}
                         @else
-                            Créer
+                        {{__('events.create')}}
                         @endif
                     </button>
                 </div>

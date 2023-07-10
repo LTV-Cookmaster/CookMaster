@@ -39,7 +39,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('equipement', RentalEquipementController::class)->except(['show']);
     Route::resource('office', OfficeController::class)->except(['show']);
     Route::prefix('office')->name('office.')->group(function (){
-        Route::get('office/list/{office}', [OfficeController::class, 'list'])->name('list');
+        Route::get('/office/list/{office}', [OfficeController::class, 'list'])->name('list');
     });
 });
 
@@ -57,6 +57,8 @@ Route::get('/events/edit/{event}', [EventController::class, 'edit'])->name('even
 Route::put('/events/update/{event}', [EventController::class, 'update'])->name('events.update');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
+
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 
 Route::get('/courses', function (){
@@ -67,13 +69,12 @@ Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('admin
 Route::get('/calendar', [CalendarController::class, 'user'])->name('calendar');
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
-Route::get('subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
-Route::get('subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
+Route::get('/subscription/checkout/{plan}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
+Route::get('/subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
 
-Route::get('checkout/{bill}', [CheckoutController::class, 'checkout'])->name('checkout');
-Route::get('checkout/success/{bill}', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/{bill}', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->name('checkout.success');
 
-Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
 
 Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
 Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');

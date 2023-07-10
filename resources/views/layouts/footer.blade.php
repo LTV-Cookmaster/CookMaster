@@ -3,12 +3,12 @@
 <br>
 <div class="container-fluid mt-5" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: white; padding: 10px; text-align: center; margin-top: -60px;">
     <footer class="d-flex flex-wrap justify-content-between align-items-center">
-        <p class="col-md-4 mb-0 text-muted text-start">Cookmaster ©</p>
+        <p class="col-md-4 mb-0 text-muted text-start">{{__('footer.title')}} ©</p>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About us</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy policy</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted disabled">cookmaster@gmail.com</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.about_us')}}</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.privacy_policy')}}</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted disabled">{{__('footer.email')}}</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-facebook" style="color: #1C6513"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-twitter" style="color: #1C6513"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-instagram" style="color: #1C6513"></i></a></li>

@@ -110,10 +110,10 @@
             </div>
             <div class="modal-body">
                 <p id="eventDescription"></p>
-                <p><i class="fa-solid fa-tag"></i> <strong>{{__("Prix :")}}</strong> <span id="eventPrice"></span>€</p>
-                <p><i class="fa-solid fa-circle-info"></i> <strong>{{__("Type :")}}</strong> <span id="eventType"></span></p>
-                <p><i class="fa-solid fa-clock"></i> <strong>{{__("Horaires :")}}</strong> <span id="eventHeures"></span></p>
-                <a href="" class="btn btn-primary">{{__("Voir l'évènement")}}</a>
+                <p><i class="fa-solid fa-tag"></i> <strong>{{__('calendar.price')}}</strong> <span id="eventPrice"></span>€</p>
+                <p><i class="fa-solid fa-circle-info"></i> <strong>{{__('calendar.type')}}</strong> <span id="eventType"></span></p>
+                <p><i class="fa-solid fa-clock"></i> <strong>{{__('calendar.hours')}}</strong> <span id="eventHeures"></span></p>
+                <a href="" class="btn btn-primary">{{__('calendar.show_event')}}</a>
             </div>
         </div>
     </div>
