@@ -20,6 +20,10 @@ class RentalEquipementController extends Controller
     }
     public function index()
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $equipements = RentalEquipment::orderBy('created_at', 'desc')->paginate(25);
 
        return view('admin.equipements.index', [
@@ -30,6 +34,10 @@ class RentalEquipementController extends Controller
 
     public function create()
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $equipement = new RentalEquipment();
         $offices = Office::all();
         return view('admin.equipements.form' , [
@@ -43,11 +51,19 @@ class RentalEquipementController extends Controller
      */
     public function store(RentalEquipementFormRequest $request)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $equipement = RentalEquipment::create($request->validated());
         return redirect()->route('admin.equipement.index')->with('success', __('L\'équipement à été crée'));
     }
     public function edit(string $id)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $equipement = RentalEquipment::findOrFail($id);
         $offices = Office::all();
         return view('admin.equipements.form' , [
@@ -61,6 +77,10 @@ class RentalEquipementController extends Controller
      */
     public function update(RentalEquipementFormRequest $request, string $id)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $equipement = RentalEquipment::findOrFail($id);
         $equipement->update($request->validated());
         return redirect()->route('admin.equipement.index')->with('success', __('L\'équipement à été modifié'));
