@@ -51,7 +51,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                            <a href="{{ route('events.index', ['event' => $meeting->id]) }}">
+                            <a href="{{ route('event', ['event' => $meeting->id]) }}">
                                 <img src="{{ asset('storage/'.$meeting->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>
                             <div class="card-body d-flex">
