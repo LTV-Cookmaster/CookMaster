@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @section('title' , 'Calendrier des événements')
     <meta charset='utf-8' />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />

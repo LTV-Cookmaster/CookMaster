@@ -9,20 +9,21 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
+{{--
         <a href="{{ route('admin.user.create') }}" class="btn btn-primary">{{__('users.create')}}</a>
+--}}
     </div>
     <table class="table table-striped">
-        <thead class="thead-dark" style="background-color: black;color: white">
+        <thead class="" style="color: white!important;">
         <tr>
             <th>{{__('users.name')}}</th>
             <th>{{__('users.email')}}</th>
             <th>{{__('users.city')}}</th>
             <th>{{__('users.postal_code')}}</th>
             <th>{{__('users.country')}}</th>
+            <th>{{__('users.date')}}</th>
             <th>{{__('users.role')}}</th>
             <th>{{__('users.banned')}}</th>
-            <th>{{__('users.name')}}</th>
-            <th>{{__('users.name')}}</th>
             <th class="text-center">{{__('users.actions')}}</th>
         </tr>
         </thead>
@@ -40,7 +41,7 @@
                 @php
                         $dateCreation = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at);
                         $diffEnJours = $dateCreation->diffInDays(Carbon::now());
-                        if ($diffEnJours > 0) $phrase = __('users.phrase') . $diffEnJours . __('users.days');
+                        if ($diffEnJours > 0) $phrase = __('users.phrase') . " " .$diffEnJours. " " . __('users.days');
                         else $phrase = __('users.today');
                 @endphp
                 <td>{{ $phrase }}</td>
