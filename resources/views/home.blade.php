@@ -3,7 +3,9 @@
 @php
     use Carbon\Carbon;
 @endphp
+@include('layouts.navbar')
 @section('title' , __('home.title'))
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +53,7 @@
 </head>
 
 <body>
-@include('layouts.navbar')
+
 
 @if(session('success'))
     <div id="success-alert" class="alert alert-success alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
