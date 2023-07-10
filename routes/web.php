@@ -11,6 +11,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UserReservationsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
@@ -59,9 +60,7 @@ Route::put('/events/update/{event}', [EventController::class, 'update'])->name('
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 
-Route::get('/courses', function (){
-    return view('courses');
-})->name('courses');
+Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
 
 Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('adminCalendar');
 Route::get('/calendar', [CalendarController::class, 'user'])->name('calendar');
