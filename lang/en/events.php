@@ -38,4 +38,5 @@ return [
     'remaining_places' => 'Remaining places :',
     'book' => 'Book',
     'already_booked' => 'You have already booked this event',
+    'add_equipments' => 'Add equipments',
 ];

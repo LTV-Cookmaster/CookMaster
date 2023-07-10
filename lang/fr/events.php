@@ -38,4 +38,5 @@ return [
     'remaining_places' => 'Places restantes :',
     'book' => 'Réserver',
     'already_booked' => 'Vous avez déjà réservé cet événement',
+    'add_equipments' => 'Ajouter des équipements',
 ];
