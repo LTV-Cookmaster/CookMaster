@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>{{__('checkout.title')}}</title>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 @include('layouts.navbar')
@@ -19,7 +19,7 @@
                 @csrf
                 <div class="card-body">
                     <div id="card-element" class="mb-3"></div>
-                    <button id="submit-button" type="submit" class="btn btn-primary">Payer</button>
+                    <button id="submit-button" type="submit" class="btn btn-primary">{{__('checkout.pay')}}</button>
                 </div>
             </form>
         </div>
@@ -45,8 +45,6 @@
             if (result.error) {
                 console.error(result.error);
             } else {
-                // Paiement réussi, effectuer les actions nécessaires
-                // comme enregistrer la souscription dans la base de données
                 window.location.href = "{{ route('checkout.success', ['bill' => $bill->id , 'paid' => true]) }}";
             }
         }).catch(function (error) {

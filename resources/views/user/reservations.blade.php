@@ -17,16 +17,16 @@
     <br>
     <div class="container">
         <section class="mb-5">
-            <h2>{{__("Mes réservations")}}</h2>
+            <h2>{{__('reservations.my_reservations')}}</h2>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>{{ __("Nom") }}</th>
-                    <th>{{ __("Date") }}</th>
-                    <th>{{ __("Horaires") }}</th>
-                    <th>{{ __("Prix") }}</th>
-                    <th>{{ __("Statut") }}</th>
-                    <th>{{__("Voir plus")}}</th>
+                    <th>{{ __('reservations.name') }}</th>
+                    <th>{{ __('reservations.date') }}</th>
+                    <th>{{ __('reservations.hours') }}</th>
+                    <th>{{ __('reservations.price') }}</th>
+                    <th>{{ __('reservations.status') }}</th>
+                    <th>{{ __('reservations.see_more') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,15 +49,15 @@
                         <td>{{ $reservation->price }}€</td>
                         <td>
                             @if ($endDate->isPast())
-                                <span style="color: darkgoldenrod">{{ __("Event terminé") }}</span>
+                                <span style="color: darkgoldenrod">{{ __('reservations.done_workshop') }}</span>
                             @elseif ($startDate->isFuture())
-                                <span style="color: green">{{ __("Event à venir") }}</span>
+                                <span style="color: green">{{ __('reservations.coming_workshop') }}</span>
                             @else
-                                <span style="color: blue">{{ __("Event en cours") }}</span>
+                                <span style="color: blue">{{ __('reservations.in_progress_workshop') }}</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('event', ['event' => $reservation->id]) }}" class="btn btn-primary">{{__("Voir")}}</a>
+                            <a href="{{ route('event', ['event' => $reservation->id]) }}" class="btn btn-primary">{{__('reservations.see')}}</a>
                         </td>
                     </tr>
                     @endforeach

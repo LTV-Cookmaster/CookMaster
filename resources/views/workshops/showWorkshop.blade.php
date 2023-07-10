@@ -63,42 +63,42 @@
         <div class="col-lg-6">
             <div class="eventDetail">
                 <h1 id="eventTitle">{{ $event->name }}</h1>
-                <p id="eventDate"><i class="fa-solid fa-calendar-days"></i> <strong>{{__('Date:')}} </strong>{{ $formattedDate }}</p>
-                <p id="eventTime"><i class="fa-solid fa-clock"></i> <strong>{{__('Heure:')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
-                <p id="eventType"><i class="fa-solid fa-circle-info"></i> <strong>{{ __('Type:') }}</strong>
+                <p id="eventDate"><i class="fa-solid fa-calendar-days"></i> <strong>{{__('events.date')}} </strong>{{ $formattedDate }}</p>
+                <p id="eventTime"><i class="fa-solid fa-clock"></i> <strong>{{__('events.hours')}} </strong>{{ $formattedStart }} - {{ $formattedEnd }}</p>
+                <p id="eventType"><i class="fa-solid fa-circle-info"></i> <strong>{{ __('events.event_type') }}</strong>
                     @switch($event->type)
                         @case('tastingEvent')
-                            {{ __('Dégustation') }}
+                            {{ __('events.tasting_event') }}
                             @break
                         @case('professionalFormation')
-                            {{ __('Formation professionnelle') }}
+                            {{ __('events.professional_formation') }}
                             @break
                         @case('onlineWorkshop')
-                            {{ __('Atelier en ligne') }}
+                            {{ __('events.online_workshop') }}
                             @break
                         @case('meetingEvent')
-                            {{ __('Réunion') }}
+                            {{ __('events.meeting_event') }}
                             @break
                         @case('homeWorkshop')
-                            {{ __('Atelier à domicile') }}
+                            {{ __('events.home_workshop') }}
                             @break
                         @default
-                            {{ __('Type inconnu') }}
+                            {{ __('events.unknown_type') }}
                     @endswitch
                 </p>
 
             @if($reservationCount == $event->number_of_participants)
-                    <p id="eventSeats" style="color: red"><i class="fa-solid fa-person"></i> <strong>{{__('Complet')}} </strong>{{ $event->seats }}</p>
+                    <p id="eventSeats" style="color: red"><i class="fa-solid fa-person"></i> <strong>{{__('events.full')}} </strong>{{ $event->seats }}</p>
                 @else
-                    <p id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{__('Places restantes: ') .  ($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</p>
+                    <p id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{__('events.remaining_places') .  ($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</p>
                 @endif
-                <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('Prix:')}} </strong>{{ $event->price }}€</p>
+                <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('events.event_price')}} </strong>{{ $event->price }}€</p>
                 @if($reserve == false && $reservationCount < $event->number_of_participants)
-                <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('Réserver')}}</a>
+                <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('events.book')}}</a>
                 @elseif($reservationCount == $event->number_of_participants)
-                    <p class="btn btn-danger">{{__('Complet')}}</p>
+                    <p class="btn btn-danger">{{__('events.full')}}</p>
                 @else
-                    <p class="btn btn-secondary">{{__('Vous êtes déja inscrit')}}</p>
+                    <p class="btn btn-secondary">{{__('events.already_booked')}}</p>
                 @endif
             </div>
             <div id="eventDescription">{{ $event->description }}</div>
