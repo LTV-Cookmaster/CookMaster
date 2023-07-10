@@ -26,7 +26,7 @@ class RoomFormRequest extends FormRequest
             'description' => ['required','string','min:8'],
             'max_capacity' => ['required','integer','max:10'],
             'price' => ['required','integer','min:100'],
-            'is_booked' => ['required','boolean'],
+            'office_id' => ['required','string','exists:offices,id'],
         ];
     }
 }

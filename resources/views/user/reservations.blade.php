@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
+@section('title' , 'Mes réservations')
 @php
     use Carbon\Carbon;
+
 @endphp
     <head>
         <meta charset="UTF-8">

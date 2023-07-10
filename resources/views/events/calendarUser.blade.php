@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @section('title' , 'Calendrier des réservations')
     <meta charset='utf-8' />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
@@ -93,11 +94,13 @@
 </head>
 <body>
 @include('layouts.navbar')
+<br>
 <div style="text-align: center">
     <img id="loading" src="{{ asset('reload.gif') }}" alt="Loading..." class="loading-image" />
 </div>
 <div id="calendar"></div>
-
+<br>
+<br>
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

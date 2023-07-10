@@ -76,4 +76,8 @@ Route::get('/checkout/{bill}', [CheckoutController::class, 'checkout'])->name('c
 Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->name('checkout.success');
 
 
+Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
+Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
+
+
 

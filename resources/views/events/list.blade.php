@@ -55,6 +55,8 @@
                 @endif
                 <td>
                     <a class="btn btn-primary" href="{{ route('events.edit', ['event' => $event->id]) }}">{{__('events.edit')}}</a>
+                    <a class="btn btn-primary" href="{{ route('addEquipementToEvent', ['event_id' => $event->id]) }}">Ajouter des équipements</a>
+                    <a class="btn btn-primary" href="{{ route('events.edit', ['event' => $event->id]) }}">Modifier</a>
                 </td>
             </tr>
         @endforeach
