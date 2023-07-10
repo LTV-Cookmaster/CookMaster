@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://kit.fontawesome.com/79ac1eddda.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="{{asset('favicon-32x32.ico')}}" type="image/x-icon">
 </head>
 
@@ -160,6 +162,7 @@
                                         <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">{{__('navbar.admin_events')}}</a>
                                         <a href="{{ route('adminCalendar') }}" class="{{ Request::is('admin/calendar*') ? 'active' : '' }}">{{__('navbar.admin_calendar')}}</a>
                                         <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">{{__('navbar.admin_rental')}}</a>
+                                        <a href="{{ route('courses.list') }}" class="{{ Request::is('admin/courses*') ? 'active' : '' }}">{{__('navbar.admin_courses')}}</a>
                                     </div>
                                 </div>
                             @endif

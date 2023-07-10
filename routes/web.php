@@ -63,6 +63,9 @@ Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
+Route::get('/admin/course/create', [CoursesController::class, 'create'])->name('courses.create');
+Route::get('/admin/courses', [CoursesController::class, 'list'])->name('courses.list');
+Route::get('/admin/course/store', [CoursesController::class, 'store'])->name('courses.store');
 
 Route::get('/admin/calendar', [CalendarController::class, 'admin'])->name('adminCalendar');
 Route::get('/calendar', [CalendarController::class, 'user'])->name('calendar');
