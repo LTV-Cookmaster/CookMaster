@@ -17,6 +17,10 @@ class OfficeController extends Controller
     }
     public function index()
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         return view('admin.offices.index', [
             'offices' => Office::orderBy('created_at', 'desc')->paginate(10)
         ]);
@@ -65,6 +69,10 @@ class OfficeController extends Controller
 
     public function list(Office $office)
     {
+        $user = auth()->user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $rooms = $office->rooms;
         $officeName = $office->name;
         return view('admin.offices.list', ['rooms' => $rooms, 'officeName' => $officeName]);
