@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Reservation;
+use App\Models\Subscription;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,10 +50,61 @@ class CheckoutController extends Controller
         if(!$paid){
             return redirect()->route('home')->with('error', 'Le paiement a échoué');
         }
+        $user = Auth::user();
 
         $billId = $request->route('bill');
+        if($billId == "starterPlan"){
+            $subscriptionController = new SubscriptionController();
+            $subscriptionInfos = $subscriptionController->getSubscriptionDetails("starterPlan");
+            $subscription = new Subscription();
+            $subscription->id = Str::uuid();
+            $subscription->user_id = $user->id;
+            $subscription->subscription_type = "starterPlan";
+            $subscription->price_per_month = $subscriptionInfos['price_per_month'];
+            $subscription->start_date = date("Y-m-d");
+            $subscription->end_date = date("Y-m-d", strtotime("+1 month"));
+            $subscription->annual_price = $subscriptionInfos['annual_price'];
+            $subscription->advertising = $subscriptionInfos['advertising'];
+            $subscription->commenting = $subscriptionInfos['commenting'];
+            $subscription->lessons = $subscriptionInfos['lessons'];
+            $subscription->chat = $subscriptionInfos['chat'];
+            $subscription->discount = $subscriptionInfos['discount'];
+            $subscription->free_delivery = $subscriptionInfos['free_delivery'];
+            $subscription->kitchen_space = $subscriptionInfos['kitchen_space'];
+            $subscription->exclusive_events = $subscriptionInfos['exclusive_events'];
+            $subscription->referral_reward = $subscriptionInfos['referral_reward'];
+            $subscription->renewal_bonus = $subscriptionInfos['renewal_bonus'];
+            $subscription->save();
+            $bill = new \stdClass();
+            $bill->name = "Starter Plan";
+        }elseif($billId == "masterPlan"){
+            $subscriptionController = new SubscriptionController();
+            $subscriptionInfos = $subscriptionController->getSubscriptionDetails("masterPlan");
+            $subscription = new Subscription();
+            $subscription->id = Str::uuid();
+            $subscription->user_id = $user->id;
+            $subscription->subscription_type = "starterPlan";
+            $subscription->price_per_month = $subscriptionInfos['price_per_month'];
+            $subscription->start_date = date("Y-m-d");
+            $subscription->end_date = date("Y-m-d", strtotime("+1 month"));
+            $subscription->annual_price = $subscriptionInfos['annual_price'];
+            $subscription->advertising = $subscriptionInfos['advertising'];
+            $subscription->commenting = $subscriptionInfos['commenting'];
+            $subscription->lessons = $subscriptionInfos['lessons'];
+            $subscription->chat = $subscriptionInfos['chat'];
+            $subscription->discount = $subscriptionInfos['discount'];
+            $subscription->free_delivery = $subscriptionInfos['free_delivery'];
+            $subscription->kitchen_space = $subscriptionInfos['kitchen_space'];
+            $subscription->exclusive_events = $subscriptionInfos['exclusive_events'];
+            $subscription->referral_reward = $subscriptionInfos['referral_reward'];
+            $subscription->renewal_bonus = $subscriptionInfos['renewal_bonus'];
+            $subscription->save();
+            $bill = new \stdClass();
+            $bill->name = "Master Plan";
+        }
+        else {
         $bill = Event::findOrFail($billId);
-        $userId = Auth::user()->id;
+        $userId = $user->id;
 
         if (Reservation::where('event_id', $billId)->where('user_id', $userId)->exists()) {
             return redirect()->route('home')->with('error', 'Vous avez déja une réservation pour cette évènement');
@@ -70,6 +122,7 @@ class CheckoutController extends Controller
         $reservation->end_time = $bill->end_time;
         $reservation->office_id = $bill->office_id;
         $reservation->save();
+        }
 
         return redirect()->route('home')->with('success', ('Le paiement pour '.$bill->name.' a été effectuée'));
     }

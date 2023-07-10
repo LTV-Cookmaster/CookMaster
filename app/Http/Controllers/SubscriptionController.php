@@ -42,6 +42,8 @@ class SubscriptionController extends Controller
             'exclusive_events' => false,
             'referral_reward' => false,
             'renewal_bonus' => false,
+            'name' => 'Free',
+            'price' => 'Gratuit'
         ];
     }
 
@@ -64,6 +66,8 @@ class SubscriptionController extends Controller
             'exclusive_events' => true,
             'referral_reward' => true,
             'renewal_bonus' => false,
+            'name' => 'Starter',
+            'price' => '9,90'
         ];
     }
 
@@ -86,6 +90,8 @@ class SubscriptionController extends Controller
             'exclusive_events' => true,
             'referral_reward' => true,
             'renewal_bonus' => true,
+            'name' => 'Master',
+            'price' => '19'
         ];
     }
 
@@ -116,7 +122,7 @@ class SubscriptionController extends Controller
         return redirect()->route('subscriptions.index')->with('success', 'Subscription created successfully.');
     }
 
-    private function getSubscriptionDetails($plan)
+    public function getSubscriptionDetails($plan)
     {
         // Logique pour récupérer les détails de la souscription en fonction du plan
         // Par exemple, vous pouvez utiliser une requête à la base de données ou des conditions
@@ -150,10 +156,14 @@ class SubscriptionController extends Controller
                 'amount' => $subscriptionDetails['price_per_month'] * 100,
                 'currency' => env('CASHIER_CURRENCY'),
             ]);
-
+            $bill = new \stdClass();
+            $bill->name = $subscriptionDetails['name'];
+            $bill->price = $subscriptionDetails['price'];
+            $bill->id = $subscriptionDetails['subscription_type'];
             return view('checkout', [
                 'clientSecret' => $intent->client_secret,
                 'plan' => $plan,
+                'bill' => $bill,
             ]);
         }
     }
