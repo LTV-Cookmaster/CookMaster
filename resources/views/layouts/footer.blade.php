@@ -5,6 +5,19 @@
     <footer class="d-flex flex-wrap justify-content-between align-items-center">
         <p class="col-md-4 mb-0 text-muted text-start">{{__('footer.title')}} ©</p>
 
+        <div class="flex flex-shrink-0 justify-evenly border-t border-gray-200 p-2">
+            <a href="{{ route('locale.setting', 'en') }}">
+                <span class="sr-only">{{ __('english') }}</span>
+                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 40px;" src="{{ asset('english_flag.png') }}"
+                     alt="{{ __('english') }}">
+            </a>
+            <a href="{{ route('locale.setting', 'fr') }}">
+                <span class="sr-only">{{ __('french') }}</span>
+                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 40px;" src="{{ asset('french_flag.png') }}"
+                     alt="{{ __('french') }}">
+            </a>
+        </div>
+
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.about_us')}}</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.privacy_policy')}}</a></li>
