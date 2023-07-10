@@ -142,9 +142,11 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function view(Request $request)
     {
-        //
+        $course_id = $request->route('course_id');
+        $formation = FormationData::where('formation_id', $course_id)->first();
+        return view('courses.index', compact('formation'));
     }
 
     /**
@@ -166,8 +168,35 @@ class CoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function submit(Request $request, string $id)
     {
-        //
+        $course_id = $request->route('course_id');
+        $formation = FormationData::where('formation_id', $course_id)->first();
+        $counter = 0;
+        $question1Answer = $request->input('question1');
+        $question2Answer = $request->input('question2');
+        $question3Answer = $request->input('question3');
+        $question4Answer = $request->input('question4');
+        $question5Answer = $request->input('question5');
+        if ($formation->$question1Answer == 1) {
+            $counter++;
+        }
+        if ($formation->$question2Answer == 1) {
+            $counter++;
+        }
+        if ($formation->$question3Answer == 1) {
+            $counter++;
+        }
+        if ($formation->$question4Answer == 1) {
+            $counter++;
+        }
+        if ($formation->$question5Answer == 1) {
+            $counter++;
+        }
+
+        if($counter >= 3) {
+            return redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
+        } else {
+            return redirect()->route('home')->with('error', 'Désolé ! Vous avez échoué le test !');
     }
-}
+}}

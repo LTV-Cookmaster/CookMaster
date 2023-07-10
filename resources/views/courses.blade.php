@@ -8,13 +8,13 @@
 <body>
 <div class="container-fluid">
     <div class="container">
-        <h2 class="text-center mt-2">Your next tasting</h2>
+        <h2 class="text-center mt-2">Your available formations</h2>
         <div class="row">
             @foreach($events as $event)
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
-                            <a href="{{ route('event', ['event' => $event->id]) }}">
+                            <a href="{{ route('courses.index', ['course_id' => $event->id]) }}">
                                 <img src="{{ asset('storage/'.$event->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>
                             <div class="card-body d-flex">
