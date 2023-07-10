@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
+@section('title' , 'Mes réservations')
 @php
     use Carbon\Carbon;
+
 @endphp
     <head>
         <meta charset="UTF-8">
@@ -47,11 +49,11 @@
                         <td>{{ $reservation->price }}€</td>
                         <td>
                             @if ($endDate->isPast())
-                                <span style="color: darkgoldenrod">{{ __("Workshop terminé") }}</span>
+                                <span style="color: darkgoldenrod">{{ __("Event terminé") }}</span>
                             @elseif ($startDate->isFuture())
-                                <span style="color: green">{{ __("Workshop à venir") }}</span>
+                                <span style="color: green">{{ __("Event à venir") }}</span>
                             @else
-                                <span style="color: blue">{{ __("Workshop en cours") }}</span>
+                                <span style="color: blue">{{ __("Event en cours") }}</span>
                             @endif
                         </td>
                         <td>
