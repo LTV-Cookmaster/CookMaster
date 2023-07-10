@@ -25,7 +25,9 @@ class RentalEquipementController extends Controller
             return redirect()->route('home');
         }
         $equipements = RentalEquipment::orderBy('created_at', 'desc')->paginate(25);
-
+        foreach ($equipements as $equipement){
+            $equipement->office = Office::find($equipement->office_id);
+        }
        return view('admin.equipements.index', [
            'equipements' => $equipements,
        ]);
