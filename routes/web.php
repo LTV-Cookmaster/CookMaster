@@ -75,4 +75,8 @@ Route::get('checkout/success/{bill}', [CheckoutController::class, 'success'])->n
 
 Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
 
+Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
+Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
+
+
 
