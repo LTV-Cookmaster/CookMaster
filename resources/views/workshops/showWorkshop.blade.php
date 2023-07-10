@@ -58,7 +58,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-6">
-            <img id="eventImage" src="{{ asset('food.jpg') }}" class="img-fluid" alt="Image de l'événement">
+            <img id="eventImage" src="{{ asset('storage/'.$event->img_url) }}" class="img-fluid" alt="Image de l'événement">
         </div>
         <div class="col-lg-6">
             <div class="eventDetail">
