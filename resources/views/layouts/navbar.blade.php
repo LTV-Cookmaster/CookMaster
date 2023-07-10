@@ -32,27 +32,27 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('home') }}">
-                            <span class="nav-span">{{__('Home')}}</span>
+                            <span class="nav-span">{{__('navbar.home')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('events.index') }}">
-                            <span class="nav-span">{{__('Events')}}</span>
+                            <span class="nav-span">{{__('navbar.events')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('courses') }}">
-                            <span class="nav-span">{{__('Courses')}}</span>
+                            <span class="nav-span">{{__('navbar.courses')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{{ route('calendar') }}">
-                            <span class="nav-span">{{__('Calendar')}}</span>
+                            <span class="nav-span">{{__('navbar.calendar')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="/">
-                            <span class="nav-span">{{__('Shop')}}</span>
+                            <span class="nav-span">{{__('navbar.shop')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -64,7 +64,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
                                     <i class="fa-regular fa-user me-2"></i>
-                                    <span class="nav-span">{{'Login'}}</span>
+                                    <span class="nav-span">{{__('navbar.login')}}</span>
                                 </a>
                             </li>
                         @endif
@@ -73,19 +73,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">
                                     <i class="fa-solid fa-right-to-bracket me-2"></i>
-                                    <span class="nav-span">{{'Sign up'}}</span>
+                                    <span class="nav-span">{{__('navbar.sign_up')}}</span>
                                 </a>
                             </li>
                         @endif
                     @else
                         <div class="dropdown" style="margin-right: 20px">
-                            <a class="btn btn-outline-secondary">Menu</a>
+                            <a class="btn btn-outline-secondary">{{__('navbar.menu')}}</a>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="{{ route('profil') }}">Profile</a>
-                                <a class="dropdown-item" href="{{route('reservations')}}">{{__("Mes réservations")}}</a>
+                                <a class="dropdown-item" href="{{ route('profil') }}">{{__('navbar.profile')}}</a>
+                                <a class="dropdown-item" href="{{route('reservations')}}">{{__('navbar.my_reservations')}}</a>
                                 <a class="dropdown-item dropdown-menu-end" aria-labelledby="navbarDropdown" href="{{route('logout')}}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('navbar.logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -152,14 +152,14 @@
                                     }
                                 </style>
                                 <div class="dropdown">
-                                    <a class="btn btn-secondary">Administration</a>
+                                    <a class="btn btn-secondary">{{__('navbar.admin')}}</a>
                                     <div class="dropdown-content">
-                                        <a href="{{ route('admin.office.index') }}" class="{{ Request::is('admin/office*') ? 'active' : '' }}">Les locaux</a>
-                                        <a href="{{ route('admin.user.index') }}" class="{{ Request::is('admin/user*') ? 'active' : '' }}">Les utilisateurs</a>
-                                        <a href="{{ route('admin.room.index') }}" class="{{ Request::is('admin/room*') ? 'active' : '' }}">Les rooms</a>
-                                        <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">Les évènements</a>
-                                        <a href="{{ route('adminCalendar') }}" class="{{ Request::is('admin/calendar*') ? 'active' : '' }}">Agenda des évènements</a>
-                                        <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">Les equipements louable</a>
+                                        <a href="{{ route('admin.office.index') }}" class="{{ Request::is('admin/office*') ? 'active' : '' }}">{{__('navbar.admin_offices')}}</a>
+                                        <a href="{{ route('admin.user.index') }}" class="{{ Request::is('admin/user*') ? 'active' : '' }}">{{__('navbar.admin_users')}}</a>
+                                        <a href="{{ route('admin.room.index') }}" class="{{ Request::is('admin/room*') ? 'active' : '' }}">{{__('navbar.admin_rooms')}}</a>
+                                        <a href="{{ route('events.list') }}" class="{{ Request::is('events/list') ? 'active' : '' }}">{{__('navbar.admin_events')}}</a>
+                                        <a href="{{ route('adminCalendar') }}" class="{{ Request::is('admin/calendar*') ? 'active' : '' }}">{{__('navbar.admin_calendar')}}</a>
+                                        <a href="{{ route('admin.equipement.index') }}" class="{{ Request::is('admin/equipement*') ? 'active' : '' }}">{{__('navbar.admin_rental')}}</a>
                                     </div>
                                 </div>
                             @endif

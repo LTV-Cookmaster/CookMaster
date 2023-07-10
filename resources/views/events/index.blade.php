@@ -3,12 +3,12 @@
 @php
     use Carbon\Carbon;
 @endphp
-@section('title' , 'Events')
+@section('title' , __('events.title'))
 <body>
 @include('layouts.navbar')
 <div class="container-fluid">
     <div class="container">
-        <h2 class="text-center mt-2">Your next tasting</h2>
+        <h2 class="text-center mt-2">{{__('events.next_tastings')}}</h2>
         <div class="row">
             @foreach($tastings as $tasting)
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -45,7 +45,7 @@
                 </div>
             @endforeach
         </div>
-        <h2 class="text-center mt-2">Your next meeting</h2>
+        <h2 class="text-center mt-2">{{__('events.next_meetings')}}</h2>
         <div class="row">
             @foreach($meetings as $meeting)
                 <div class="col-lg-4 col-md-4 col-sm-6">
