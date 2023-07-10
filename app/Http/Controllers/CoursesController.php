@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Psy\Util\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class CoursesController extends Controller
 {
@@ -195,7 +197,11 @@ class CoursesController extends Controller
         }
 
         if($counter >= 3) {
-            return redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
+            $user = Auth::user();
+            $event = Event::where('id', $course_id)->first();
+            $pdf = Pdf::loadView('pdf.diplome', compact('user', 'event'));
+            return $pdf->download($event->name.'.pdf');
+/*            return redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');*/
         } else {
             return redirect()->route('home')->with('error', 'Désolé ! Vous avez échoué le test !');
     }
