@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\Admin\RentalEquipementController;
@@ -84,6 +85,9 @@ Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->
 Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
 Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
 
+Route::get('/chat', [ChatsController::class, 'index'])->name('chat');
+Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('messages');
+Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('messages.send');
 Route::get('/visio', function () {
     return view('visio');
 })->name('visio');
