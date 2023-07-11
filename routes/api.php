@@ -22,8 +22,10 @@ use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,3 +126,48 @@ Route::get('/reservation/{user_id}', function ($user_id) {
     return response()->json(['nombre' => $nombre , 'events' => $events, ]);
 });
 
+Route::post('/login', function (Request $request) {
+
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $token = Str::random(16);
+        $userId = Auth::user()->id;
+        DB::table('users')
+            ->where('id', $userId)
+            ->update(['api_token' => $token]);
+        return response()->json([
+            'token' => $token,
+            'user_id' => $userId,
+        ]);
+    } else {
+        return response()->json([
+            'message' => 'Identifiants invalides'
+        ], 401);
+    }
+});
+
+Route::get('/mobile/reservation/{user_id}/{token}', function ($user_id, $token) {
+    $user = DB::table('users')
+        ->where('api_token', '=', $token)
+        ->get();
+    if (count($user) == 0) {
+        return response()->json([
+            'message' => 'Identifiants invalides'
+        ], 401);
+    }
+    $reservations = DB::table('reservations')
+        ->where('user_id', '=', $user_id)
+        ->get();
+
+    $events = [];
+    $i = 0;
+    foreach ($reservations as $reservation) {
+        $reservationEvents = DB::table('events')
+            ->where('id', $reservation->event_id)
+            ->get();
+        $events[$i] = $reservationEvents;
+        $i++;
+    }
+    return response()->json(['events' => $events, ]);
+});
