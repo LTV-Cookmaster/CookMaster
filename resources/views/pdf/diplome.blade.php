@@ -43,7 +43,7 @@
     <div class="logo">
         <img src="logo.png">
     </div>
-    <h1>Diplôme de Cockmaster</h1>
+    <h1>Diplôme de Cookmaster</h1>
     <h2>Décerné à</h2>
     <p><strong>{{ $user->name }}</strong></p>
     <p>Pour avoir complété avec succès les exigences du programme</p>
@@ -51,7 +51,7 @@
     <div class="signature">
         <img src="signature.png" alt="Signature du Directeur">
         <p><strong>Anthony Pitoun</strong></p>
-        <p>Directeur de Cockmaster</p>
+        <p>Directeur de Cookmaster</p>
     </div>
 </div>
 </body>
