@@ -46,6 +46,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::class, 'unban'])->name('admin.user.unban');
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
+Route::match(['get', 'post'], '/admin/users/{user}/promote', [UserController::class, 'promote'])->name('admin.user.promote');
+Route::match(['get', 'post'], '/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.user.demote');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');

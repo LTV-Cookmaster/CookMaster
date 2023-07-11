@@ -25,6 +25,15 @@
         </div>
     @endif
 
+    @if(session('error'))
+        <div id="error-alert" class="alert alert-danger alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+            <span style="flex-grow: 1; text-align: center;">{{ session('error') }}</span>
+            <p id="close-error" type="button" class="m-0">
+                <i class="fa-solid fa-xmark"></i>
+            </p>
+        </div>
+    @endif
+
     <h1>@yield('title')</h1>
 
     <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" method="post" enctype="multipart/form-data">
@@ -68,12 +77,12 @@
                     @include('components.input', ['label' => __('events.number_of_participants'), 'name' => 'number_of_participants', 'type' => 'number', 'value' => $event->number_of_participants])
                 </div>
 
-                <div class="mb-3">
+{{--                <div class="mb-3">
                     <div class="mb-3">
                         <label for="image" class="form-label">{{__('events.image')}}</label>
                         <input type="file" class="form-control" id="image" name="image">
                     </div>
-                </div>
+                </div>--}}
 
             </div>
             <div class="col-md-6">

@@ -9,6 +9,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <title>@yield('title') | Administration</title>
 </head>
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+        <span style="flex-grow: 1; text-align: center;">{{ session('success') }}</span>
+        <p id="close-success" type="button" class="m-0">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+    </div>
+@endif
+
+@if(session('error'))
+    <div id="error-alert" class="alert alert-danger alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+        <span style="flex-grow: 1; text-align: center;">{{ session('error') }}</span>
+        <p id="close-error" type="button" class="m-0">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+    </div>
+@endif
+
+<script>
+    if (document.getElementById('close-success')) {
+        document.getElementById('close-success').addEventListener('click', function() {
+            document.getElementById('success-alert').remove();
+        });
+    }
+
+    if (document.getElementById('close-error')) {
+        document.getElementById('close-error').addEventListener('click', function() {
+            document.getElementById('error-alert').remove();
+        });
+    }
+</script>
 <body>
 <div class="container mt-5">
     @yield('content')

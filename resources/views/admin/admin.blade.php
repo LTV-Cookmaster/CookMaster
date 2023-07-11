@@ -19,6 +19,7 @@
         </div>
     @endif
 
+
     @yield('content')
         <script>
             if (document.getElementById('close-success')) {

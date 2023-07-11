@@ -74,7 +74,10 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        // Create a new FormData instance
+        $user = Auth::user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $formData = new FormationData();
         $course_id = $request->input('course_id');
         $formData->id = \Illuminate\Support\Str::uuid();
