@@ -54,14 +54,8 @@ const app = new Vue({
 
 
 import ExampleComponent from './components/ExampleComponent.vue';
-import ChatForm from "./components/ChatForm.vue";
-import ChatMessages from "./components/ChatMessages.vue";
 app.component('example-component', ExampleComponent);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('chat-messages', require('./components/ChatMessages.vue').default);
-Vue.component('chat-form', require('./components/ChatForm.vue').default);
-app.component('chat-form', ChatForm);
-app.component('chat-messages', ChatMessages);
 
 /**
  * The following block of code may be used to automatically register your

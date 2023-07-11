@@ -88,9 +88,6 @@ Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->
 Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
 Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
 
-Route::get('/chat', [ChatsController::class, 'index'])->name('chat');
-Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('messages');
-Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('messages.send');
 Route::get('/visio', function () {
     return view('visio');
 })->name('visio');
