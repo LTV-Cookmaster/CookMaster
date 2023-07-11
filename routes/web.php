@@ -84,8 +84,8 @@ Route::get('/setLocale/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'fr'])) {
         abort(400);
     }
-
-    session(['locale' => $locale]);
+    App::setLocale($locale);
+    session()->put('lang', $locale);
 
     return redirect()->back();
 })->name('locale.setting');
