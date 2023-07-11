@@ -12,4 +12,5 @@ return [
     'coming_workshop' => 'Coming workshop',
     'in_progress_workshop' => 'In progress workshop',
     'see' => 'See',
+    'cancel' => 'Cancel',
 ];

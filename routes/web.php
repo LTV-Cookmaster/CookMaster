@@ -59,6 +59,7 @@ Route::get('/events/create', [EventController::class, 'create'])->name('events.c
 Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
 Route::get('/events/edit/{event}', [EventController::class, 'edit'])->name('events.edit');
 Route::put('/events/update/{event}', [EventController::class, 'update'])->name('events.update');
+Route::get('/event/cancel/{event_id}', [EventController::class, 'cancel'])->name('event.cancel');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
