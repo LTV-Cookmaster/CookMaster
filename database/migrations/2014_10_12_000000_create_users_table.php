@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('referee_code')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_ban')->default(false);
+            $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
