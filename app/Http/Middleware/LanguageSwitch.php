@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class LanguageSwitch
@@ -15,8 +17,6 @@ class LanguageSwitch
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //                $locale = Session::get('locale', config('app.locale'));
-        //                App::setLocale($locale);
         if ($request->has('lang')) {
             $lang = $request->input('lang');
             if (in_array($lang, ['en', 'fr'])) {
