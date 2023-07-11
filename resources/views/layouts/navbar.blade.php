@@ -57,6 +57,11 @@
                             <span class="nav-span">{{__('navbar.visio')}}</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{{route('chat')}}">
+                            <span class="nav-span">{{__('navbar.chat')}}</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Disconnected -->

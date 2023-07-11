@@ -95,6 +95,9 @@ class User extends Authenticatable
         return $this->hasOne(Event::class);
     }
 
-
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 
 }
