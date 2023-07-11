@@ -22,5 +22,6 @@ return [
     'admin_calendar' => 'Event Calendar',
     'admin_rental' => 'Rental equipments',
     'visio' => 'Visio',
+    'chat' => 'Chat',
 
 ];
