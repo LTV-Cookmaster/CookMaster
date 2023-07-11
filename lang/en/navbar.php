@@ -23,4 +23,6 @@ return [
     'admin_rental' => 'Rental equipments',
     'visio' => 'Visio',
     'admin_courses' => 'Courses',
+    'chat' => 'Chat',
+
 ];
