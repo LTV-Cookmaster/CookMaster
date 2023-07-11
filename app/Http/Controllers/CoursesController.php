@@ -53,17 +53,19 @@ class CoursesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         if(!$user->is_admin){
             return redirect()->route('home');
         }
+        $course_id = $request->route('course_id');
         $professionalFormations = Event::where('type', 'professionalFormation')->get();
         $defaultValue = 'Lorem Ipsum';
         return view('courses.create', [
             'courses' => $professionalFormations,
-            'defaultValue' => $defaultValue
+            'defaultValue' => $defaultValue,
+            'course_id' => $course_id
         ]);
     }
 
@@ -74,7 +76,7 @@ class CoursesController extends Controller
     {
         // Create a new FormData instance
         $formData = new FormationData();
-
+        $course_id = $request->input('course_id');
         $formData->id = \Illuminate\Support\Str::uuid();
         $formData->formation_id = $request->input('course_id');
         $formData->formation_titre = $request->input('formationTitre');

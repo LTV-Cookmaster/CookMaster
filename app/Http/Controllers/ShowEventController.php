@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\FormationData;
 use App\Models\Reservation;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -29,12 +30,16 @@ class ShowEventController extends Controller
             }
 
             $reservationCount = Reservation::where('event_id', $eventID)->count();
-
+            if($event->type == 'professionalFormation') {
+                $formationData = FormationData::where('formation_id', $eventID)->first();
+                $event->formationData = $formationData;
+            }
 
             return view('workshops.showWorkshop' , [
                 'event' => $event,
                 'reserve' => $reserve,
                 'reservationCount' => $reservationCount,
+
             ]);
 
     }

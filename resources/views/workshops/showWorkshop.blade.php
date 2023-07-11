@@ -93,12 +93,27 @@
                     <p id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{__('events.remaining_places') .  ($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</p>
                 @endif
                 <p id="eventOrganizer"><strong><i class="fa-solid fa-tag"></i> {{__('events.event_price')}} </strong>{{ $event->price }}€</p>
-                @if($reserve == false && $reservationCount < $event->number_of_participants)
-                <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('events.book')}}</a>
-                @elseif($reservationCount == $event->number_of_participants)
-                    <p class="btn btn-danger">{{__('events.full')}}</p>
+
+                @if($event->type == 'professionalFormation')
+                    @if($event->formationData)
+                        @if($reserve == false && $reservationCount < $event->number_of_participants)
+                            <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('events.book')}}</a>
+                        @elseif($reservationCount == $event->number_of_participants)
+                            <p class="btn btn-danger">{{__('events.full')}}</p>
+                        @else
+                            <p class="btn btn-secondary">{{__('events.already_booked')}}</p>
+                        @endif
+                    @else
+                        <p class="btn btn-danger">{{__('Formation en attente de configuration')}}</p>
+                    @endif
                 @else
-                    <p class="btn btn-secondary">{{__('events.already_booked')}}</p>
+                    @if($reserve == false && $reservationCount < $event->number_of_participants)
+                    <a href="{{ route('checkout' , ['bill' => $event]) }}" class="btn btn-success btn-md">{{__('events.book')}}</a>
+                    @elseif($reservationCount == $event->number_of_participants)
+                        <p class="btn btn-danger">{{__('events.full')}}</p>
+                    @else
+                        <p class="btn btn-secondary">{{__('events.already_booked')}}</p>
+                    @endif
                 @endif
             </div>
             <div id="eventDescription">{{ $event->description }}</div>
