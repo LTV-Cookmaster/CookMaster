@@ -5,17 +5,19 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <div class="container">
-    <form name="formationForm" action="/admin/course/store" >
+    <form name="formationForm" action="{{ route('courses.store' , ['course_id' , $course_id]) }}" >
         @method('POST')
         @csrf
-        <div class="mb-3">
+{{--        <div class="mb-3">
             <select class="form-select" name="course_id">
                 <option value="default">Select formation</option>
                 @foreach($courses as $course)
                     <option value="{{ $course->id }}">{{ $course->name }}</option>
                 @endforeach
             </select>
-        </div>
+        </div>--}}
+        <input type="text" class="form-control" name="course_id" style="display: none" value="{{ $course_id }}">
+
         <h2>Formation</h2>
         <div class="mb-3">
             <label for="formationTitre" class="form-label">Titre de la formation</label>
@@ -78,7 +80,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q1" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte">
+                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted >
                 </div>
             </div>
         </div>
@@ -121,7 +123,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q2" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte">
+                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
                 </div>
             </div>
         </div>
@@ -162,7 +164,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q3" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte">
+                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
                 </div>
             </div>
         </div>
@@ -203,7 +205,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q4" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte">
+                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
                 </div>
             </div>
         </div>
@@ -244,7 +246,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q5" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte">
+                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
                 </div>
             </div>
         </div>

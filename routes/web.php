@@ -47,6 +47,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::match(['get', 'post'], '/admin/users/{user}/unban', [UserController::class, 'unban'])->name('admin.user.unban');
 Route::match(['get', 'post'], '/admin/users/{user}/ban', [UserController::class, 'ban'])->name('admin.user.ban');
+Route::match(['get', 'post'], '/admin/users/{user}/promote', [UserController::class, 'promote'])->name('admin.user.promote');
+Route::match(['get', 'post'], '/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.user.demote');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
@@ -64,9 +66,9 @@ Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
-Route::get('/admin/course/create', [CoursesController::class, 'create'])->name('courses.create');
+Route::get('/admin/course/create/{course_id}', [CoursesController::class, 'create'])->name('courses.create');
 Route::get('/admin/courses', [CoursesController::class, 'list'])->name('courses.list');
-Route::get('/admin/course/store', [CoursesController::class, 'store'])->name('courses.store');
+Route::get('/admin/course/store/{course_id}', [CoursesController::class, 'store'])->name('courses.store');
 Route::get('/course/{course_id}', [CoursesController::class, 'view'])->name('courses.index');
 Route::post('/course/submit/{course_id}', [CoursesController::class, 'submit'])->name('courses.submit');
 

@@ -13,9 +13,18 @@
         </div>
     @endif
 
+    @if(session('error'))
+        <div id="error-alert" class="alert alert-danger alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
+            <span style="flex-grow: 1; text-align: center;">{{ session('error') }}</span>
+            <p id="close-error" type="button" class="m-0">
+                <i class="fa-solid fa-xmark"></i>
+            </p>
+        </div>
+    @endif
+
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" action="{{ route($user->exists ? 'admin.user.update' : 'admin.user.store', ['user' => $user]) }}" method="post">
+    <form class="vstack gap-2" action="{{ route($user->exists ? 'admin.user.update' : 'admin.user.store', ['user' => $user]) }}">
         @csrf
         @method($user->exists ? 'put' : 'post')
 
@@ -42,15 +51,15 @@
 {{--
             @include('components.input.checkbox' , ['label' => 'Admin' , 'name' => 'is_admin', 'value' => $user->is_admin])
 --}}
-                 <select name="is_admin" id="is_admin">
-                     @if($user->is_admin == 0)
+{{--                 <select name="is_admin" id="is_admin">
+                     @if(!$user->is_admin)
                          <option value="0">{{__('users.no')}}</option>
                          <option value="1">{{__('users.yes')}}</option>
                      @else
-                         <option value="0">{{__('users.no')}}</option>
                          <option value="1">{{__('users.yes')}}</option>
+                         <option value="0">{{__('users.no')}}</option>
                      @endif
-                 </select>
+                 </select>--}}
 
         </div>
 

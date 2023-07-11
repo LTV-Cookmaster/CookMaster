@@ -59,8 +59,8 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
-        $user = auth()->user();
-        if(!$user->is_admin){
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
             return redirect()->route('home');
         }
         $user = User::create($request->validated());
@@ -73,8 +73,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = auth()->user();
-        if(!$user->is_admin){
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
             return redirect()->route('home');
         }
         return view('admin.users.form' , [
@@ -87,8 +87,8 @@ class UserController extends Controller
      */
     public function update(UserFormRequest $request, User $user)
     {
-        $user = auth()->user();
-        if(!$user->is_admin){
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
             return redirect()->route('home');
         }
         $user->update($request->validated());
@@ -106,8 +106,8 @@ class UserController extends Controller
 
     public function unban(User $user)
     {
-        $user = auth()->user();
-        if(!$user->is_admin){
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
             return redirect()->route('home');
         }
         $user->is_ban = false;
@@ -118,13 +118,40 @@ class UserController extends Controller
 
     public function ban(User $user)
     {
-        $user = auth()->user();
-        if(!$user->is_admin){
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
             return redirect()->route('home');
         }
         $user->is_ban = true;
         $user->save();
 
         return redirect()->route('admin.user.index')->with('success', 'Utilisateur banni avec succès');
+    }
+
+    public function promote(User $user)
+    {
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
+            return redirect()->route('home');
+        }
+        $user->is_admin = true;
+        $user->save();
+
+        return to_route('admin.user.index')->with('success', 'Utilisateur promu avec succès');
+    }
+
+    public function demote(User $user)
+    {
+        $userConnected = auth()->user();
+        if(!$userConnected->is_admin){
+            return redirect()->route('home');
+        }
+        if($user->id == $userConnected->id){
+            return redirect()->route('admin.user.index')->with('error', 'Vous ne pouvez pas vous rétrograder');
+        }
+        $user->is_admin = false;
+        $user->save();
+
+        return redirect()->route('admin.user.index')->with('success', 'Utilisateur rétrogradé avec succès');
     }
 }

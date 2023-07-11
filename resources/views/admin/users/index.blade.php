@@ -13,6 +13,8 @@
         <a href="{{ route('admin.user.create') }}" class="btn btn-primary">{{__('users.create')}}</a>
 --}}
     </div>
+
+
     <table class="table table-striped">
         <thead class="" style="color: white!important;">
         <tr>
@@ -55,12 +57,22 @@
                     <td>
                         <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">{{__('users.update')}}</a>
                         <a href="{{ route('admin.user.unban', $user) }}" class="btn btn-success">{{__('users.unban')}}</a>
+                        @if($user->is_admin)
+                            <a href="{{ route('admin.user.demote', $user) }}" class="btn btn-outline-danger">{{__('admin.user.demote')}}</a>
+                        @else
+                            <a href="{{ route('admin.user.promote', $user) }}" class="btn btn-secondary">{{__('admin.user.promote')}}</a>
+                        @endif
                     </td>
                 @else
                     <td></td>
                     <td>
                         <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary">{{__('users.update')}}</a>
                         <a href="{{ route('admin.user.ban', $user) }}" class="btn btn-danger">{{__('users.ban')}}</a>
+                        @if($user->is_admin)
+                            <a href="{{ route('admin.user.demote', $user) }}" class="btn btn-outline-danger">{{__('admin.user.demote')}}</a>
+                        @else
+                            <a href="{{ route('admin.user.promote', $user) }}" class="btn btn-secondary">{{__('admin.user.promote')}}</a>
+                        @endif
                     </td>
                 @endif
             </tr>

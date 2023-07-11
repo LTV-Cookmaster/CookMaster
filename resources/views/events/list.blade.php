@@ -17,6 +17,7 @@
             <th>{{__('events.type')}}</th>
             <th>{{__('events.price')}}</th>
             <th>{{__('events.number_of_participants')}}</th>
+            <th>{{__('events.date')}}</th>
             <th>{{__('events.actions')}}</th>
 
         </tr>
@@ -53,6 +54,7 @@
                 @else
                     <td id="eventSeats"><i class="fa-solid fa-person"></i> <strong>{{($event->number_of_participants - $reservationCount) . "/" . $event->number_of_participants }} </strong>{{ $event->seats }}</td>
                 @endif
+                <td>{{ $event->start_date }} - {{ $event->end_date }} <br> {{ $event->start_time }} - {{ $event->end_time }}</td>
                 <td>
                     <a class="btn btn-secondary" href="{{ route('addEquipementToEvent', ['event_id' => $event->id]) }}">Ajouter des équipements</a>
                     <a class="btn btn-primary" href="{{ route('events.edit', ['event' => $event->id]) }}">Modifier</a>

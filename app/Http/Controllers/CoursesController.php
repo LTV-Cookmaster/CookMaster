@@ -53,17 +53,19 @@ class CoursesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         if(!$user->is_admin){
             return redirect()->route('home');
         }
+        $course_id = $request->route('course_id');
         $professionalFormations = Event::where('type', 'professionalFormation')->get();
         $defaultValue = 'Lorem Ipsum';
         return view('courses.create', [
             'courses' => $professionalFormations,
-            'defaultValue' => $defaultValue
+            'defaultValue' => $defaultValue,
+            'course_id' => $course_id
         ]);
     }
 
@@ -72,9 +74,12 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        // Create a new FormData instance
+        $user = Auth::user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $formData = new FormationData();
-
+        $course_id = $request->input('course_id');
         $formData->id = \Illuminate\Support\Str::uuid();
         $formData->formation_id = $request->input('course_id');
         $formData->formation_titre = $request->input('formationTitre');
@@ -200,8 +205,8 @@ class CoursesController extends Controller
             $user = Auth::user();
             $event = Event::where('id', $course_id)->first();
             $pdf = Pdf::loadView('pdf.diplome', compact('user', 'event'));
+            redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
             return $pdf->download($event->name.'.pdf');
-/*            return redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');*/
         } else {
             return redirect()->route('home')->with('error', 'Désolé ! Vous avez échoué le test !');
     }
