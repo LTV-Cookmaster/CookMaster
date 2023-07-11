@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -82,6 +83,19 @@ Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->
 
 Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
 Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
+
+
+Route::get('/setLocale/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'fr'])) {
+        abort(400);
+    }
+    App::setLocale($locale);
+    session()->put('lang', $locale);
+
+    return redirect()->back();
+})->name('locale.setting');
+
+
 
 
 

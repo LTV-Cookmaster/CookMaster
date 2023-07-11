@@ -2,31 +2,30 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfAuthenticated
+class LanguageSwitch
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        if ($request->has('lang')) {
+            $lang = $request->input('lang');
+            if (in_array($lang, ['en', 'fr'])) {
+                app()->setLocale($lang);
+                session()->put('lang', $lang);
             }
+        } elseif (session()->has('lang')) {
+            app()->setLocale(session()->get('lang'));
         }
-
         return $next($request);
     }
 }

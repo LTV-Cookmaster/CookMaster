@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>@yield('title')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,3 +173,4 @@
         </div>
     </nav>
 </div>
+</html>
