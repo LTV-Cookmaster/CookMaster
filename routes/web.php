@@ -84,6 +84,9 @@ Route::get('/checkout/success/{bill}', [CheckoutController::class, 'success'])->
 Route::get('addEquipement/{event_id}', [RentalEquipementController::class, 'addEquipementToEvent'])->name('addEquipementToEvent');
 Route::post('storeEquipement/{event_id}', [RentalEquipementController::class, 'storeEquipementToEvent'])->name('storeEquipementToEvent');
 
+Route::get('/visio', function () {
+    return view('visio');
+})->name('visio');
 
 Route::get('/setLocale/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'fr'])) {
