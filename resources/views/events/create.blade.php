@@ -27,9 +27,9 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" enctype="multipart/form-data">
+    <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method($event->exists ? 'put' : 'post')
+        @method('post')
 
         <div class="row">
             <div class="col-md-6">

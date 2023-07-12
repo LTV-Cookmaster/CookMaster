@@ -1,7 +1,7 @@
-@extends('admin.users')
+@extends('admin.admin')
 
 @section('title', $user->exists ? __('users.update_user') : __('users.create'))
-
+@include('layouts.navbar')
 @section('content')
     @if($errors->any())
         <div class="alert alert-danger">
@@ -24,9 +24,9 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" action="{{ route($user->exists ? 'admin.user.update' : 'admin.user.store', ['user' => $user]) }}">
+    <form class="vstack gap-2" action="{{ route('admin.user.update', ['user' => $user])}}" method="put">
         @csrf
-        @method($user->exists ? 'put' : 'post')
+        @method('put')
 
         <div class="row">
             @include('components.input.input' , ['class' => 'col','label' => __('users.name') , 'name' => 'name', 'value' => $user->name])
@@ -64,7 +64,7 @@
         </div>
 
         <div>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 @if($user->exists)
                     Modifier
                 @else
