@@ -1,10 +1,10 @@
 @extends('admin.admin')
-@section('title', 'Ajouter des équipements à un événement')
+@section('title', __('equipments.add_equipment'))
 @include('layouts.navbar')
 @section('content')
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.min.css" rel="stylesheet">
 
-    <h1>Ajouter des équipements à un événement</h1>
+    <h1>{{__('equipments.add_equipment')}}</h1>
     <br>
     <h3>{{ $event->name }}</h3>
     <form method="POST" action="{{ route('storeEquipementToEvent', ['event_id' => $event->id]) }}">
@@ -12,7 +12,7 @@
         <select id="equipments-select" name="equipements[]" multiple>
         </select>
         <br>
-        <button class="btn btn-success" type="submit">Valider</button>
+        <button class="btn btn-success" type="submit">{{__('equipments.validate')}}</button>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>

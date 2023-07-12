@@ -13,4 +13,6 @@ return [
     'office' => 'Local',
     'price' => 'Prix',
     'actions' => 'Actions',
+    'validate' => 'Valider',
+    'add_equipment' => 'Ajouter un équipement à un évènement',
 ];
