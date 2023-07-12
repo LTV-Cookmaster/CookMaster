@@ -22,9 +22,6 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.about_us')}}</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('footer.privacy_policy')}}</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted disabled">{{__('footer.email')}}</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-facebook" style="color: #1C6513"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-twitter" style="color: #1C6513"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2"><i class="fa-brands fa-instagram" style="color: #1C6513"></i></a></li>
         </ul>
     </footer>
 </div>
