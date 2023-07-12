@@ -23,16 +23,16 @@ class ReservationSeeder extends Seeder
         for ($i = 0; $i < 10; $i++)
         {
             Reservation::factory([
-                'event_id' => Event::factory([
+                /*'event_id' => Event::factory([
                     'contractor_id' => Contractor::factory(),
-                ])->create(),
+                ]),*/
                 'user_id' => User::factory()->create(),
                 'office_id' => Office::factory(),
                 'room_id' => Room::factory([
                     'office_id' => Office::factory(),
                 ])->create(),
                 'type' => Arr::random($type),
-            ])->create();
+            ])->for(Event::factory(['contractor_id' => Contractor::factory()]))->create();
         }
     }
 

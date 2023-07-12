@@ -24,7 +24,7 @@
                 <td>{{ $equipement->office->name }}</td>
                 <td>{{ $equipement->price }}€</td>
                 <td>
-                    <a href="{{ route('admin.equipement.edit', ['equipement' => $equipement->id]) }}" class="btn btn-primary">Modifier</a></td>
+                    <a href="{{ route('admin.equipement.edit', ['equipement' => $equipement->id]) }}" class="btn btn-primary">{{__('equipments.form.update')}}</a></td>
             </tr>
         @endforeach
         </tbody>

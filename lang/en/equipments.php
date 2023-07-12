@@ -13,4 +13,6 @@ return [
     'office' => 'Office',
     'price' => 'Price',
     'actions' => 'Actions',
+    'validate' => 'Validate',
+    'add_equipment' => 'Add an equipment to an event',
 ];

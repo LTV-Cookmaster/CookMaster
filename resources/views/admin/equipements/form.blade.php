@@ -48,7 +48,7 @@
                 @if($equipement->exists)
                 {{__('equipments.form.update')}}
                 @else
-                {{__('equipments.form.create')}}
+                {{__('equipments.validate')}}
                 @endif
             </button>
         </div>

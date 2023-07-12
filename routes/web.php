@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\Admin\RentalEquipementController;
