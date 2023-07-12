@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="{{route('chat')}}">
+                        <a class="nav-link mx-3" href="{{route('chatify')}}">
                             <span class="nav-span">{{__('navbar.chat')}}</span>
                         </a>
                     </li>
