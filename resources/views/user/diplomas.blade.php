@@ -69,7 +69,7 @@
                         <td>{{ $formattedDate }}</td>
                         <td style="color: green">{{ $diploma->score }}/5</td>
                         <td>
-                            <a href="{{ route('event', ['event' => $diploma->id]) }}" class="btn btn-primary">{{__('Télécharger mon diplome')}}</a>
+                            <a href="{{ route('courses.index', ['course_id' => $diploma->formation_id]) }}" class="btn btn-primary">{{__('Revoir')}}</a>
                         </td>
                         <td>
                             <a href="{{ route('downloadDiploma', ['formation_id' => $diploma->formation_id]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-download"></i> {{__('Télécharger mon diplome')}}</a>
