@@ -222,4 +222,16 @@ class EventController extends Controller
 
         return redirect()->route('events.list')->with('success', 'Event updated successfully.');
     }
+
+    public function cancel($event_id)
+    {
+        $user = Auth::user();
+        $reservation = Reservation::where('event_id', $event_id)->where('user_id', $user->id)->first();
+        if ($reservation) {
+            $reservation->delete();
+            return redirect()->route('reservations')->with('success', 'La réservation a été annulée avec succès. Vous serrez remboursé dans les plus brefs délais.');
+        } else {
+            return redirect()->route('reservations')->with('error', 'Vous n\'avez pas réservé l\'évenemnt');
+        }
+    }
 }

@@ -12,4 +12,5 @@ return [
     'coming_workshop' => 'Ateliers à venir',
     'in_progress_workshop' => 'Ateliers en cours',
     'see' => 'Voir',
+    'cancel' => 'Annuler',
 ];
