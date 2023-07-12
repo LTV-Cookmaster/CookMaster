@@ -44,6 +44,7 @@
                     </a>
                 </div>
             @endforeach
+                {{ $tastings->links() }}
         </div>
         <h2 class="text-center mt-2">{{__('events.next_meetings')}}</h2>
         <div class="row">
@@ -81,6 +82,7 @@
                     </a>
                 </div>
             @endforeach
+                {{ $meetings->links() }}
         </div>
     </div>
     <div class="container">
@@ -120,6 +122,7 @@
                     </a>
                 </div>
             @endforeach
+                {{ $onlineEvent->links() }}
         </div>
         <h2 class="text-center mt-2">On site workshops</h2>
         <div class="row">
@@ -160,6 +163,7 @@
                     </a>
                 </div>
             @endforeach
+                {{ $homeEvent->links() }}
         </div>
 
         <h2 class="text-center mt-2">Professional formations</h2>
@@ -199,6 +203,7 @@
                     </a>
                 </div>
             @endforeach
+                {{ $professional->links() }}
         </div>
     </div>
 </div>
