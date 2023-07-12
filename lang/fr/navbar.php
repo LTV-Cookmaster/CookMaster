@@ -22,5 +22,6 @@ return [
     'admin_calendar' => 'Agenda des événements',
     'admin_rental' => 'Equipement de location',
     'visio' => 'Visio',
+    'admin_courses' => 'Cours',
 
 ];
