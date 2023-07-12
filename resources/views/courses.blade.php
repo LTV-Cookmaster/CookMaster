@@ -8,7 +8,7 @@
 <body>
 <div class="container-fluid">
     <div class="container">
-        <h2 class="text-center mt-2">Your available formations</h2>
+        <h2 class="text-center mt-2">{{__('courses.available_formations')}}</h2>
         <div class="row">
             @foreach($events as $event)
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -23,7 +23,7 @@
                                         <div class="card-text">
                                             <i class="fa-solid fa-tag"></i> <span class="text-truncate">{{ $event->name }}</span>
                                             <br>
-                                            <i class="fa-solid fa-award"></i> <span class="text-truncate">{{__("Formation diplomante")}}</span>
+                                            <i class="fa-solid fa-award"></i> <span class="text-truncate">{{__('courses.graduating_formations')}}</span>
                                         </div>
                                     </div>
                                 </div>

@@ -26,13 +26,13 @@
         @foreach($courses as $event)
             <tr>
                 <td>{{ $event->name }}</td>
-                <td>{{ __("Formation diplomante") }}</td>
+                <td>{{ __('courses.graduating_formations') }}</td>
                 <td>{{ $event->price }}€</td>
                 <td>
                     @if($event->formationData)
-                        <p style="color: green">{{__('Formation configuréez')}}</p>
+                        <p style="color: green">{{__('courses.configured_formation')}}</p>
                     @else
-                        <a class="btn btn-danger" href="{{ route('courses.create' , ['course_id' => $event->id]) }}">{{__('Formation à configurer')}}</a>
+                        <a class="btn btn-danger" href="{{ route('courses.create' , ['course_id' => $event->id]) }}">{{__('courses.to_configure_formation')}}</a>
                     @endif
                 </td>
             </tr>
