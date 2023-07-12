@@ -41,13 +41,23 @@
 <body>
 <div class="diploma">
     <div class="logo">
-        <img src="logo.png">
+        <img src="logo.png" style="width: 200px">
     </div>
     <h1>Diplôme de Cookmaster</h1>
     <h2>Décerné à</h2>
     <p><strong>{{ $user->name }}</strong></p>
     <p>Pour avoir complété avec succès les exigences du programme</p>
     <p><em>{{ $event->name }}</em></p>
+    @php
+        use Carbon\Carbon;
+        use Carbon\CarbonInterface;
+        use Illuminate\Support\Facades\Date;
+        $date = Date::parse($diploma->created_at);
+        Carbon::setLocale('fr');
+        $formattedDate = $date->isoFormat('D MMMM YYYY [à] HH\hmm');
+    @endphp
+    <p>Le {{ $formattedDate }}</p>
+    <p>Avec un score de <span style="color: green">{{ $diploma->score }}/5</span></p>
     <div class="signature">
         <img src="signature.png" alt="Signature du Directeur">
         <p><strong>Anthony Pitoun</strong></p>

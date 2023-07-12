@@ -21,15 +21,15 @@ class EventController extends Controller
     public function index()
     {
 
-        $tastings = Event::where('type', 'tastingEvent')->orderBy('created_at', 'desc')->take(3)->get();
+        $tastings = Event::where('type', 'tastingEvent')->orderBy('created_at', 'desc')->paginate(3);
 
-        $meetings = Event::where('type', 'meetingEvent')->orderBy('created_at', 'desc')->take(3)->get();
+        $meetings = Event::where('type', 'meetingEvent')->orderBy('created_at', 'desc')->paginate(3);
 
-        $professional = Event::where('type', 'professionalFormation')->orderBy('created_at', 'desc')->take(3)->get();
+        $professional = Event::where('type', 'professionalFormation')->orderBy('created_at', 'desc')->paginate(3);
 
-        $onlineEvent = Event::where('type', 'onlineWorkshop')->orderBy('created_at', 'desc')->take(3)->get();
+        $onlineEvent = Event::where('type', 'onlineWorkshop')->orderBy('created_at', 'desc')->paginate(3);
 
-        $homeEvent = Event::where('type', 'homeWorkshop')->orderBy('created_at', 'desc')->take(3)->get();
+        $homeEvent = Event::where('type', 'homeWorkshop')->orderBy('created_at', 'desc')->paginate(3);
 
         return view('events.index', compact(['tastings', 'meetings', 'professional', 'onlineEvent', 'homeEvent']));
     }

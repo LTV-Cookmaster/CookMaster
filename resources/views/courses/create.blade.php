@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+@section('title', 'Create course')
 @include('layouts.navbar')
 <body>
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -80,7 +81,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q1" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted >
+                    <input type="checkbox" aria-label="Réponse 1 correcte" value="1" name="reponse1q1_correcte" >
                 </div>
             </div>
         </div>
@@ -89,7 +90,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse2q1" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 2 correcte">
+                    <input type="checkbox" aria-label="Réponse 2 correcte" value="1" name="reponse2q1_correcte">
                 </div>
             </div>
         </div>
@@ -98,7 +99,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse3q1" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 3 correcte">
+                    <input type="checkbox" aria-label="Réponse 3 correcte" value="1" name="reponse3q1_correcte">
                 </div>
             </div>
         </div>
@@ -107,7 +108,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse4q1" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 4 correcte">
+                    <input type="checkbox" aria-label="Réponse 4 correcte" value="1" name="reponse4q1_correcte">
                 </div>
             </div>
         </div>
@@ -123,7 +124,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q2" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
+                    <input type="checkbox" aria-label="Réponse 1 correcte" value="1" name="reponse1q2_correcte" >
                 </div>
             </div>
         </div>
@@ -132,7 +133,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse2q2" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 2 correcte">
+                    <input type="checkbox" aria-label="Réponse 2 correcte" value="1" name="reponse2q2_correcte">
                 </div>
             </div>
         </div>
@@ -141,7 +142,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse3q2" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 3 correcte">
+                    <input type="checkbox" aria-label="Réponse 3 correcte" value="1" name="reponse3q2_correcte">
                 </div>
             </div>
         </div>
@@ -150,7 +151,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse4q2" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 4 correcte">
+                    <input type="checkbox" aria-label="Réponse 4 correcte" value="1" name="reponse4q2_correcte">
                 </div>
             </div>
         </div>
@@ -164,7 +165,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q3" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
+                    <input type="checkbox" aria-label="Réponse 1 correcte" value="1" name="reponse1q3_correcte" >
                 </div>
             </div>
         </div>
@@ -173,7 +174,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse2q3" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 2 correcte">
+                    <input type="checkbox" aria-label="Réponse 2 correcte" value="1" name="reponse2q3_correcte">
                 </div>
             </div>
         </div>
@@ -182,7 +183,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse3q3" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 3 correcte">
+                    <input type="checkbox" aria-label="Réponse 3 correcte" value="1" name="reponse3q3_correcte">
                 </div>
             </div>
         </div>
@@ -191,7 +192,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse4q3" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 4 correcte">
+                    <input type="checkbox" aria-label="Réponse 4 correcte" value="1" name="reponse4q3_correcte">
                 </div>
             </div>
         </div>
@@ -205,7 +206,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q4" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
+                    <input type="checkbox" aria-label="Réponse 1 correcte" value="1" name="reponse1q4_correcte" >
                 </div>
             </div>
         </div>
@@ -214,7 +215,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse2q4" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 2 correcte">
+                    <input type="checkbox" aria-label="Réponse 2 correcte" value="1" name="reponse2q4_correcte">
                 </div>
             </div>
         </div>
@@ -223,7 +224,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse3q4" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 3 correcte">
+                    <input type="checkbox" aria-label="Réponse 3 correcte" value="1" name="reponse3q4_correcte">
                 </div>
             </div>
         </div>
@@ -232,7 +233,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse4q4" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 4 correcte">
+                    <input type="checkbox" aria-label="Réponse 4 correcte" value="1" name="reponse4q4_correcte">
                 </div>
             </div>
         </div>
@@ -246,7 +247,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse1q5" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 1 correcte" autocompleted>
+                    <input type="checkbox" aria-label="Réponse 1 correcte" value="1" name="reponse1q5_correcte" >
                 </div>
             </div>
         </div>
@@ -255,7 +256,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse2q5" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 2 correcte">
+                    <input type="checkbox" aria-label="Réponse 2 correcte" value="1" name="reponse2q5_correcte">
                 </div>
             </div>
         </div>
@@ -264,7 +265,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse3q5" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 3 correcte">
+                    <input type="checkbox" aria-label="Réponse 3 correcte" value="1" name="reponse3q5_correcte">
                 </div>
             </div>
         </div>
@@ -273,7 +274,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="reponse4q5" {{--required--}} value="{{ old('formationTitre', $defaultValue) }}">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Réponse 4 correcte">
+                    <input type="checkbox" aria-label="Réponse 4 correcte" value="1" name="reponse4q5_correcte">
                 </div>
             </div>
         </div>
