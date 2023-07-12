@@ -23,5 +23,6 @@ return [
     'admin_rental' => 'Equipement de location',
     'visio' => 'Visio',
     'admin_courses' => 'Cours',
+    'my_diplomas' => 'Mes diplômes',
 
 ];
