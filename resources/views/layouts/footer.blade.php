@@ -8,12 +8,12 @@
         <div class="flex flex-shrink-0 justify-evenly border-t border-gray-200 p-2">
             <a href="{{ route('locale.setting', 'en') }}">
                 <span class="sr-only">{{ __('english') }}</span>
-                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 40px;" src="{{ asset('english_flag.png') }}"
+                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 25px;" src="{{ asset('english_flag.png') }}"
                      alt="{{ __('english') }}">
             </a>
             <a href="{{ route('locale.setting', 'fr') }}">
                 <span class="sr-only">{{ __('french') }}</span>
-                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 40px;" src="{{ asset('french_flag.png') }}"
+                <img class="inline-block h-8 w-8 rounded-full" style="width: 40px; height: 25px;" src="{{ asset('french_flag.png') }}"
                      alt="{{ __('french') }}">
             </a>
         </div>
