@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diploma;
 use App\Models\Event;
 use App\Models\FormationData;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Psy\Util\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 
 class CoursesController extends Controller
@@ -151,11 +152,25 @@ class CoursesController extends Controller
      */
     public function view(Request $request)
     {
+        $user = Auth::user();
+        if(!$user->is_admin){
+            return redirect()->route('home');
+        }
         $course_id = $request->route('course_id');
         $formation = FormationData::where('formation_id', $course_id)->first();
-        return view('courses.index', compact('formation'));
+        $event = Event::where('id', $course_id)->first();
+        $diploma = Diploma::where('formation_id', $course_id)->Where('user_id', $user->id)->count();
+        if ($diploma > 0) {
+            redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
+        } else {
+            return view('courses.index',
+                [
+                    'formation' => $formation,
+                    'event' => $event
+                ]
+            );
+        }
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -201,13 +216,30 @@ class CoursesController extends Controller
             $counter++;
         }
 
-        if($counter >= 3) {
+        if ($counter >= 3) {
             $user = Auth::user();
             $event = Event::where('id', $course_id)->first();
-            $pdf = Pdf::loadView('pdf.diplome', compact('user', 'event'));
-            redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
-            return $pdf->download($event->name.'.pdf');
+            $createDiploma = new Diploma();
+            $createDiploma->id = Str::uuid();
+            $createDiploma->user_id = $user->id;
+            $createDiploma->diploma_name = $event->name;
+            $createDiploma->formation_id = $event->id;
+            $createDiploma->score = $counter;
+            $createDiploma->save();
+            return redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
         } else {
             return redirect()->route('home')->with('error', 'Désolé ! Vous avez échoué le test !');
+        }
     }
-}}
+
+        public function showDiplomas(Request $request) {
+            $user = Auth::user();
+            if(!$user->is_admin){
+                return redirect()->route('home');
+            }
+            $diplomes = Diploma::where('user_id', $user->id)->get();
+            return view('user.diplomas', [
+                'diplomas' => $diplomes
+            ]);
+    }
+}
