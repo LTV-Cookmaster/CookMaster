@@ -24,5 +24,6 @@ return [
     'visio' => 'Visio',
     'chat' => 'Chat',
     'admin_courses' => 'Cours',
+    'my_diplomas' => 'Mes diplômes',
 
 ];

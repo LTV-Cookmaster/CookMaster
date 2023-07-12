@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr">
+@section('title', 'Courses')
 @include('layouts.navbar')
 <body>
 <div class="container">
 
-    <h2 style="text-align: center">{{ $formation->formation_titre }}</h2>
-    <p style="text-align: center">{{ $formation->formation_description }}</p>
 
-    <h3>Chapitre 1: {{ $formation->chapitre1_titre }}</h3>
+    <h1 class="text-center mt-5"><strong>{{ $formation->formation_titre }}</strong></h1>
+    <h3 class="text-center">{{ $formation->formation_description }}</h3>
+    @if($event->img_url)
+    <div class="d-flex justify-content-center">
+        <img src="{{ asset('storage/'.$event->img_url ) }}" style="width: 20vw;">
+    </div>
+    @endif
+    <hr>
+    <h3 class="mt-4"><strong>Chapitre 1:</strong> {{ $formation->chapitre1_titre }}</h3>
     <p>{{ $formation->chapitre1_cours }}</p>
     <p>{{ $formation->chapitre1_conclusion }}</p>
-
-    <h3>Chapitre 2: {{ $formation->chapitre2_titre }}</h3>
+    <hr>
+    <h3 class="mt-4"><strong>Chapitre 2:</strong> {{ $formation->chapitre2_titre }}</h3>
     <p>{{ $formation->chapitre2_cours }}</p>
     <p>{{ $formation->chapitre2_conclusion }}</p>
-
-    <h3>Chapitre 3: {{ $formation->chapitre3_titre }}</h3>
+    <hr>
+    <h3 class="mt-4"><strong>Chapitre 3:</strong>: {{ $formation->chapitre3_titre }}</h3>
     <p>{{ $formation->chapitre3_cours }}</p>
     <p>{{ $formation->chapitre3_conclusion }}</p>
-
-    <h3>Questions:</h3>
-    <form action="{{ route('courses.submit' , ['course_id' => $formation->formation_id]) }}" method="POST">
+    <hr>
+    @if(!$hasDiploma)
+    <button id="showQuizz" class="btn btn-secondary">{{__('Répondre aux questions')}}</button>
+    <div id="quizz" style="display: none">
+    <h3 class="mt-4">Questions:</h3>
+    <form action="{{ route('courses.submit', ['course_id' => $formation->formation_id]) }}" method="POST">
         @csrf
         <ol>
-            <li>
+            <li class="mt-4">
                 <p>{{ $formation->question1 }}</p>
                 <ul>
                     <li>
@@ -52,7 +61,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="mt-4">
                 <p>{{ $formation->question2 }}</p>
                 <ul>
                     <li>
@@ -81,7 +90,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="mt-4">
                 <p>{{ $formation->question3 }}</p>
                 <ul>
                     <li>
@@ -110,7 +119,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="mt-4">
                 <p>{{ $formation->question4 }}</p>
                 <ul>
                     <li>
@@ -139,40 +148,50 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="mt-4">
                 <p>{{ $formation->question5 }}</p>
                 <ul>
                     <li>
                         <label>
-                            <input type="radio" name="question5" value="reponse1q5">
+                            <input type="radio" name="question5" value="reponse1q5_correcte">
                             {{ $formation->reponse1q5 }}
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" name="question5" value="reponse2q5">
+                            <input type="radio" name="question5" value="reponse2q5_correcte">
                             {{ $formation->reponse2q5 }}
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" name="question5" value="reponse3q5">
+                            <input type="radio" name="question5" value="reponse3q5_correcte">
                             {{ $formation->reponse3q5 }}
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" name="question5" value="reponse4q5">
+                            <input type="radio" name="question5" value="reponse4q5_correcte">
                             {{ $formation->reponse4q5 }}
                         </label>
                     </li>
                 </ul>
             </li>
         </ol>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
     </form>
+    </div>
+    @endif
 </div>
+<script>
+    const button = document.getElementById('showQuizz')
+    const quizzDiv = document.getElementById('quizz');
 
+    button.addEventListener('click', function() {
+        button.style.display = 'none';
+        quizzDiv.style.display = 'block';
+    });
+</script>
 </body>
 @include('layouts.footer')
 </html>

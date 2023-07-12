@@ -27,7 +27,7 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" method="post" enctype="multipart/form-data">
+    <form class="vstack gap-2" id="form" action="{{ $event->exists ? route('events.update', ['event' => $event]) : route('events.store') }}" enctype="multipart/form-data">
         @csrf
         @method($event->exists ? 'put' : 'post')
 
@@ -68,12 +68,12 @@
                     @include('components.input', ['label' => __('events.number_of_participants'), 'name' => 'number_of_participants', 'type' => 'number', 'value' => $event->number_of_participants])
                 </div>
 
-                <div class="mb-3">
+<!--                <div class="mb-3">
                     <div class="mb-3">
                         <label for="image" class="form-label">{{__('events.image')}}</label>
                         <input type="file" class="form-control" id="image" name="image">
                     </div>
-                </div>
+                </div>-->
 
             </div>
             <div class="col-md-6">
@@ -149,7 +149,7 @@
                                     data.forEach(function (room) {
                                         var option = document.createElement('option');
                                         option.value = room.id;
-                                        option.textContent = room.name + " | " + {{__('events.max_capacity')}} + room.max_capacity + " | Disponible";
+                                        option.textContent = room.name + " | " + 'Capacité: ' + room.max_capacity + " | Disponible";
                                         roomSelect.appendChild(option);
                                     });
 

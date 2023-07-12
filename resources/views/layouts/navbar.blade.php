@@ -94,6 +94,7 @@
                             <div class="dropdown-content">
                                 <a class="dropdown-item" href="{{ route('profil') }}">{{__('navbar.profile')}}</a>
                                 <a class="dropdown-item" href="{{route('reservations')}}">{{__('navbar.my_reservations')}}</a>
+                                <a class="dropdown-item" href="{{route('diplomas')}}">{{__('navbar.my_diplomas')}}</a>
                                 <a class="dropdown-item dropdown-menu-end" aria-labelledby="navbarDropdown" href="{{route('logout')}}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                     {{ __('navbar.logout') }}
