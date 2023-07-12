@@ -160,17 +160,19 @@ class CoursesController extends Controller
         $formation = FormationData::where('formation_id', $course_id)->first();
         $event = Event::where('id', $course_id)->first();
         $diploma = Diploma::where('formation_id', $course_id)->Where('user_id', $user->id)->count();
+        $hasDiploma = false;
         if ($diploma > 0) {
-            redirect()->route('home')->with('success', 'Bravo ! Vous avez réussi le test !');
-        } else {
-            return view('courses.index',
+            $hasDiploma = true;
+        }
+        return view('courses.index',
                 [
                     'formation' => $formation,
-                    'event' => $event
+                    'event' => $event,
+                    'hasDiploma' => $hasDiploma
                 ]
             );
         }
-    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -241,5 +243,18 @@ class CoursesController extends Controller
             return view('user.diplomas', [
                 'diplomas' => $diplomes
             ]);
+    }
+
+    public function downloadDiploma($formation_id) {
+        $user = Auth::user();
+        $diploma = Diploma::where('formation_id', $formation_id)->Where('user_id', $user->id)->count();
+        if ($diploma == 0) {
+            return redirect()->route('home')->with('error', 'Vous n\'avez pas encore réussi le test !');
+        } else {
+            $diploma = Diploma::where('formation_id', $formation_id)->Where('user_id', $user->id)->first();
+        }
+        $event = Event::where('id', $formation_id)->first();
+        $pdf = Pdf::loadView('pdf.diplome', compact('user', 'event' , 'diploma'));
+        return $pdf->download($event->name.'.pdf');
     }
 }

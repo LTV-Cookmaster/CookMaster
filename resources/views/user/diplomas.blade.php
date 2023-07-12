@@ -47,13 +47,15 @@
     <br>
     <div class="container">
         <section class="mb-5">
-            <h2>{{__('reservations.my_reservations')}}</h2>
+            <h2>{{__('Mes diplômes')}}</h2>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>{{ __('reservations.name') }}</th>
-                    <th>{{ __('reservations.date') }}</th>
-                    <th>{{ __('reservations.see_more') }}</th>
+                    <th>{{ __('Nom') }}</th>
+                    <th>{{ __('Date d\'obtention') }}</th>
+                    <th>{{ __('Score') }}</th>
+                    <th>{{ __('Relire la formation') }}</th>
+                    <th>{{ __('Télécharger') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,8 +67,12 @@
                             $formattedDate = $date->format('F jS Y \a\t H\hi');
                         @endphp
                         <td>{{ $formattedDate }}</td>
+                        <td style="color: green">{{ $diploma->score }}/5</td>
                         <td>
-                            <a href="{{ route('event', ['event' => $diploma->id]) }}" class="btn btn-primary">{{__('reservations.see')}}</a>
+                            <a href="{{ route('event', ['event' => $diploma->id]) }}" class="btn btn-primary">{{__('Télécharger mon diplome')}}</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('downloadDiploma', ['formation_id' => $diploma->formation_id]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-download"></i> {{__('Télécharger mon diplome')}}</a>
                         </td>
                     </tr>
                     @endforeach

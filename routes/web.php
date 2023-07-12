@@ -66,6 +66,7 @@ Route::post('/profil/update', [ProfilController::class, 'update'])->name('profil
 
 Route::get('/reservations', [UserReservationsController::class, 'index'])->name('reservations');
 Route::get('/diplomas', [CoursesController::class, 'showDiplomas'])->name('diplomas');
+Route::get('/download/{formation_id}', [CoursesController::class, 'downloadDiploma'])->name('downloadDiploma');
 
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
 Route::get('/admin/course/create/{course_id}', [CoursesController::class, 'create'])->name('courses.create');

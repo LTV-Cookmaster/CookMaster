@@ -25,6 +25,7 @@
     <p>{{ $formation->chapitre3_cours }}</p>
     <p>{{ $formation->chapitre3_conclusion }}</p>
     <hr>
+    @if(!$hasDiploma)
     <button id="showQuizz" class="btn btn-secondary">{{__('Répondre aux questions')}}</button>
     <div id="quizz" style="display: none">
     <h3 class="mt-4">Questions:</h3>
@@ -180,6 +181,7 @@
         <button type="submit" class="btn btn-primary mt-4">Submit</button>
     </form>
     </div>
+    @endif
 </div>
 <script>
     const button = document.getElementById('showQuizz')
