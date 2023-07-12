@@ -22,6 +22,7 @@ return [
     'admin_calendar' => 'Agenda des événements',
     'admin_rental' => 'Equipement de location',
     'visio' => 'Visio',
+    'chat' => 'Chat',
     'admin_courses' => 'Cours',
     'my_diplomas' => 'Mes diplômes',
 
