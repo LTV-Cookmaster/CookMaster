@@ -107,17 +107,17 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->number_of_participants = $request->number_of_participants;
         //
+        if($request->start_date < Carbon::now()->format('d-m-Y')){
+            return redirect()->route('events.create')->with('error', 'La date de début doit être supérieure à la date du jour');
+        }
+        if($request->end_date < $request->start_date){
+            return redirect()->route('events.create')->with('error', 'La date de fin doit être supérieure à la date de début');
+        }
         $date_start = Carbon::createFromFormat('Y-m-d', $request->start_date);
         $formattedStartDate = $date_start->format('d-m-Y');
         $date_end = Carbon::createFromFormat('Y-m-d', $request->end_date);
         $formattedEndDate = $date_end->format('d-m-Y');
         //
-        if($formattedStartDate < Carbon::now()->format('d-m-Y')){
-            return redirect()->route('events.create')->with('error', 'La date de début doit être supérieure à la date du jour');
-        }
-        if($formattedEndDate < $formattedStartDate){
-            return redirect()->route('events.create')->with('error', 'La date de fin doit être supérieure à la date de début');
-        }
         $event->start_date = $formattedStartDate;
         $event->end_date = $formattedEndDate;
         $event->start_time = $request->start_time;
@@ -195,17 +195,17 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->number_of_participants = $request->number_of_participants;
         //
+        if($request->start_date <= Carbon::now()->format('Y-m-d')){
+            return redirect()->route('events.edit' , ['event' => $id])->with('error', 'La date de début doit être supérieure à la date du jour');
+        }
+        if($request->end_date < $request->start_date){
+            return redirect()->route('events.edit' , ['event' => $id])->with('error', 'La date de fin doit être supérieure à la date de début');
+        }
         $date_start = Carbon::createFromFormat('Y-m-d', $request->start_date);
         $formattedStartDate = $date_start->format('d-m-Y');
         $date_end = Carbon::createFromFormat('Y-m-d', $request->end_date);
         $formattedEndDate = $date_end->format('d-m-Y');
         //
-        if($formattedStartDate < Carbon::now()->format('d-m-Y')){
-            return redirect()->route('events.edit', $id)->with('error', 'La date de début doit être supérieure à la date du jour');
-        }
-        if($formattedEndDate < $formattedStartDate){
-            return redirect()->route('events.edit', $id)->with('error', 'La date de fin doit être supérieure à la date de début');
-        }
         $event->start_date = $formattedStartDate;
         $event->end_date = $formattedEndDate;
         $event->start_time = $request->start_time;

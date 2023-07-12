@@ -158,7 +158,7 @@
                                     data.forEach(function (room) {
                                         var option = document.createElement('option');
                                         option.value = room.id;
-                                        option.textContent = room.name + " | " + {{__('events.max_capacity')}} + room.max_capacity + " | " + {{__('events.available')}};
+                                        option.textContent = room.name + " | " + 'Capacité: ' + room.max_capacity + " | Disponible";
                                         roomSelect.appendChild(option);
                                     });
 
