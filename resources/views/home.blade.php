@@ -96,7 +96,7 @@
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
                             <a href="{{ route('event', ['event' => $workshop->id]) }}">
-                            <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                            <img src="{{ asset('storage/'.$workshop->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>
                             <div class="card-body d-flex">
                                 <div class="row">
@@ -133,7 +133,7 @@
                     <a href="#" class="shadow-none text-dark">
                         <div class="card mt-5 w-100 border-0 shadow-none rounded-3" style="width: 18rem;">
                             <a href="{{ route('event', ['event' => $formation->id]) }}">
-                            <img src="{{ asset('food.jpg') }}" class="card-img-top shadow-sm rounded-4" alt="...">
+                            <img src="{{ asset('storage/'.$formation->img_url) }}" class="card-img-top shadow-sm rounded-4" alt="...">
                             </a>
                             <div class="card-body d-flex">
                                 <div class="row">
