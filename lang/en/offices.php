@@ -7,7 +7,7 @@ return [
     'city' => 'City',
     'number_rooms' => 'Number of rooms',
     'actions' => 'Actions',
-    'show' => 'Show',
+    'show' => 'Show rooms',
     'show_others' => "Show other offices",
     'max_capacity' => 'Max capacity',
     'price' => 'Price',

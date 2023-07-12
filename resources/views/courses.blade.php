@@ -3,7 +3,7 @@
 @php
     use Carbon\Carbon;
 @endphp
-@section('title' , __('courses.title'))
+@section('title' , 'Courses')
 @include('layouts.navbar')
 <body>
 <div class="container-fluid">

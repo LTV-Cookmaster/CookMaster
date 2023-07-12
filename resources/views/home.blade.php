@@ -2,8 +2,9 @@
 @php
     use Carbon\Carbon;
 @endphp
-@include('layouts.navbar')
 @section('title' , __('home.title'))
+@include('layouts.navbar')
+
 
 <head>
     <meta charset="utf-8">

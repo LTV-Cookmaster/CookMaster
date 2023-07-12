@@ -24,7 +24,7 @@
 <div class="container-fluid shadow-sm p-3 rounded" style="">
     <nav class="navbar navbar-expand-lg border-0 shadow-none bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('home')}}">
                 <img src="{{asset('clear-logo.png')}}" alt="cookmaster" width="64" height="64">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

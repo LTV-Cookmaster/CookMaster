@@ -8,7 +8,8 @@
         }
     </style>
 </head>
-
+@section('title', 'Visio')
+@include('layouts.navbar')
 
 <body>
 <div id="root"></div>
@@ -71,5 +72,5 @@
         });
     }
 </script>
-
+@include('layouts.footer')
 </html>

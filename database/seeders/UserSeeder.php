@@ -26,6 +26,18 @@ class UserSeeder extends Seeder
             'is_admin' => true,
             'is_ban' => false,
         ]);
+        User::factory()->create([
+            'name'=> 'TP',
+            'email' => 'tom@pitoun.com',
+            'address' => '1 rue de la Paix',
+            'postal_code' => '75001',
+            'city' => 'Paris',
+            'country' => 'France',
+            'phone' => '6666666666',
+            'password' => Hash::make('admin'),
+            'is_admin' => true,
+            'is_ban' => false,
+        ]);
         User::factory(10)->create();
     }
 }

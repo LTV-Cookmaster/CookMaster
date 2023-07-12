@@ -93,8 +93,8 @@
 
     </style>
 </head>
-<body>
 @include('layouts.navbar')
+<body>
 <br>
 <div style="text-align: center">
     <img id="loading" src="{{ asset('reload.gif') }}" alt="Loading..." class="loading-image" />
