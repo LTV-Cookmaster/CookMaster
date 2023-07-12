@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-@section('title' , 'Mes diplômes')
+@section('title' , __('diplomas.title'))
 @php
     use Carbon\Carbon;
 
@@ -47,15 +47,15 @@
     <br>
     <div class="container">
         <section class="mb-5">
-            <h2>{{__('Mes diplômes')}}</h2>
+            <h2>{{__('diplomas.title')}}</h2>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>{{ __('Nom') }}</th>
-                    <th>{{ __('Date d\'obtention') }}</th>
-                    <th>{{ __('Score') }}</th>
-                    <th>{{ __('Relire la formation') }}</th>
-                    <th>{{ __('Télécharger') }}</th>
+                    <th>{{ __('diplomas.name') }}</th>
+                    <th>{{ __('diplomas.date') }}</th>
+                    <th>{{ __('diplomas.score') }}</th>
+                    <th>{{ __('diplomas.read_again') }}</th>
+                    <th>{{ __('diplomas.download') }}</th>
                 </tr>
                 </thead>
                 <tbody>
