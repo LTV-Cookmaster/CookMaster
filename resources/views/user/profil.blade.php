@@ -1,5 +1,5 @@
-@include('layouts.navbar')
 @section('title' , 'Profile')
+@include('layouts.navbar')
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>

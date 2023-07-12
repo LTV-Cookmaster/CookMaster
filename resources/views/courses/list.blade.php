@@ -2,7 +2,7 @@
 @php
     use App\Models\Reservation;
 @endphp
-@section('title' , __('courses.title'))
+@section('title' , 'Courses')
 @include('layouts.navbar')
 @section('content')
 

@@ -10,6 +10,7 @@
         <title>@yield('title')</title>
     </head>
 @include('layouts.navbar')
+
 @if(session('success'))
     <div id="success-alert" class="alert alert-success alert-dismissible fade show text-center d-flex align-items-center justify-content-between" role="alert">
         <span style="flex-grow: 1; text-align: center;">{{ session('success') }}</span>

@@ -7,7 +7,7 @@ return [
     'city' => 'Ville',
     'number_rooms' => 'Nombre de pièces',
     'actions' => 'Actions',
-    'show' => 'Afficher',
+    'show' => 'Voir les pièces',
     'show_others' => "Afficher les autres locaux",
     'max_capacity' => 'Capacité maximum',
     'price' => 'Prix',

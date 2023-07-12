@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Office;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
@@ -21,8 +22,17 @@ class OfficeController extends Controller
         if(!$user->is_admin){
             return redirect()->route('home');
         }
+        $offices = Office::orderBy('created_at', 'desc')->paginate(10);
+        /*
+        foreach ($offices as $office) {
+            $office->rooms_count = Room::where('office_id', $office->id)->count();
+        }*/
+        foreach ($offices as $office) {
+            $office->number_of_rooms = Room::where('office_id', $office->id)->count();
+            /*$office->update();*/
+        }
         return view('admin.offices.index', [
-            'offices' => Office::orderBy('created_at', 'desc')->paginate(10)
+            'offices' => $offices
         ]);
     }
 

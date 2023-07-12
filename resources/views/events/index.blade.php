@@ -4,8 +4,8 @@
     use Carbon\Carbon;
 @endphp
 @section('title' , __('events.title'))
-<body>
 @include('layouts.navbar')
+<body>
 <div class="container-fluid">
     <div class="container">
         <h2 class="text-center mt-2">{{__('events.next_tastings')}}</h2>
