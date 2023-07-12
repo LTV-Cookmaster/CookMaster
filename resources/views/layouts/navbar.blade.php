@@ -14,7 +14,6 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://kit.fontawesome.com/79ac1eddda.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="{{ mix('js/app.js') }}"></script>
 
     <link rel="icon" href="{{asset('favicon-32x32.ico')}}" type="image/x-icon">
