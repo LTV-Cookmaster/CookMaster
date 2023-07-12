@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'address' => $this->faker->address(),
             'postal_code' => $this->faker->postcode(),
             'city' => $this->faker->city(),
-            'country' => $this->faker->country(),
+            'country' => $this->faker->randomElement(['France', 'Germany', 'Japan', 'USA', 'Italia', 'Spain']),
             'phone' => $this->faker->phoneNumber(),
             'password' => Hash::make(Str::random(10)),
             'remember_token' => Str::random(10),
